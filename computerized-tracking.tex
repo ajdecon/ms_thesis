@@ -8,13 +8,27 @@ These particle locations alone can be used to derive a great deal
 of information about the material, such as the distribution of number of nearest neighbors and
 the pair distribution function (PDF). Repeated observations at regular intervals allow for dynamical
 measurements of parameters such as the diffusion constant, and may be used to study the microstructual
-differences between different parts of the colloidal phase diagram. 
+differences between different parts of the colloidal phase diagram. CLSM has the additional advantage
+that since it produces real-space position data, it has substantial advantages over scattering techniques
+in coping with samples with highly asymmetric structures.~\ref{?}
 
-The production of 3D structural information requires more than just a powerful imaging technique: it also
+However, 
+the production of 3D structural information requires more than just a powerful imaging technique: it also
 requires powerful computational analysis to translate image data into a list of particles and positions, and
-to determine the relevant physical data from this list. 
+to determine the relevant physical data from this list.  In addition, the behavior of non-spherical colloids
+is governed not only by the relative positions of the particles but also their orientations. Developing an
+understanding of anisotropic colloids
+therefore calls for the development of image processing techniques for the extraction and analysis of
+structural data from microscopy images.
 
 \section{Literature review}
+
+\subsection{Particle tracking with spherical colloids}
+
+The current state of the art in 
+
+\subsection{Solomon rod tracking}
+
 \tempfigure{Illustration of Solomon technique}
 \tempfigure{SFL particles as 2D extruded objects; flat fluorescence}
 \begin{itemize}
@@ -24,7 +38,32 @@ to determine the relevant physical data from this list.
 \statement{Must develop new algorithms which can work on these particles.}
 \end{itemize}
 
-\section{Algorithms}
+\section{Rod-tracking algorithm}
+
+Our algorithm for locating and tracking SFL rods draws heavily from the algorithm published by 
+Mohraz and Solomon for tracking PMMA rods.~\ref{moraz-solomon-rods}.  Briefly, this algorithm 
+took advantage of the gradient in fluorescent intensity throughout the volume of the 
+rods they studied, which were fabricated by stretching spherical PMMA particles along a single axis.
+Because these rods had a circular cross-section, scanning the confocal laser through a point nearer
+to the rod axis would pass through a greater volume of fluorescent material, producing a higher intensity.
+By applying a local line maximum criterion to the points inside the particle volume, they were able to 
+build a ``backbone'' of points near the axis, allowing them to reliably calculate orientation.
+
+While this algorithm performs very well for a restricted class of rods, it fails in cases where the particle
+cross-section is not circular, and points near the particle backbone are not guaranteed to produce higher 
+intensities than their immediate neighbors.  This is the case for our ``rods'' produced by stop-flow
+lithography (SFL), in which the sides of the rods are relatively flat due to the fabrication
+geometry. These particles have correspondingly flat fluorescence profiles, and require a more complex analysis
+to calculate a ``backbone''.
+
+We have developed an algorithm for processing 2D and 3D CLSM data of fluorescent SFL rods to
+produce position and orientaion data.  Starting from raw CLSM images, this algorithm can be divided
+into several phases, including (i) image cleanup; (ii) segmentation; (iii) position calculation; and
+(iv) time-series calculation.  
+
+\subsection{Image cleanup}
+
+Two different image cleanup methods were used
 
 \tempfigure{Image processing flowchart}
 \tempfigure{Example image: cleanup, segmentation, skeleton, track}
@@ -62,7 +101,7 @@ rotated skeleton and the sample skeleton.  Maximize pixel sum of ANDed image.}
 
 \section{Implementation}
 
-\tempfigure{Example particle trackes}
+\tempfigure{Example particle tracks}
 \begin{itemize}
 \done{Rod tracking implemented in 2D in Matlab.}
 \statement{Go over the details of the matlab implementation}

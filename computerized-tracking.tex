@@ -132,9 +132,13 @@ pre-assigning a set of markers.  In our algorithm, we generally use the Matlab i
 uses the local minima method.  This carries some danger of over-segmentation (mitigated somewhat by the 
 h-minima transform), but is better suited to automatic processing of a large number of images than manual markers.
 
-\texttt{watershed} outputs an image which labels each pixel according to a region ID number.
+\texttt{watershed} outputs an image which labels each pixel according to a region ID number, and labels both background
+and foreground pixels with these regions. To restrict these labels so that the background is labeled separately, all 
+watershed pixels which correspond to background-valued pixels in the thresholded image are assigned a label number of zero.
 
 \subsection{Skeletonization}
+
+The next step is 
 
 \subsection{Calculation of position and orientation}
 

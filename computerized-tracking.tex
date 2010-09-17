@@ -106,7 +106,40 @@ all pixels which are marked as background.
 \subsection{Segmentation}
 
 The next step of the algorithm is image segmentation, in which individual particles are identified and each pixel
-in the image is 
+in the image is assigned to a specific particle, or to the background. This is especially important in the study 
+of Janus rods, which are come into contact during self-assembly and which therefore often touch or overlap in 
+CLSM images. 
+
+First, the image is thresholded to produce a binary image, with a threshold selected such that all pixels which
+are part of the rods are assigned to the foreground. This may generally be accomplished through the use of 
+Otsu's criterion.~\ref{?}
+
+Second, the distance transform is calculated.  In this step, each foreground pixel is assigned a number which
+gives the distance between this pixel and the nearest background pixel. In this algorithm, the distance measure used
+is simple Euclidean distance, calculated center-to-center between this pixel and the closest background pixel.  Alternative
+distance measures such as the ``chessboard'' measure may also be used to speed up computation, but these measures were
+found to negatively impact segmentation.  To prepare the image for watershed segmentation, the distance 
+transform is transformed such that all distances are made
+negative, while the background remains at a flat zero. An h-minima transform is applied to remove small local minima
+due to noise in the image.
+
+The primary segmentation step is the watershed transform. In this transform, a gray-level image is viewed as
+a topographic relief map where the pixel values represent altitude. A drop of water falling on a relief 
+surface will run down to a minimum, and many drops will fill any basins present until the basins merge.
+Implementations of the watershed transform use this concept to calculate the boundaries between catchment basins,
+fully segmenting the image.  The number of basins is calculated either by using local minima in the image, or by 
+pre-assigning a set of markers.  In our algorithm, we generally use the Matlab implementation of \texttt{watershed} which
+uses the local minima method.  This carries some danger of over-segmentation (mitigated somewhat by the 
+h-minima transform), but is better suited to automatic processing of a large number of images than manual markers.
+
+\texttt{watershed} outputs an image which labels each pixel according to a region ID number.
+
+\subsection{Skeletonization}
+
+\subsection{Calculation of position and orientation}
+
+\subsection{Particle tracking}
+
 
 \tempfigure{Image processing flowchart}
 \tempfigure{Example image: cleanup, segmentation, skeleton, track}
@@ -114,18 +147,6 @@ in the image is
 \tempfigure{Schematic explanation of ``template'' technique for tracking arbitrary shapes}
 \tempfigure{Example images for ``template'' tracking}
 \begin{itemize}
-\done{Tracking algorithm for rods}
-\begin{itemize}
-\done{Image cleanup using erosion, opening}
-\done{Particle segmentation using watershed transform}
-\done{Particle skeleton (backbone) using distance transform plus rank-order filter}
-\done{Calculation of center-of-mass, oritentation according to Solomon}
-\done{Time-series tracking according to Blair and Dufrense}
-
-\done{Difference between 2D and 3D version of algorithm}
-
-\end{itemize}
-
 \notdone{Tracking algorithm for arbitrary shapes}
 
 \begin{itemize}

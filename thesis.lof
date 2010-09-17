@@ -14,39 +14,39 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of Solomon technique}}{10}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces SFL particles as 2D extruded objects; flat fluorescence}}{10}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Image processing flowchart}}{12}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Example image: cleanup, segmentation, skeleton, track}}{12}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Schematic comparison of 2D/3D}}{12}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Schematic explanation of ``template'' technique for tracking arbitrary shapes}}{13}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Example images for ``template'' tracking}}{13}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Example particle tracks}}{14}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Cartoons to show possible errors}}{14}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Image processing flowchart}}{13}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Example image: cleanup, segmentation, skeleton, track}}{13}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Schematic comparison of 2D/3D}}{13}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Schematic explanation of ``template'' technique for tracking arbitrary shapes}}{14}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Example images for ``template'' tracking}}{14}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Example particle tracks}}{15}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Cartoons to show possible errors}}{15}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Colloidal rod examples}}{15}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Photo of SFL setup; SFL flowchart; example experiment}}{15}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Examples of SFL masks used in rod experiments}}{15}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Resolution test mask; image of resulting particles}}{16}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Image of rod tracking}}{16}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Plots of translational and rotational diffusion data}}{17}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Show fabricated Janus rods of various sizes.}}{17}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Assembly of rods in various solvents}}{17}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces (a) Janus rods which have self-assembled into ordered clusters are identified and separated, and (b) their positions and orientations are labeled.}}{18}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Colloidal rod examples}}{16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Photo of SFL setup; SFL flowchart; example experiment}}{16}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Examples of SFL masks used in rod experiments}}{16}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Resolution test mask; image of resulting particles}}{17}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Image of rod tracking}}{17}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Plots of translational and rotational diffusion data}}{18}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Show fabricated Janus rods of various sizes.}}{18}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Assembly of rods in various solvents}}{18}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces (a) Janus rods which have self-assembled into ordered clusters are identified and separated, and (b) their positions and orientations are labeled.}}{19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Glotzer anisotropy dimensions targeted by complex SFL}}{19}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Schematic for 3-stream channel, and constriction channel}}{19}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Show stable parallel interface vs droplet forming}}{20}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Figure showing 2, 3, 4 patch particles}}{20}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Figure showing boomerangs, and self-assembly concept}}{20}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Diffusion results for complex particles}}{21}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Show two-patch self-assembly}}{21}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Show samples with little assembly; schematic of surface effects}}{21}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Glotzer anisotropy dimensions targeted by complex SFL}}{20}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Schematic for 3-stream channel, and constriction channel}}{20}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Show stable parallel interface vs droplet forming}}{21}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Figure showing 2, 3, 4 patch particles}}{21}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Figure showing boomerangs, and self-assembly concept}}{21}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diffusion results for complex particles}}{22}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Show two-patch self-assembly}}{22}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Show samples with little assembly; schematic of surface effects}}{22}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Overall design}}{23}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Post filters; Channel-height filters}}{23}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Cartoon of proposed protocol}}{24}
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Janus particles in concentrator}}{24}
-\contentsline {figure}{\numberline {A.5}{\ignorespaces Failed devices}}{24}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Overall design}}{24}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Post filters; Channel-height filters}}{24}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Cartoon of proposed protocol}}{25}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Janus particles in concentrator}}{25}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Failed devices}}{25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Plot transmission vs filter thickness}}{25}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Cartoon of grayscale SFL fabrication}}{25}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Plot transmission vs filter thickness}}{26}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Cartoon of grayscale SFL fabrication}}{26}

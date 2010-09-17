@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.16)  17 SEP 2010 13:30
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.16)  17 SEP 2010 14:14
 entering extended mode
  %&-line parsing enabled.
 **thesis.tex
@@ -132,18 +132,18 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [7] (./thesis.lof
 
-LaTeX Warning: Reference `glotzer-solomon-assembly' on page 3 undefined on inpu
+LaTeX Warning: Reference `glotzer-solomon-assembly' on page 4 undefined on inpu
 t line 4.
 
 
-LaTeX Warning: Reference `glotzer-solomon-assembly' on page 4 undefined on inpu
+LaTeX Warning: Reference `glotzer-solomon-assembly' on page 5 undefined on inpu
 t line 5.
 
 
-LaTeX Warning: Reference `tan-barcode' on page 4 undefined on input line 6.
+LaTeX Warning: Reference `tan-barcode' on page 6 undefined on input line 6.
 
 
-LaTeX Warning: Reference `granick-janus' on page 5 undefined on input line 7.
+LaTeX Warning: Reference `granick-janus' on page 6 undefined on input line 7.
 
 [8
 
@@ -320,24 +320,27 @@ LaTeX Warning: Reference `?' on page 11 undefined on input line 94.
 
 [11]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `?' on page 12 undefined on input line 115.
 
 [12]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [13] [14]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13]) [14] [15]
 \openout2 = `rods.aux'.
 
  (./rods.tex
 Chapter 4.
-[15
+[16
 
 
 
@@ -345,16 +348,16 @@ Chapter 4.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[16] <figures/assembled-janus-tracked.png, id=88, 311.66437pt x 344.78813pt>
+[17] <figures/assembled-janus-tracked.png, id=93, 311.66437pt x 344.78813pt>
 File: figures/assembled-janus-tracked.png Graphic file (type png)
 
-<use figures/assembled-janus-tracked.png>) [17] [18 <./figures/assembled-janus-
+<use figures/assembled-janus-tracked.png>) [18] [19 <./figures/assembled-janus-
 tracked.png (PNG copy)>]
 \openout2 = `complex-shapes.aux'.
 
  (./complex-shapes.tex
 Chapter 5.
-[19
+[20
 
 
 
@@ -368,12 +371,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [20] [21]
+) [21] [22]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 6.
-) [22
+) [23
 
 
 
@@ -382,20 +385,20 @@ Chapter 6.
 
  (./microfluidic-chambers.tex
 Appendix A.
-[23
+[24
 
 
 
-]) [24]
+]) [25]
 \openout2 = `grayscale.aux'.
 
  (./grayscale.tex
 Appendix B.
-[25
+[26
 
 
 
-]) [26] (./thesis.aux (./acknowledgements.aux) (./introduction.aux)
+]) [27] (./thesis.aux (./acknowledgements.aux) (./introduction.aux)
 (./literature-review.aux) (./computerized-tracking.aux) (./rods.aux)
 (./complex-shapes.aux) (./conclusions.aux) (./microfluidic-chambers.aux)
 (./grayscale.aux))
@@ -407,11 +410,11 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 1162 strings out of 95086
- 16161 string characters out of 1183255
+ 1164 strings out of 95086
+ 16182 string characters out of 1183255
  68102 words of memory out of 1500000
- 4291 multiletter control sequences out of 10000+50000
- 9859 words of font info for 34 fonts, out of 1200000 for 2000
+ 4292 multiletter control sequences out of 10000+50000
+ 10027 words of font info for 35 fonts, out of 1200000 for 2000
  28 hyphenation exceptions out of 8191
  29i,6n,22p,446b,235s stack positions out of 5000i,500n,6000p,200000b,5000s
 </usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf
@@ -420,10 +423,10 @@ Here is how much of TeX's memory you used:
 fb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texm
 f-texlive/fonts/type1/bluesky/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti1
-0.pfb>
-Output written on thesis.pdf (34 pages, 360505 bytes).
+0.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt10.pfb>
+Output written on thesis.pdf (35 pages, 366547 bytes).
 PDF statistics:
- 147 PDF objects out of 1000 (max. 8388607)
+ 154 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -19,44 +19,47 @@
 \contentsline {section}{\numberline {3.3}Rod-tracking algorithm}{10}
 \contentsline {subsection}{\numberline {3.3.1}Image cleanup}{11}
 \contentsline {subsection}{\numberline {3.3.2}Segmentation}{11}
+\contentsline {subsection}{\numberline {3.3.3}Skeletonization}{12}
+\contentsline {subsection}{\numberline {3.3.4}Calculation of position and orientation}{13}
+\contentsline {subsection}{\numberline {3.3.5}Particle tracking}{13}
 \contentsline {section}{\numberline {3.4}Implementation}{13}
-\contentsline {section}{\numberline {3.5}Assessment}{13}
-\contentsline {chapter}{Chapter\ 4\hskip 1em\relax Assembly and Dynamics of Rod-Shaped Colloids}{15}
-\contentsline {section}{\numberline {4.1}Introduction}{15}
-\contentsline {section}{\numberline {4.2}Experimental Procedure}{15}
-\contentsline {subsection}{\numberline {4.2.1}Stop-Flow Lithography}{15}
-\contentsline {subsection}{\numberline {4.2.2}Mask Design}{16}
-\contentsline {subsection}{\numberline {4.2.3}Particle Collection}{16}
-\contentsline {subsection}{\numberline {4.2.4}Diffusion Measurements}{16}
-\contentsline {section}{\numberline {4.3}Results and Discussion}{16}
-\contentsline {subsection}{\numberline {4.3.1}Resolution}{16}
-\contentsline {subsection}{\numberline {4.3.2}Translational and Rotational Diffusion}{17}
-\contentsline {subsection}{\numberline {4.3.3}Self-Assembly of Janus Rods}{17}
-\contentsline {chapter}{Chapter\ 5\hskip 1em\relax Assembly and Dynamics of Exotic Colloids}{19}
-\contentsline {section}{\numberline {5.1}Introduction}{19}
-\contentsline {section}{\numberline {5.2}Experimental Procedure}{19}
-\contentsline {subsection}{\numberline {5.2.1}Device Design}{19}
-\contentsline {subsection}{\numberline {5.2.2}SFL with Multiple Co-Flowing Streams}{19}
-\contentsline {section}{\numberline {5.3}Results and Discussion}{20}
-\contentsline {subsection}{\numberline {5.3.1}SFL limitations}{20}
-\contentsline {subsection}{\numberline {5.3.2}Particles produced}{20}
-\contentsline {subsection}{\numberline {5.3.3}Diffusion Measurements}{20}
-\contentsline {subsection}{\numberline {5.3.4}Self-Assembly}{20}
-\contentsline {chapter}{Chapter\ 6\hskip 1em\relax Conclusions}{22}
-\contentsline {section}{\numberline {6.1}Future work}{22}
-\contentsline {chapter}{Appendix\ A\hskip 1em\relax Microfluidic Devices for Studying Self-Assembly}{23}
-\contentsline {section}{\numberline {A.1}Introduction}{23}
-\contentsline {section}{\numberline {A.2}Experimental Procedure}{23}
-\contentsline {subsection}{\numberline {A.2.1}Device Design and Fabrication}{23}
-\contentsline {subsection}{\numberline {A.2.2}Proposed Protocol}{24}
-\contentsline {section}{\numberline {A.3}Results and Discussion}{24}
-\contentsline {subsection}{\numberline {A.3.1}Concentrator results}{24}
-\contentsline {section}{\numberline {A.4}Future directions}{24}
-\contentsline {chapter}{Appendix\ B\hskip 1em\relax Grayscale Stop-Flow Lithography}{25}
-\contentsline {section}{\numberline {B.1}Introduction}{25}
-\contentsline {section}{\numberline {B.2}Experimental Procedure}{25}
-\contentsline {subsection}{\numberline {B.2.1}Design of Grayscale Filters}{25}
-\contentsline {subsection}{\numberline {B.2.2}Grayscale Stop-Flow Lithography}{25}
-\contentsline {section}{\numberline {B.3}Results and Discussion}{25}
-\contentsline {subsection}{\numberline {B.3.1}Resulting particles}{25}
-\contentsline {section}{\numberline {B.4}Future work}{26}
+\contentsline {section}{\numberline {3.5}Assessment}{14}
+\contentsline {chapter}{Chapter\ 4\hskip 1em\relax Assembly and Dynamics of Rod-Shaped Colloids}{16}
+\contentsline {section}{\numberline {4.1}Introduction}{16}
+\contentsline {section}{\numberline {4.2}Experimental Procedure}{16}
+\contentsline {subsection}{\numberline {4.2.1}Stop-Flow Lithography}{16}
+\contentsline {subsection}{\numberline {4.2.2}Mask Design}{17}
+\contentsline {subsection}{\numberline {4.2.3}Particle Collection}{17}
+\contentsline {subsection}{\numberline {4.2.4}Diffusion Measurements}{17}
+\contentsline {section}{\numberline {4.3}Results and Discussion}{17}
+\contentsline {subsection}{\numberline {4.3.1}Resolution}{17}
+\contentsline {subsection}{\numberline {4.3.2}Translational and Rotational Diffusion}{18}
+\contentsline {subsection}{\numberline {4.3.3}Self-Assembly of Janus Rods}{18}
+\contentsline {chapter}{Chapter\ 5\hskip 1em\relax Assembly and Dynamics of Exotic Colloids}{20}
+\contentsline {section}{\numberline {5.1}Introduction}{20}
+\contentsline {section}{\numberline {5.2}Experimental Procedure}{20}
+\contentsline {subsection}{\numberline {5.2.1}Device Design}{20}
+\contentsline {subsection}{\numberline {5.2.2}SFL with Multiple Co-Flowing Streams}{20}
+\contentsline {section}{\numberline {5.3}Results and Discussion}{21}
+\contentsline {subsection}{\numberline {5.3.1}SFL limitations}{21}
+\contentsline {subsection}{\numberline {5.3.2}Particles produced}{21}
+\contentsline {subsection}{\numberline {5.3.3}Diffusion Measurements}{21}
+\contentsline {subsection}{\numberline {5.3.4}Self-Assembly}{21}
+\contentsline {chapter}{Chapter\ 6\hskip 1em\relax Conclusions}{23}
+\contentsline {section}{\numberline {6.1}Future work}{23}
+\contentsline {chapter}{Appendix\ A\hskip 1em\relax Microfluidic Devices for Studying Self-Assembly}{24}
+\contentsline {section}{\numberline {A.1}Introduction}{24}
+\contentsline {section}{\numberline {A.2}Experimental Procedure}{24}
+\contentsline {subsection}{\numberline {A.2.1}Device Design and Fabrication}{24}
+\contentsline {subsection}{\numberline {A.2.2}Proposed Protocol}{25}
+\contentsline {section}{\numberline {A.3}Results and Discussion}{25}
+\contentsline {subsection}{\numberline {A.3.1}Concentrator results}{25}
+\contentsline {section}{\numberline {A.4}Future directions}{25}
+\contentsline {chapter}{Appendix\ B\hskip 1em\relax Grayscale Stop-Flow Lithography}{26}
+\contentsline {section}{\numberline {B.1}Introduction}{26}
+\contentsline {section}{\numberline {B.2}Experimental Procedure}{26}
+\contentsline {subsection}{\numberline {B.2.1}Design of Grayscale Filters}{26}
+\contentsline {subsection}{\numberline {B.2.2}Grayscale Stop-Flow Lithography}{26}
+\contentsline {section}{\numberline {B.3}Results and Discussion}{26}
+\contentsline {subsection}{\numberline {B.3.1}Resulting particles}{26}
+\contentsline {section}{\numberline {B.4}Future work}{27}

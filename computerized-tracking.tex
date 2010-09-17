@@ -138,9 +138,28 @@ watershed pixels which correspond to background-valued pixels in the thresholded
 
 \subsection{Skeletonization}
 
-The next step is 
+Once we have identified which image pixels belong to each particle, we need to put this data into a form from
+which reliable position and orientation information can be calculated.  While it is tempting to simply
+calculate the centroid and associated moments from the raw pixel data, this can be problematic when working with
+time-series data due to boundary noise. Consider a single foreground pixel belonging to 
+an identified particle which is experimentally
+constrained to be stationary, and which is adjacent to a background pixel because it is on the edge of the identified 
+region. In the next image in the time series, this pixel's intensity is reduced and it is identified as a background
+pixel.  If we are calculated particle position as the average of all the identified pixels, this will result in 
+the calculated position changing, even if the particle did not physically move. The next frame after that, it 
+may be re-identified as a foreground pixel.  While the effect is small, experimental conditions may magnify
+these effects and produce appreciable fluctuations in the position and orientation. One way to get around this issue
+is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.
+
+For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm; but rather 
+than using an intensity gradient, we instead calculate with respect to the particle geometry. For each particle, 
+we calculate the distance transform and apply a local line maximum constraint. The line maximum constraint is applied
+for eight line orientations, and the pixel is considered a backbone pixel if a certain number of these are
+satisfied (typically 50\%).
 
 \subsection{Calculation of position and orientation}
+
+
 
 \subsection{Particle tracking}
 

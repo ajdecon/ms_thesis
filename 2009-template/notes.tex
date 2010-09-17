@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+
+\pagestyle{empty}
+\geometry{letterpaper,tmargin=0.75in,bmargin=0.75in,lmargin=1in,rmargin=1in,headheight=0in,headsep=0in,footskip=0in}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+\setlength{\itemsep}{-0.2cm}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\newcommand{\bigsection}[1]{	
+	\vspace{4pt}
+	{\fontfamily{phv}\selectfont\Large#1}
+
+%	\vspace{-10pt} \rule{\textwidth}{1pt}
+}
+
+\newcommand{\microns}{$\mu m$}
+
+\begin{document}
+
+\fontfamily{ppl}\selectfont
+
+\vspace{20pt}
+
+Dear Jennifer,
+
+Please find here my initial thoughts on what I need to do to complete a masters thesis over the next few months, based my work on SFL colloidal particles.
+This includes:
+\begin{enumerate}
+\item A summary list of accomplishments during this project which might go into a thesis.
+\item A proposed list of thesis chapters.
+\item A list of responsibilities I feel I should discharge before I leave.
+\item Some thoughts on the SFL patchy colloid project, and the outstanding problems if you decide to continue this project.
+\end{enumerate}
+
+When convenient, please let me know what your thoughts on this are.  In particular I would like your opinion of my proposed list of thesis chapters, 
+what experiments I should try to complete before I leave, and what other tasks you would like me to complete in the next few months.
+
+I don't have any realistic idea of how long I should expect my job hunt to take, but in the applications I have submitted so far I have been using November 1 as a proposed start date.
+I base this on our previous conversation about supporting our incoming postdocs.  I am aiming to have all of the 
+above completed by this date at the latest, barring perhaps some of the thesis writing.
+
+Thanks,
+
+
+Adam
+
+\pagebreak
+
+\bigsection{Summary of accomplishments on SFL Colloids project}
+
+\begin{itemize}
+
+\item Fabricated single-component SFL particles, various shapes, down to ~2 \microns\  for rods. PEGDA or TMPTA.
+
+\item Grayscale masks for SFL: reduce particle height using decrease in intensity rather than decrease in channel height.  Results in a gradient of cross-link density along the height of the particle, so the particles are more apt to swell and distort in solvent.
+Is there any use for this?
+
+\item Encountered and partially solved various issues with collection of SFL particles.  Particles tend to stick to pipette and chamber surfaces: coat in fluorosilane, use piranha-cleaned glass, or coat with PDMS for hydrophilic particles.
+
+\item Developed software for 2D and 3D tracking of SFL rods using image morphology techniques.
+
+\item Begun development of algorithms and software for tracking of other shapes based on pattern-matching.
+
+\item Taken 2D confocal movies for diffusion of single-component rods in various solvents. Mobility varies hugely by solvent, surface and particle type.  Still not really well-understood.
+\begin{itemize} \item Particle tracking done on these movies to show variation vs rod size. \end{itemize}
+
+\item Taken 2D confocal movies for diffusion of branched (3-arm and 4-arm) particles. No tracking yet.
+
+\item Fabricated Janus rods, down to ~6 \microns\ in length.
+
+\item Fabricated more complex structured particles using three-stream SFL. Two-patch, three-patch, four-patch branched particles.  Boomerangs. Size limit on three-stream SFL is ~15 \microns.
+
+\item Demonstrated self-assembly of Janus rods in different solvents. Self-assembly is disordered and ``static'': once particles find contact, no rearrangement is observed.
+
+\item Fabricated microfluidic devices for studying self-assembly in confined chambers.  This was abandoned at some point when pressure problems due to particle jamming could not be overcome. Any attempt to 
+``rinse'' the particles generally resulted in destroying the device or the particles.  But the concept is still interesting, and it's possible that this type of device could be very useful.
+
+\end{itemize}
+
+This is what I can think of that might go into a thesis.  If you have other suggestions, please let me know!
+
+\pagebreak
+
+\bigsection{Proposed masters thesis structure}
+
+Chapters for a MS thesis on this work might include:
+
+\textbf{Literature Review}\\
+Review the literature on anisotropic colloids in general; fabrication of patchy colloids, particularly Janus rods; flow lithography; and particle tracking. (Basically this is the lit review from my Lewis Group symposium talk.)
+
+\textbf{Computerized tracking of anisotropic colloids}\\
+Detail my algorithm for tracking rods, and how it differs from the Solomon technique. Characterize its performance in terms of resolution and sensitivity to noise. Also explain proposed algorithm for tracking other
+particle shapes (crosses, boomerangs) and present an initial implementation.
+
+\textbf{Fabrication of single-component anisotropic colloids}\\
+For background, explain our stop-flow lithography setup and microfluidic devices. Detail mask designs used and how they target the anisotropy dimensions from Glotzer. Particle collection techniques and considerations. 
+Results of fabrication with grayscale masks vs channel height. Results of rod-tracking experiments in different solvents.
+
+\textbf{Fabrication of multiple-component anisotropic colloids}\\
+Explain two-stream fabrication of Janus rods and three-stream fabrication of other particles, and considerations for collecting these particles. Show basic control of Janus rod self-assembly with different solvents, and 
+show differences in self-assembly with different particle sizes (as presented in PFvSM poster).  Show that self-assembly occurs for two-patch rods and four-patch crosses.
+
+\textbf{Microfluidic devices for studying self-assembly}\\
+Design and fabrication for combined SFL and particle confinement devices, including different confinement techniques explored.  Explain the proposed experimental protocol for these devices, and the results of our attempts.
+Explain pressure issues with solvent exchange and why this was abandoned, and some possible ways to get around this.\\
+Not sure if this really belongs here, but included for completeness--I did put a lot of time in this, and it was a cool idea.  Might want to omit if you think you want to follow this line of research later.
+
+\bigsection{Technical requirements to finish}
+
+I.e., this is what I need to get done in lab in the next couple months!
+\begin{itemize}
+\item Better characterization of rod tracking performance. Complete initial implementation of tracking complex particle shapes.
+\item Finish analysis of rod diffusion data.  May need to acquire some additional data depending on result.
+\item New self-assembly images for Janus rods and multi-patch particles may be needed. Not sure if it's possible to get good numerical data on this.
+\end{itemize}
+
+
+\pagebreak
+
+\bigsection{Responsibilites to research group before I leave}
+
+\textbf{Tasks in progress}
+\begin{itemize}
+
+\item Finish necessary work to complete a Masters thesis.
+
+\item Produce some startup silica samples for the new postdoc to work with when he arrives.
+
+\item Complete responsibilities with respect to Willie's paper.
+%: recheck all the math and code for the diffusion analysis, recheck text in paper.
+
+\item Determine plans of Huaibin and Nuzzo group with respect to the DNA paper rejected from \textit{Angewandte Chemie}.  Huaibin is now in Boston, but Nuzzo student
+Peixi Yuan is doing SFL experiments now.  Will Peixi be involved with any fixes to the paper?  Will we resubmit to a different journal? etc.
+
+\item Confocal microscope repair: This has been moving slowly, seemingly due to some issue with the payment for the evaluation.  I've been coordinating with Dawn Somers to get this expedited, but not sure what else to do to move this along.
+I would very much prefer to get this finished before I leave, and I'm interested in any thoughts you have for making this happen.  Regardless I will make sure someone in the group is up-to-speed on this.
+
+\end{itemize}
+
+\textbf{Knowledge transfer}
+\begin{itemize}
+
+\item Documentation on use of 81ESB fluorescence microscope for imaging.
+
+\item Train new user(s) on stop-flow lithography, and write documentation for users.
+
+\item Train new user(s) on confocal microscopy, and update Jaci documentation.
+
+\item Train new user(s) on zetasizer maintenance.  Inform all current users of existence and new capabilities of the new NanoZetasizer in MRL.  Update documentation.
+
+\item Transfer knowledge and responsibility for computing resources I currently manage (Matlab on servers, particle tracking software, wiki).
+
+\item Train new user(s) for making PDMS microfluidic devices, including making SU-8 masters in the clean room.
+
+\item If Ekandrea can't: train new user(s) on silica synthesis.
+
+\end{itemize}
+
+Who should these new users be?  Steve seems an obvious choice for some of it, but we'll have to decide who (if anyone) should be responsible for these tasks.
+
+\textbf{Lab maintenance}
+\begin{itemize}
+
+\item SFL microscope in top condition: replace all expendable supplies, clean all components, etc.
+
+\item Confocal microscope in top condition: replace all expendable supplies, check for any need of scheduled maintenance, etc.
+
+\item Clean and re-organize my lab space.
+
+\item Dispose of all my supplies (monomers, photoinitiators, etc) or find someone else who wants them.
+
+\end{itemize}
+
+\pagebreak
+
+\bigsection{My Views on the SFL Colloids project}
+
+This project has been a frustrating experience for me.  Scientifically this is a very interesting project, and there is a lot of potential here.  Certainly the self-assembly of
+patchy colloids is a very active field right now, and stop-flow lithography is a highly controllable technique for making structured particles.
+But I have continuously experienced serious
+experimental problems which have made it difficult to make much progress, and solutions to these issues have been inconsistent or only partially effective.
+
+In my view, there are two major issues with this project as it currently stands:
+\begin{itemize}
+\item Large particle volumes are required for self-assembly experiments.
+\item Yields are low following any kind of processing such as solvent exchange.
+\end{itemize}
+
+Any good study of self-assembly is going to require a large number of experiments, each of which will require a large volume of particles in order to see consistent behavior and 
+obtain good statistics.  Unfortunately, SFL as it currently stands is simply not a high-volume technique for fabricating micron-scale particles.  SFL experiments proceed in an 
+``assembly-line'' fasion: a consistent number of particles are produced in each exposure cycle, and the number of exposure cycles scale linearly with time.  If the particle size is 
+large, say 100 \microns, this presents no difficulty because the total particle volume will quickly increase into microliter scale.  However, when we shrink the particles in all dimensions to 
+less than 10 \microns, the particle volume decreases by a factor of $10^2$ or $10^3$ but \textit{we do not see a corresponding increase in the number of particles produced in each cycle}. 
+A few more particles may be packed into the mask for each exposure cycle, but this is at most a factor of 10 increase--usually less.  So our total particle volume produced in a given time goes down.
+Worse: decreasing the particle height increases the relaxation time of the PDMS channel, so each cycle takes longer.  This change in time scales as $H^2$, so going from a 50 \microns\ channel to a 
+10 \microns\ channel results in a 25x longer relaxation time--in practice, 0.1 s to more than 2 s.  
+
+Fabrication times may simply be increased to compensate, but slow experiments have their own cost when combined with processing difficulties.  My experiments with this system have involved a lot 
+of experimentation and iteration: I have had to try a number of different solvents, change the particle design, change the observation chambers, etc.  Unfortunately, every transfer step involves particle 
+loss, and Janus particles in particular seem to stick to each other and to observation chambers quite often.  If you do a self-assembly or dynamics experiment, it is very difficult to 
+recover the particles used and disrupt any assembled structures to re-use them.  Slow fabrication combined with low recoverability makes it very difficult to iterate over parameters which need to
+be optimized, and therefore difficult to solve the problems with the assembly and dynamics experiments.
+
+\textbf{If either of these problems is solved, it mitigates the other.} If a route to scale up SFL by a factor of 10 or 100 is found, we will care a lot less about losing particles.
+If we can re-use the same sample many times, it becomes more worthwhile to spend a week making a single sample.  If this line of research is to be continued, my opinion is that these
+are the problems to focus on.
+I have no good solutions to either of these problems at the moment, but discussions with the Doyle group may prove fruitful.  I am happy to discuss this at any time with
+members of the Lewis group, now and in the future.
+
+
+\bigsection{Possibilities for SFL in the Lewis Group}
+
+Even if the colloidal dynamics and self-assembly work is abandoned, there are still possibilities for SFL-related research which might be worth exploring.
+One obvious route is the development of new materials for stop-flow lithography, as in Rob's work.  While the Doyle group has been doing a lot of work on 
+SFL development and exploration, they've stayed pretty consistently in polymers-only systems--mostly PEGDA-only, in fact.  Colloidal inks for SFL, sol-gel 
+materials, or other novel materials are all possibilities.
+
+Another route to explore might be to use the DNA work with the Nuzzo group as a springboard, and look at other kinds of active SFL particles.  Biomolecule 
+detection is an obvious route, but I strongly suspect it might be possible to incorporate functional SFL particles into systems designed for applications 
+such as gas sensing, detection of contaminants in water, or targeted release of active materials.  These active particles could then be incorporated into MEMS
+devices targeted at these applications.
+
+This is pure speculation, and mainly provided to give you an idea of what possibilities I see if you decide to keep SFL as a tool in the Lewis group toolbox.
+If Steve has an interest in microfluidics and this kind of work, it might be worth encouraging him to look into these possibilities.  But he may end up doing other
+things.  Regardless, I will do my best to provide documentation on SFL, PDMS microfluidics, etc. before I leave so that it may be easily picked up if it is useful
+to the group in the future.
+
+
+\end{document}

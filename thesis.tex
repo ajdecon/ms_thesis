@@ -1,0 +1,78 @@
+\documentclass[draftthesis,fullpage]{uiucthesis2009}
+%\documentclass[fancy,fullpage]{uiucthesis2009}
+\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{graphicx}
+
+
+\newcommand{\done}[1]{
+\item{\textcolor{Green}{#1}}
+}
+
+\newcommand{\notdone}[1]{
+\item{\textcolor{BrickRed}{#1}}
+}
+
+\newcommand{\itemheader}[1]{
+\item{\textbf{#1}}
+}
+
+\newcommand{\statement}[1]{
+\item{#1}
+}
+
+\newcommand{\tempfigure}[1]{
+
+\begin{figure}[h]
+\caption{#1}
+\end{figure}
+}
+
+\begin{document}
+
+\msthesis
+\department{Materials Science and Engineering}
+\advisor{Jennifer Lewis}
+\title{Fabrication, self-assembly and dynamics of anisotropic colloids}
+\author{Adam DeConinck}
+\schools{B.S. Physics, Michigan Technological University, 2007}
+\committee{Professor Jennifer A. Lewis}
+
+\maketitle
+
+\frontmatter
+
+\begin{abstract}
+This work details the development of techniques to fabricate and study structured colloidal particles...
+\end{abstract}
+
+\begin{dedication}
+To Leigh.
+\end{dedication}
+
+\include{acknowledgements}
+
+\tableofcontents
+\listoffigures
+
+\mainmatter
+
+\include{introduction}
+
+\include{literature-review}
+
+\include{computerized-tracking}
+
+\include{rods}
+
+\include{complex-shapes}
+
+\include{conclusions}
+
+\appendix
+
+\include{microfluidic-chambers}
+
+\include{grayscale}
+
+\end{document}

@@ -1,0 +1,67 @@
+\chapter{Computerized Tracking of Anisotropic Colloids}
+\section{Introduction}
+
+\tempfigure{Illustration of Solomon technique}
+\tempfigure{SFL particles as 2D extruded objects; flat fluorescence}
+\begin{itemize}
+\statement{Desirable to locate anisotropic particles in microscopy images to study dynamics and assembly.}
+\statement{Previous work in this area: Crocker and Grier, Solomon}
+\statement{Can't use Solomon method: fluorescence is too flat for SFL particles. 2D-extruded objects. (Figure to illustrate.)}
+\statement{Must develop new algorithms which can work on these particles.}
+\end{itemize}
+
+\section{Algorithms}
+
+\tempfigure{Image processing flowchart}
+\tempfigure{Example image: cleanup, segmentation, skeleton, track}
+\tempfigure{Schematic comparison of 2D/3D}
+\tempfigure{Schematic explanation of ``template'' technique for tracking arbitrary shapes}
+\tempfigure{Example images for ``template'' tracking}
+\begin{itemize}
+\done{Tracking algorithm for rods}
+\begin{itemize}
+\done{Image cleanup using erosion, opening}
+\done{Particle segmentation using watershed transform}
+\done{Particle skeleton (backbone) using distance transform plus rank-order filter}
+\done{Calculation of center-of-mass, oritentation according to Solomon}
+\done{Time-series tracking according to Blair and Dufrense}
+
+\done{Difference between 2D and 3D version of algorithm}
+
+\end{itemize}
+
+\notdone{Tracking algorithm for arbitrary shapes}
+
+\begin{itemize}
+\done{Initial steps same as for rods: cleanup, segmentation}
+\done{``Skeletonization'' as above, but producing a more complex skeleton than for rods}
+\done{Calculate center-of-mass as with rods}
+\done{Choose a sample skeleton as the ``canonical'' particle skeleton}
+\done{Isolate particles into individual windows}
+\done{To measure orientation: rotate canonical skeleton image in small increments. For each one, AND together the 
+rotated skeleton and the sample skeleton.  Maximize pixel sum of ANDed image.}
+\done{Faster in 2D than in 3D}
+\notdone{Implementation not finished!}
+\end{itemize}
+
+\end{itemize}
+
+\section{Implementation}
+
+\tempfigure{Example particle trackes}
+\begin{itemize}
+\done{Rod tracking implemented in 2D in Matlab.}
+\statement{Go over the details of the matlab implementation}
+\notdone{Rod tracking implemented in 3D in Matlab, but with major bugs.}
+\notdone{Arbitrary tracker not yet fully implemented, using Matlab.}
+\end{itemize}
+
+\section{Assessment}
+
+\tempfigure{Cartoons to show possible errors}
+\begin{itemize}
+\done{Identify issues caused by morphological image processing for these algorithms.}
+\notdone{Estimate errors in particle segmentation}
+\notdone{Estimate error of rod COM and orientation calculations.}
+\notdone{Estimate error of skeleton-based orientation calculations.}
+\end{itemize}

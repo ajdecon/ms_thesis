@@ -1,0 +1,52 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Spherical colloids with purely repulsive interactions may assemble into (a) ordered crystal structures with fcc geometry or (b) space-filling disordered ``glass'' structures. Attractive colloids assemble into (c) open ``gel'' structures.}}{1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Anisotropy dimensions proposed by Glotzer and Solomon\nobreakspace {}\G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `glotzer-solomon-assembly' on page 4 undefined} to classify different forms of particle anisotropy.}}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Multiple anisotropy dimensions may be combined to yield more complex types of particles.\nobreakspace {}\G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `glotzer-solomon-assembly' on page 5 undefined}}}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces ``Barcoded'' PEG-DA particles which incorporating a DNA probe and fluorescent dyes\nobreakspace {}\G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `tan-barcode' on page 6 undefined}.}}{6}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Janus spheres fabricated by emulsion technique\nobreakspace {}\G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `granick-janus' on page 6 undefined}.}}{6}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces PMMA rods are fabricated by (a) embedding PMMA spheres in PDMS, (b) stretching the PDMS while heated and allowing it it to cool, and (c) dissolving the PDMS to reveal ellipsoidal rods.}}{7}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Small clusters of Janus spheres; wormlike chains; Granick}}{8}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Multi-panel figure: other assembly}}{8}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Particle tracking illustration}}{8}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Solomon rod tracking}}{8}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Illustrate morphological processing}}{8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Illustration of Solomon technique}}{9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces SFL particles as 2D extruded objects; flat fluorescence}}{9}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Image processing flowchart}}{9}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Example image: cleanup, segmentation, skeleton, track}}{10}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Schematic comparison of 2D/3D}}{10}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Schematic explanation of ``template'' technique for tracking arbitrary shapes}}{11}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Example images for ``template'' tracking}}{11}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Example particle trackes}}{11}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Cartoons to show possible errors}}{11}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Colloidal rod examples}}{12}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Photo of SFL setup; SFL flowchart; example experiment}}{12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Examples of SFL masks used in rod experiments}}{12}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Resolution test mask; image of resulting particles}}{13}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Image of rod tracking}}{13}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Plots of translational and rotational diffusion data}}{14}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Show fabricated Janus rods of various sizes.}}{14}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Assembly of rods in various solvents}}{14}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces (a) Janus rods which have self-assembled into ordered clusters are identified and separated, and (b) their positions and orientations are labeled.}}{15}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Glotzer anisotropy dimensions targeted by complex SFL}}{16}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Schematic for 3-stream channel, and constriction channel}}{16}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Show stable parallel interface vs droplet forming}}{17}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Figure showing 2, 3, 4 patch particles}}{17}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Figure showing boomerangs, and self-assembly concept}}{17}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diffusion results for complex particles}}{18}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Show two-patch self-assembly}}{18}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Show samples with little assembly; schematic of surface effects}}{18}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Overall design}}{20}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Post filters; Channel-height filters}}{20}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Cartoon of proposed protocol}}{21}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Janus particles in concentrator}}{21}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Failed devices}}{21}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Plot transmission vs filter thickness}}{22}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Cartoon of grayscale SFL fabrication}}{22}

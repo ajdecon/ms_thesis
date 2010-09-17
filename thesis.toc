@@ -1,0 +1,57 @@
+\contentsline {chapter}{List of Figures}{viii}
+\contentsline {chapter}{Chapter\ 1\hskip 1em\relax Introduction}{1}
+\contentsline {section}{\numberline {1.1}Thesis Scope}{1}
+\contentsline {section}{\numberline {1.2}Thesis Organization}{2}
+\contentsline {chapter}{Chapter\ 2\hskip 1em\relax Literature Review}{3}
+\contentsline {section}{\numberline {2.1}Introduction}{3}
+\contentsline {section}{\numberline {2.2}Anisotropic and Patchy Colloids}{3}
+\contentsline {subsection}{\numberline {2.2.1}Dimensions of Anisotropy}{3}
+\contentsline {subsection}{\numberline {2.2.2}Theory of self-assembly}{5}
+\contentsline {subsection}{\numberline {2.2.3}Fabrication of anisotropic colloids}{5}
+\contentsline {subsection}{\numberline {2.2.4}Experimental self-assembly}{5}
+\contentsline {section}{\numberline {2.3}Flow Lithography}{6}
+\contentsline {section}{\numberline {2.4}Particle Tracking}{6}
+\contentsline {chapter}{Chapter\ 3\hskip 1em\relax Computerized Tracking of Anisotropic Colloids}{9}
+\contentsline {section}{\numberline {3.1}Introduction}{9}
+\contentsline {section}{\numberline {3.2}Algorithms}{9}
+\contentsline {section}{\numberline {3.3}Implementation}{10}
+\contentsline {section}{\numberline {3.4}Assessment}{10}
+\contentsline {chapter}{Chapter\ 4\hskip 1em\relax Assembly and Dynamics of Rod-Shaped Colloids}{12}
+\contentsline {section}{\numberline {4.1}Introduction}{12}
+\contentsline {section}{\numberline {4.2}Experimental Procedure}{12}
+\contentsline {subsection}{\numberline {4.2.1}Stop-Flow Lithography}{12}
+\contentsline {subsection}{\numberline {4.2.2}Mask Design}{13}
+\contentsline {subsection}{\numberline {4.2.3}Particle Collection}{13}
+\contentsline {subsection}{\numberline {4.2.4}Diffusion Measurements}{13}
+\contentsline {section}{\numberline {4.3}Results and Discussion}{13}
+\contentsline {subsection}{\numberline {4.3.1}Resolution}{13}
+\contentsline {subsection}{\numberline {4.3.2}Translational and Rotational Diffusion}{14}
+\contentsline {subsection}{\numberline {4.3.3}Self-Assembly of Janus Rods}{14}
+\contentsline {chapter}{Chapter\ 5\hskip 1em\relax Assembly and Dynamics of Exotic Colloids}{16}
+\contentsline {section}{\numberline {5.1}Introduction}{16}
+\contentsline {section}{\numberline {5.2}Experimental Procedure}{16}
+\contentsline {subsection}{\numberline {5.2.1}Device Design}{16}
+\contentsline {subsection}{\numberline {5.2.2}SFL with Multiple Co-Flowing Streams}{16}
+\contentsline {section}{\numberline {5.3}Results and Discussion}{17}
+\contentsline {subsection}{\numberline {5.3.1}SFL limitations}{17}
+\contentsline {subsection}{\numberline {5.3.2}Particles produced}{17}
+\contentsline {subsection}{\numberline {5.3.3}Diffusion Measurements}{17}
+\contentsline {subsection}{\numberline {5.3.4}Self-Assembly}{17}
+\contentsline {chapter}{Chapter\ 6\hskip 1em\relax Conclusions}{19}
+\contentsline {section}{\numberline {6.1}Future work}{19}
+\contentsline {chapter}{Appendix\ A\hskip 1em\relax Microfluidic Devices for Studying Self-Assembly}{20}
+\contentsline {section}{\numberline {A.1}Introduction}{20}
+\contentsline {section}{\numberline {A.2}Experimental Procedure}{20}
+\contentsline {subsection}{\numberline {A.2.1}Device Design and Fabrication}{20}
+\contentsline {subsection}{\numberline {A.2.2}Proposed Protocol}{21}
+\contentsline {section}{\numberline {A.3}Results and Discussion}{21}
+\contentsline {subsection}{\numberline {A.3.1}Concentrator results}{21}
+\contentsline {section}{\numberline {A.4}Future directions}{21}
+\contentsline {chapter}{Appendix\ B\hskip 1em\relax Grayscale Stop-Flow Lithography}{22}
+\contentsline {section}{\numberline {B.1}Introduction}{22}
+\contentsline {section}{\numberline {B.2}Experimental Procedure}{22}
+\contentsline {subsection}{\numberline {B.2.1}Design of Grayscale Filters}{22}
+\contentsline {subsection}{\numberline {B.2.2}Grayscale Stop-Flow Lithography}{22}
+\contentsline {section}{\numberline {B.3}Results and Discussion}{22}
+\contentsline {subsection}{\numberline {B.3.1}Resulting particles}{22}
+\contentsline {section}{\numberline {B.4}Future work}{23}

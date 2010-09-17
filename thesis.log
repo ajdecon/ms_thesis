@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.16)  17 SEP 2010 14:14
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.16)  17 SEP 2010 14:52
 entering extended mode
  %&-line parsing enabled.
 **thesis.tex
@@ -329,13 +329,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[13]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[13]) [14] [15]
+) [14] [15]
 \openout2 = `rods.aux'.
 
  (./rods.tex
@@ -405,9 +403,6 @@ Appendix B.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  1164 strings out of 95086
@@ -424,7 +419,7 @@ fb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texm
 f-texlive/fonts/type1/bluesky/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/typ
 e1/bluesky/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti1
 0.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt10.pfb>
-Output written on thesis.pdf (35 pages, 366547 bytes).
+Output written on thesis.pdf (35 pages, 368946 bytes).
 PDF statistics:
  154 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)

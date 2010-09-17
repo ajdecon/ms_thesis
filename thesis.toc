@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.3.3}Skeletonization}{12}
 \contentsline {subsection}{\numberline {3.3.4}Calculation of position and orientation}{13}
 \contentsline {subsection}{\numberline {3.3.5}Particle tracking}{13}
-\contentsline {section}{\numberline {3.4}Implementation}{13}
+\contentsline {section}{\numberline {3.4}Implementation}{14}
 \contentsline {section}{\numberline {3.5}Assessment}{14}
 \contentsline {chapter}{Chapter\ 4\hskip 1em\relax Assembly and Dynamics of Rod-Shaped Colloids}{16}
 \contentsline {section}{\numberline {4.1}Introduction}{16}

@@ -10,7 +10,9 @@
 \contentsline {subsection}{\numberline {2.2.3}Fabrication of anisotropic colloids}{5}
 \contentsline {subsection}{\numberline {2.2.4}Experimental self-assembly}{5}
 \contentsline {section}{\numberline {2.3}Flow Lithography}{6}
-\contentsline {section}{\numberline {2.4}Particle Tracking}{6}
+\contentsline {subsection}{\numberline {2.3.1}Stop flow lithography}{7}
+\contentsline {subsection}{\numberline {2.3.2}Multiple-component FL}{7}
+\contentsline {section}{\numberline {2.4}Particle Tracking}{7}
 \contentsline {chapter}{Chapter\ 3\hskip 1em\relax Computerized Tracking of Anisotropic Colloids}{9}
 \contentsline {section}{\numberline {3.1}Introduction}{9}
 \contentsline {section}{\numberline {3.2}Literature review}{9}

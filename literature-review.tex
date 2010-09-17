@@ -151,9 +151,14 @@ The particle geometry is defined by a combination of the photomask and the micro
 is determined by the shape of the UV beam at its intersection with the microchannel, and the particle height is defined by
 the height of the microchannel. The ``top'' and ``bottom'' of the particles, where they meet the upper and lower
 microchannel surfaces, conform roughly to the shape of these surfaces and are generally flat.
-The particles may thus be viewed as 3D extrusions of the 2D mask.  The resolution and quality of the 2D pattern 
+The particles may thus be viewed as 3D extrusions of the 2D mask.  Friction or sticking with these top and bottom
+surfaces are prevented in the case where PDMS is the channel material and a hydrogel monomer is the feedstock: hydrogel
+curing is inhibited by the presence of oxygen, and PDMS is oxygen permeable. This results in the formation of an 
+``inhibition layer'' along the internal surfaces of the channel where the liquid will not cure, preserving the mobility 
+of the particles. This layer is typically about 1 \microns thick.
+The resolution and quality of the 2D pattern 
 is affected by the focus of the microscope (defocusing will produce blurred boundaries), the resolution of the mask,
-and the magnification and numerical aperture of the objective lens.
+and the magnification and numerical aperture of the objective lens.  
 
 \subsection{Stop flow lithography}
 

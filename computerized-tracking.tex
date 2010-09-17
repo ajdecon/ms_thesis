@@ -58,12 +58,55 @@ to calculate a ``backbone''.
 
 We have developed an algorithm for processing 2D and 3D CLSM data of fluorescent SFL rods to
 produce position and orientaion data.  Starting from raw CLSM images, this algorithm can be divided
-into several phases, including (i) image cleanup; (ii) segmentation; (iii) position calculation; and
-(iv) time-series calculation.  
+into several phases, including (i) image cleanup; (ii) segmentation; (iii) skeletonization;
+(iv) position calculation; and
+(v) particle tracking over the time series.  
+
+A note on terminology: the algorithm described below is identical for both 2D and 3D images, as all
+operations are defined for both cases and used identically. However, where the individual elements of
+2D images are referred to as pixels, the elements of 3D images are generally referred to as voxels.
+For simplicity, all such elements are referred to as pixels in the explanation below.
 
 \subsection{Image cleanup}
 
-Two different image cleanup methods were used
+Two different image cleanup methods were considered, and used depending on their effectiveness with
+sample data.
+
+The first method, a real-space bandpass filter, is derived from the filter published in the 
+Matlab implementation of spherical particle tracking~\ref{crocker-weeks} by Blair and
+Dufrense. This filter performs a band-pass by convolving the image with two kernels: 
+a Gaussian kernel and a boxcar kernel.  The Gaussian convolution performs the low-pass
+operation, while subtracting the result of the boxcar convolution from the Gaussian result
+performs the high-pass operation. This filter takes two parameters, the characteristic scale
+of image noise (generally equal to one pixel) and the typical particle size.  This works well,
+but has issues in images with multi-pixel noise.
+
+While the band-pass performed well on most images, some experiments produced data with noise or
+extraneous features which did
+not easily yield to the bandpass operation. This can be attributed to the fact that SFL fabrication produces
+solutions which have some amount of fluorescent monomer present in the liquid as well as the particles, which
+could not always be removed effectively.  A second method was devised using morpholohical
+operations to better neutralize non-particle features.
+
+This method may be divided into four steps. First the image is thresholded to produce a binary image, where the 
+background is black and the fluorescent features are white. The threshold is selected such that pixels which 
+are part of the particle volume are never assigned to the background; Otsu's criterion was found to be reliable
+for this.~\ref{?}  Second, a binary opening is applied with an isotropic structuring element to
+suppress small features. The size of the structuring element is selected manually by the user, but a 
+reliable choice was found to be a diameter roughly equal to half the width of the typical rod. 
+
+At this point a binary image has been produced which suppresses most non-particle features, but morphological
+image operations are not guaranteed to preserve shape and orientation of image features.  To retain the noise suppresion
+but regain the original shape, we perform one additional morphological dilation using the same structuring element to
+guarantee that the foreground regions fully overlap with the rods, then perform a binary AND between the result and the
+original image. This is effectively equivalent to using the result of our morphological operations as a mask on
+the original, suppressing
+all pixels which are marked as background.
+
+\subsection{Segmentation}
+
+The next step of the algorithm is image segmentation, in which individual particles are identified and each pixel
+in the image is 
 
 \tempfigure{Image processing flowchart}
 \tempfigure{Example image: cleanup, segmentation, skeleton, track}

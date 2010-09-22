@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.16)  17 SEP 2010 15:33
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2010.9.22)  22 SEP 2010 16:32
 entering extended mode
  %&-line parsing enabled.
 **thesis.tex
@@ -76,49 +76,49 @@ Package graphics Info: Driver file: pdftex.def on input line 90.
 (./conclusions.aux) (./microfluidic-chambers.aux) (./grayscale.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 \chapternumberheight=\dimen105
 \thesis@dim=\dimen106
 \ct@dim=\dimen107
 \cn@dim=\dimen108
 
-Underfull \vbox (badness 10000) detected at line 42
+Underfull \vbox (badness 10000) detected at line 43
  []
 
 
-Underfull \vbox (badness 10000) detected at line 42
+Underfull \vbox (badness 10000) detected at line 43
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 42.
+(Font)              <12> on input line 43.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 42.
+(Font)              <8> on input line 43.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 42.
+(Font)              <6> on input line 43.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [3
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 
-] [4]
+] [3]
 \openout2 = `acknowledgements.aux'.
 
 
-(./acknowledgements.tex) [5
+(./acknowledgements.tex) [4
 
 
-] (./thesis.toc
+] [5] (./thesis.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -184,7 +184,7 @@ ne 35.
 
  (./literature-review.tex
 Chapter 2.
-<figures/glotzer-anisotropy-dimensions.png, id=40, 271.76532pt x 276.28218pt>
+<figures/glotzer-anisotropy-dimensions.png, id=43, 271.76532pt x 276.28218pt>
 File: figures/glotzer-anisotropy-dimensions.png Graphic file (type png)
 
 <use figures/glotzer-anisotropy-dimensions.png>
@@ -233,7 +233,7 @@ LaTeX Warning: Reference `fig:dimensions combined' on page 3 undefined on input
 
 
 
-] <figures/glotzer-combine-dimensions.png, id=44, 231.11343pt x 197.23688pt>
+] <figures/glotzer-combine-dimensions.png, id=47, 231.11343pt x 197.23688pt>
 File: figures/glotzer-combine-dimensions.png Graphic file (type png)
 
 <use figures/glotzer-combine-dimensions.png>
@@ -242,12 +242,19 @@ LaTeX Warning: Reference `glotzer-solomon-assembly' on page 4 undefined on inpu
 t line 54.
 
 
+LaTeX Warning: Reference `glotzer-solomon-assembly' on page 4 undefined on inpu
+t line 54.
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/tan-dna-barcode.png, id=45, 269.50688pt x 193.47281pt>
+<figures/tan-dna-barcode.png, id=48, 269.50688pt x 193.47281pt>
 File: figures/tan-dna-barcode.png Graphic file (type png)
 
 <use figures/tan-dna-barcode.png>
+
+LaTeX Warning: Reference `tan-barcode' on page 4 undefined on input line 62.
+
 
 LaTeX Warning: Reference `tan-barcode' on page 4 undefined on input line 62.
 
@@ -298,9 +305,6 @@ LaTeX Warning: Reference `?' on page 9 undefined on input line 13.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [9
 
 
@@ -329,7 +333,13 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 [13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -338,24 +348,53 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  (./rods.tex
 Chapter 4.
+
+LaTeX Warning: Reference `glotzer-solomon-assembly' on page 16 undefined on inp
+ut line 5.
+
+
+LaTeX Warning: Reference `fig:device-desig' on page 16 undefined on input line 
+28.
+
 [16
 
 
 
 ]
 
+LaTeX Warning: Reference `rogers-tape-ref' on page 17 undefined on input line 6
+9.
+
+[17]
+
+LaTeX Warning: Reference `fig:rod-masks' on page 18 undefined on input line 89.
+
+
+
+LaTeX Warning: Reference `fig:rod-masks' on page 18 undefined on input line 96.
+
+
+
+LaTeX Warning: Reference `fig:Janus-channel' on page 18 undefined on input line
+ 119.
+
+
+LaTeX Warning: Reference `?' on page 18 undefined on input line 120.
+
+[18] [19]
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[17] <figures/assembled-janus-tracked.png, id=94, 311.66437pt x 344.78813pt>
+<figures/assembled-janus-tracked.png, id=105, 311.66437pt x 344.78813pt>
 File: figures/assembled-janus-tracked.png Graphic file (type png)
 
-<use figures/assembled-janus-tracked.png>) [18] [19 <./figures/assembled-janus-
+<use figures/assembled-janus-tracked.png>) [20] [21 <./figures/assembled-janus-
 tracked.png (PNG copy)>]
 \openout2 = `complex-shapes.aux'.
 
  (./complex-shapes.tex
 Chapter 5.
-[20
+[22
 
 
 
@@ -366,15 +405,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) [21] [22]
+) [23] [24]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 6.
-) [23
+) [25
 
 
 
@@ -383,46 +419,51 @@ Chapter 6.
 
  (./microfluidic-chambers.tex
 Appendix A.
-[24
-
-
-
-]) [25]
-\openout2 = `grayscale.aux'.
-
- (./grayscale.tex
-Appendix B.
 [26
 
 
 
-]) [27] (./thesis.aux (./acknowledgements.aux) (./introduction.aux)
+]) [27]
+\openout2 = `grayscale.aux'.
+
+ (./grayscale.tex
+Appendix B.
+) [28
+
+
+
+] [29] (./thesis.aux (./acknowledgements.aux) (./introduction.aux)
 (./literature-review.aux) (./computerized-tracking.aux) (./rods.aux)
 (./complex-shapes.aux) (./conclusions.aux) (./microfluidic-chambers.aux)
 (./grayscale.aux))
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 1165 strings out of 95086
- 16189 string characters out of 1183255
- 68108 words of memory out of 1500000
- 4293 multiletter control sequences out of 10000+50000
+ 1172 strings out of 95086
+ 16282 string characters out of 1183255
+ 68259 words of memory out of 1500000
+ 4300 multiletter control sequences out of 10000+50000
  10027 words of font info for 35 fonts, out of 1200000 for 2000
  28 hyphenation exceptions out of 8191
  29i,6n,22p,446b,235s stack positions out of 5000i,500n,6000p,200000b,5000s
 </usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf
 -texlive/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type
-1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.
-pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texm
-f-texlive/fonts/type1/bluesky/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/typ
-e1/bluesky/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy1
-0.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/t
-exmf-texlive/fonts/type1/bluesky/cm/cmtt10.pfb>
-Output written on thesis.pdf (35 pages, 375856 bytes).
+1/bluesky/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmmi7.
+pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texm
+f-texlive/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type
+1/bluesky/cm/cmsl10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsl12
+.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/te
+xmf-texlive/fonts/type1/bluesky/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/bluesky/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/bluesky/cm/cmtt
+10.pfb>
+Output written on thesis.pdf (38 pages, 391325 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
+ 178 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

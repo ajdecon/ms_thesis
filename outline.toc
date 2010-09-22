@@ -1,2 +1,0 @@
-\contentsline {chapter}{List of Figures}{vii}
-\contentsline {chapter}{Chapter\ 1\hskip 1em\relax Introduction}{1}

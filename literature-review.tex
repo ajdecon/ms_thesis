@@ -182,7 +182,30 @@ stopped, this effect is minimized, and the only limitations imposed on the resol
 the mask resolution and materials constraints.
 
 Second, throughput is greatly increased because higher rates of flow may be used during the periods when pressure is
-applied.  
+applied.  In continuous-flow lithography, the rate of flow must be kept relatively slow to allow curing to take place.
+Once particles have cured, no exposure step may take place until this flow has carried the particles out of the
+exposure region and fresh monomer has been supplied to carry out another cure step.  In SFL, the rate of flow
+may be arbitrarily high within the constraints of the device, as the cure step is carried out when the flow is stopped. 
+When the cure step is finished in SFL, a high pressure is applied to quickly clear the exposure region, followed by a 
+short pause to allow the fluid to stop flowing.  This procedure has allowed rates of production as high as 
+$10^5$ particles min$^{-1}$.~\cite{dendukuri-sfl}
+
+Note that the advantage in throughput is reduced somewhat when the experiment design necessitates a long pause step
+after the flow. The length of this pause step is dependent on the fluid viscosity, but especially on the 
+response time of the PDMS device.  When a high pressure is applied to elastic PDMS microchannel, the 
+walls of the channel deform to allow it to expand.  Removing that pressure, as in SFL, produces a ``squeeze flow''
+phenomenon in which the relaxation of the device walls generates some fluid flow within the channel. The cure step 
+cannot take place until this flow has ceased.  In Dendukuri \textit{et al.} (2007), this phenomenon is studied in detail,
+and a response time $\tau_r$ is calculated to scale as
+
+\begin{equation}
+\tau_r \sim \frac{\mu L^2 W}{EH^3}
+\end{equation}
+
+where $L$ is the channel length, $W$ is the channel width, $H$ is the channel height and $E$ is the elastic
+modulus of PDMS.  Note that this response time is not dependent on the input pressure, so that relatively high
+flow rates may be used without affecting the length of the pause step. However, this scaling becomes pressure-dependent
+and more complicated when the deformation in channel height $\Delta h$ is comparable to $H$.~\cite{dendukuri-sfl}
 
 \subsection{Multiple-component FL}
 

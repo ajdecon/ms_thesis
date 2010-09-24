@@ -1,0 +1,76 @@
+\contentsline {chapter}{List of Figures}{viii}
+\contentsline {chapter}{Chapter\ 1\hskip 1em\relax Introduction}{1}
+\contentsline {section}{\numberline {1.1}Thesis Scope}{1}
+\contentsline {section}{\numberline {1.2}Thesis Organization}{2}
+\contentsline {chapter}{Chapter\ 2\hskip 1em\relax Literature Review}{3}
+\contentsline {section}{\numberline {2.1}Introduction}{3}
+\contentsline {section}{\numberline {2.2}Anisotropic and Patchy Colloids}{3}
+\contentsline {subsection}{\numberline {2.2.1}Dimensions of Anisotropy}{3}
+\contentsline {subsection}{\numberline {2.2.2}Theory of self-assembly}{5}
+\contentsline {subsection}{\numberline {2.2.3}Fabrication of anisotropic colloids}{5}
+\contentsline {subsection}{\numberline {2.2.4}Experimental self-assembly}{5}
+\contentsline {section}{\numberline {2.3}Flow Lithography}{6}
+\contentsline {subsection}{\numberline {2.3.1}Stop flow lithography}{7}
+\contentsline {subsection}{\numberline {2.3.2}Multiple-component FL}{8}
+\contentsline {section}{\numberline {2.4}Particle Tracking}{8}
+\contentsline {chapter}{Chapter\ 3\hskip 1em\relax Computerized Tracking of Anisotropic Colloids}{10}
+\contentsline {section}{\numberline {3.1}Introduction}{10}
+\contentsline {section}{\numberline {3.2}Literature review}{10}
+\contentsline {subsection}{\numberline {3.2.1}Particle tracking with spherical colloids}{10}
+\contentsline {subsection}{\numberline {3.2.2}Solomon rod tracking}{10}
+\contentsline {section}{\numberline {3.3}Rod-tracking algorithm}{11}
+\contentsline {subsection}{\numberline {3.3.1}Image cleanup}{12}
+\contentsline {subsection}{\numberline {3.3.2}Segmentation}{12}
+\contentsline {subsection}{\numberline {3.3.3}Skeletonization}{13}
+\contentsline {subsection}{\numberline {3.3.4}Calculation of position and orientation}{14}
+\contentsline {subsection}{\numberline {3.3.5}Particle tracking}{14}
+\contentsline {section}{\numberline {3.4}Tracking arbitrary particles}{14}
+\contentsline {subsection}{\numberline {3.4.1}Skeletonization}{14}
+\contentsline {subsection}{\numberline {3.4.2}Representative skeleton}{14}
+\contentsline {subsection}{\numberline {3.4.3}Rotation/comparison}{14}
+\contentsline {section}{\numberline {3.5}Implementation}{15}
+\contentsline {section}{\numberline {3.6}Assessment}{15}
+\contentsline {chapter}{Chapter\ 4\hskip 1em\relax Assembly and Dynamics of Rod-Shaped Colloids}{17}
+\contentsline {section}{\numberline {4.1}Introduction}{17}
+\contentsline {section}{\numberline {4.2}Experimental Procedure}{17}
+\contentsline {subsection}{\numberline {4.2.1}Microchannel device fabrication}{17}
+\contentsline {subsubsection}{Photoresist masters}{17}
+\contentsline {subsubsection}{Elastomer device construction}{18}
+\contentsline {subsection}{\numberline {4.2.2}Materials}{18}
+\contentsline {subsection}{\numberline {4.2.3}Mask design}{19}
+\contentsline {subsection}{\numberline {4.2.4}SFL experiment}{19}
+\contentsline {subsection}{\numberline {4.2.5}Particle Collection}{21}
+\contentsline {subsection}{\numberline {4.2.6}Diffusion Measurements}{21}
+\contentsline {section}{\numberline {4.3}Results and Discussion}{21}
+\contentsline {subsection}{\numberline {4.3.1}Resolution}{21}
+\contentsline {subsection}{\numberline {4.3.2}Translational and Rotational Diffusion}{21}
+\contentsline {subsection}{\numberline {4.3.3}Self-Assembly of Janus Rods}{22}
+\contentsline {chapter}{Chapter\ 5\hskip 1em\relax Assembly and Dynamics of Exotic Colloids}{24}
+\contentsline {section}{\numberline {5.1}Introduction}{24}
+\contentsline {section}{\numberline {5.2}Experimental Procedure}{24}
+\contentsline {subsection}{\numberline {5.2.1}Device Design}{24}
+\contentsline {subsection}{\numberline {5.2.2}SFL with Multiple Co-Flowing Streams}{24}
+\contentsline {section}{\numberline {5.3}Results and Discussion}{24}
+\contentsline {subsection}{\numberline {5.3.1}SFL limitations}{24}
+\contentsline {subsection}{\numberline {5.3.2}Particles produced}{25}
+\contentsline {subsection}{\numberline {5.3.3}Diffusion Measurements}{25}
+\contentsline {subsection}{\numberline {5.3.4}Self-Assembly}{25}
+\contentsline {chapter}{Chapter\ 6\hskip 1em\relax Conclusions}{27}
+\contentsline {section}{\numberline {6.1}Future work}{27}
+\contentsline {chapter}{Appendix\ A\hskip 1em\relax Microfluidic Devices for Studying Self-Assembly}{28}
+\contentsline {section}{\numberline {A.1}Introduction}{28}
+\contentsline {section}{\numberline {A.2}Experimental Procedure}{28}
+\contentsline {subsection}{\numberline {A.2.1}Device Design and Fabrication}{28}
+\contentsline {subsection}{\numberline {A.2.2}Proposed Protocol}{29}
+\contentsline {section}{\numberline {A.3}Results and Discussion}{29}
+\contentsline {subsection}{\numberline {A.3.1}Concentrator results}{29}
+\contentsline {section}{\numberline {A.4}Future directions}{29}
+\contentsline {chapter}{Appendix\ B\hskip 1em\relax Grayscale Stop-Flow Lithography}{30}
+\contentsline {section}{\numberline {B.1}Introduction}{30}
+\contentsline {section}{\numberline {B.2}Experimental Procedure}{30}
+\contentsline {subsection}{\numberline {B.2.1}Design of Grayscale Filters}{30}
+\contentsline {subsection}{\numberline {B.2.2}Grayscale Stop-Flow Lithography}{30}
+\contentsline {section}{\numberline {B.3}Results and Discussion}{30}
+\contentsline {subsection}{\numberline {B.3.1}Resulting particles}{30}
+\contentsline {section}{\numberline {B.4}Future work}{31}
+\contentsline {chapter}{References}{32}

@@ -7,7 +7,7 @@ and identification of individual particles, determining their positions in three
 These particle locations alone can be used to derive a great deal
 of information about the material, such as the distribution of number of nearest neighbors and
 the pair distribution function (PDF). Repeated observations at regular intervals allow for dynamical
-measurements of parameters such as the diffusion constant, and may be used to study the microstructural
+measurements of parameters such as the diffusion constant, and may be used to study the microstructual
 differences between different parts of the colloidal phase diagram. CLSM has the additional advantage
 that since it produces real-space position data, it has substantial advantages over scattering techniques
 in coping with samples with highly asymmetric structures.~\ref{?}

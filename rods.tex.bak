@@ -28,7 +28,7 @@ hydrophobic and hydrophilic monomer solutions.
 Particle fabrication was carried out in Y-junction microchannel devices (Figure~\ref{fig:device-desig}).
 The primary channel of these devices had a typical 
 height of 7 \microns, width of 200 \microns, and length of 3000-5000 \microns. These dimensions were selected
-to facilitate the fabrication of large numbers of particles with small size in all dimensions: the low height
+to faciliate the fabrication of large numbers of particles with small size in all dimensions: the low height
 facilitated small-particle fabrication by limiting the height of the particles, while the comparatively large
 width allowed many particles to be fabricated simultaneously. Multiple entrances were defined to allow up to three
 monomer streams to be simultaneously flowed, with a single exit point for collecting particles.
@@ -44,16 +44,16 @@ Finally, the wafer was immersed in SU-8 developer (Microchem) and agitated for t
 photoresist, then rinsed with isopropyl alcohol (IPA).
 
 After fabrication, photoresist masters were subjected to a fluorinated silane vapor coating to inhibit adhesion
-between the SU-8 template and the elastomer to be cast. Masters were placed in a small desiccator (Fisher Scientific)
+between the SU-8 template and the elastomer to be cast. Masters were placed in a small dessicator (Fisher Scientific)
 along with an open container of (tridecafluoro-1,1,2,2-tetrahydrooctyl) trichlorosilane (Gelest, Inc.)
-This desiccator's vacuum port was then connected to a single-stage vacuum pump and evacuated for two hours to produce
+This dessicator's vacuum port was then connected to a single-stage vacuum pump and evacuated for two hours to produce
 a silane coating.
 
 \subsubsection{Elastomer device construction}
 
 Microchannel devices were constructed from polydimethylsiloxane (PDMS, Dow Corning, Sylgard 184). PDMS
 elastomer and curing agent were mixed at a ratio of 10:1 by weight, and pored over the photoresist master 
-in a plastic petri dish to a depth of about 2 mm.  PDMS was also spun-coat onto a 48 x 60 mm \#1 cover-slip (Gold Seal)
+in a plastic petri dish to a depth of about 2 mm.  PDMS was also spun-coat onto a 48 x 60 mm \#1 coverslip (Gold Seal)
 to form the substrate for the device.
 Both of these  were then baked at 65\degC for six hours or more to cure
 the PDMS.  
@@ -137,7 +137,7 @@ and the microscope was focused such that the focal place was inside the channel.
 experiment, the shutter was allowed to open and the fine focus was adjusted manually to optimize
 curing conditions. Optimization was judged by visual inspection of the resulting particles. 
 
-Single-component rods were fabricated using the central entrance channel to supply monomer to the system, 
+Single-component rods were fabricted using the central entrance channel to supply monomer to the system, 
 leaving the other two entrances unused. Typical experimental settings for these experiments were pressure
 8 psi, flow time 1.5 s, and pause time 2 s.  Exposure times for PEGDA or 20-ETMPTA were typically 0.05-0.15 s
 depending on the mask dimensions, while exposure times for TMPTA were typically 0.2-0.3 s to account for

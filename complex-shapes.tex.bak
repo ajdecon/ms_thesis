@@ -5,7 +5,7 @@
 \tempfigure{Glotzer anisotropy dimensions targeted by complex SFL}
 \begin{itemize}
 \statement{Motivation for working on more complex shapes}
-\statement{Reference Glotzer anisotropy dimensions}
+\statement{Reference Glotzer anisotropy dimenions}
 \statement{Bring back three-stream SFL concept from lit review}
 \end{itemize}
 
@@ -42,7 +42,7 @@
 \begin{itemize}
 \done{Multiple streams result in SFL slowdown}
 \notdone{Theoretical constraints on how closely interfaces can be spaced}
-\done{Empirical comparison on interface spacing}
+\done{Empirical comparsion on interface spacing}
 \end{itemize}
 
 \subsection{Particles produced}

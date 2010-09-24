@@ -164,7 +164,7 @@ and the magnification and numerical aperture of the objective lens.
 \label{sec:SFL}
 
 In a 2007 article in \textit{Lab On a Chip}, Dendukuri \textit{et al.} outline an innovation on flow lithography
-called \textit{stop-flow lithography} (SFL).~\cite{dendukuri-sfl} In SFL, the cure-during-flow
+called \textit{stop-flow lithography} (SFL).~\ref{dendukuri-sfl} In SFL, the cure-during-flow
 process in conventional flow lithography is replaced with a flow-stop-cure process in which the microchannel flow
 is allowed to come to a halt before UV exposure. This change allows for a substantial improvement in both 
 fabrication resolution and throughput.
@@ -172,7 +172,7 @@ fabrication resolution and throughput.
 First, resolution is improved because stopping the microchannel flow minimizes the effect of polymerization
 ``smearing'', which distorts the shape of the resulting particles.
 When flowing monomer solution is exposed to UV light for some finite time, any monomer which occupies the exposed volume 
-during that time begins to undergo photo-polymerization.  Some of the solution will flow out of this region 
+during that time begins to undergo photopolymerization.  Some of the solution will flow out of this region 
 during this time, and be replaced by additional solution from up-stream. This results in a particle which is ``smeared''
 or ``stretched'' along the axis of flow, and does not precisely reproduce the shape defined on the mask.  
 \textbf{Work out some minimum-resolution theory here.}

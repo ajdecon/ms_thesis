@@ -112,7 +112,30 @@ up to four independent pressures driving up to eight separate lines. UV light wa
 connected in fluorescence microscope configuration, with exposure time controlled using a Lambda SC 
 electronic shutter (Sutter Instruments).
 
-The SFL experiment was driven using LabView software (National Instruments) with custom VIs.
+The SFL experiment was driven using LabView software (National Instruments) with a custom
+interface (Figure~\ref{fig:sfl-labview}). The process
+flow of an SFL experiment is illustrated in Figure~\ref{fig:sfl-flowchart}, and consists of the following steps:
+
+\begin{enumerate}
+\item Specify ``flow time'' $t_{flow}$, ``pause time'' $t_{pause}$, and exposure time $t_{expose}$.
+\item Set pressure for each port on electronic regulators.
+\item Until the experiment is stopped:
+\begin{enumerate}
+\item Open valves. Wait $t_{flow}$.
+\item Close valves. Wait $t_{pause}$.
+\item Open shutter. Wait $t_{expose}$.
+\item Close shutter. Repeat.
+\end{enumerate}
+\end{enumerate}
+
+For a schematic of the SFL experimental setup, see Figure~\ref{fig:sfl-schematic}.
+For each monomer solution, a 10-100\uL pipette tip (Eppendorf) was filled with approximately 60\uL of solution.
+A silicone tube was connected at one end to the output of one valve of the pressure box, and the other end
+was inserted into the top of the pipette tip.  The bottom of the pipette tip was then inserted into one of the
+small entrance holes in the microchannel device.  This device was the placed on above the microscope objective,
+and the microscope was focused such that the focal place was inside the channel.  After starting the 
+experiment, the shutter was allowed to open and the fine focus was adjusted manually to optimize
+curing conditions. Optimization was judged by visual inspection of the resulting particles. 
 
 Single-component rods were fabricted using the central entrance channel to supply monomer to the system, 
 leaving the other two entrances unused. Typical experimental settings for these experiments were pressure
@@ -147,12 +170,7 @@ was left empty to allow collection of the maximum volume of particles possible.
 
 
 \subsection{Particle Collection}
-\begin{itemize}
-\done{Considerations for collection}
-\done{Solvents used}
-\done{Pipettes}
-\done{Fluorosilane coatings}
-\end{itemize}
+
 
 \subsection{Diffusion Measurements}
 \begin{itemize}

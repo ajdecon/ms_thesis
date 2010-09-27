@@ -220,7 +220,7 @@ the new observation solvent to over 99\%.  However, experimental results indicat
 particle losses resulted in some experiments only involving three or four rinse cycles.  Thes results will be detailed in 
 Section~\ref{sec:rod-collection-techniques}.
 
-\marginpar{Add better details on glass observation chambers. Also explain constraints on observation chambers.}
+\mnote{Add better details on glass observation chambers. Also explain constraints on observation chambers.}
 
 Observation chambers were constructed by affixing a glass coverslip to one end of short glass tube using 
 five-minute epoxy (3M).  Oriented with the coverslip as the base, this provides a flat transparent surface
@@ -228,6 +228,36 @@ for microscopy.
 
 
 \subsection{Diffusion Measurements}
+
+To carry out diffusion measurements, the rod sample was placed in the solvent of interest and pipetted into an observation 
+chamber.  In some cases the observation chamber was pre-coated with no-stick silane ((tridecafluoro-1,1,2,2-tetrahydrooctyl) 
+trichlorosilane, Gelest, Inc.) to inhibit sticking between the rods and the chamber surfaces; in others,
+the observation chamber was partially pre-filled with solvent in order to pre-treat the 
+bottom surface, and the rods were allowed to settle for 20-30 minutes before observation.
+
+The observation chamber was then placed on the sample stage of a fast confocal laser scanning microscope (CLSM; 
+an IX71 inverted microscope, Olympus, Inc. connected to a vt$^{eye}$ confocal scanner, Visitech International). The CLSM
+included two independent excitation laser lines with peak wavelengths of 491 nm and 561 nm, corresponding to our ethidium 
+bromide and Rhodamine B dyes.  A 100x oil-immersion objective lens was used for imaging the rods which had settled at the bottom
+of the chamber.  The microscope was initially used in bright-field imaging mode and manually adjusted to find the particles and 
+optimize the focus.
+
+Following the bright-field adjustments, the microscope was put into confocal mode, the laser line selected 
+based on the particular sample, and two-dimensional rod diffusion at the 
+bottom of the chamber was imaged in time-series mode.  The microscope was configured such that images were acquired at
+a rate of 1 frame per second (fps), consisting of the average of eight frames acquired at 30 fps.  
+(For fast diffusion of the smallest rods,
+image acquisition was adjusted to 2 fps.)  Laser exposure was triggered only during active 
+acquisition, and shuttered otherwise.  Image spatial resolution was 512 $\times$ 512 pixels with a scale of 10 pixels
+per \microns, and each pixel's intensity was scaled over eight bits to assume values in the range of 0--255.
+The intensity scale was adjusted relative to the actual intensity to maximize the dynamic range for the particular sample.
+The total time of a typical experiment was 10 minutes.
+
+Time-series image data were saved as 8-bit TIFF image stacks and transferred to group computation servers for analysis.
+Analyses were carried out to compute mean-square-displacement and orientation displacement for each rod using algorithms as 
+described in Section~\ref{sec:rod-tracking} and implemented in Matlab scripts described in Section~\ref{sec:rods-implementation}, 
+and these data
+were used to calculate two-dimensional diffusion constants.  
 
 
 

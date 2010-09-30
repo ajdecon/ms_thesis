@@ -6,7 +6,7 @@
 \usepackage{makeidx}
 \makeindex
 
-\newcommand{\microns}{$\mu m$}
+\newcommand{\microns}{~$\mu m$}
 \newcommand{\uL}{~$\mu L$}
 \newcommand{\degC}{~$^{\circ}C$}
 
@@ -16,9 +16,46 @@
     \begin{center}
     \includegraphics[width=#3]{#2}
     \end{center}
-
     \caption{#4}
+
 \end{figure} }
+
+\newcommand{\figtwo}[4]{
+\begin{figure}
+    \label{#1}
+    \begin{center}
+    \includegraphics[width=0.45\linewidth]{#2}\includegraphics[width=0.45\linewidth]{#3}
+    \caption{#4}
+    \end{center}
+\end{figure}
+}
+
+\newcommand{\figfour}[6]{
+\begin{figure}[h]
+    \label{#1}
+    \begin{center}
+
+        \includegraphics[width=0.45\linewidth]{#2}\includegraphics[width=0.45\linewidth]{#3} \\
+        \includegraphics[width=0.45\linewidth]{#4}\includegraphics[width=0.45\linewidth]{#5} \\
+        \caption{#6}
+
+    \end{center}
+\end{figure}
+
+}
+
+\newcommand{\figthree}[5]{
+\begin{figure}[h]
+    \label{#1}
+    \begin{center}
+    \includegraphics[width=0.32\linewidth]{#2}\includegraphics[width=0.32\linewidth]{#3}\includegraphics[width=0.32\linewidth]{#4}
+    \caption{#5}
+    \end{center}
+
+
+\end{figure}
+
+}
 
 
 \newcommand{\mnote}[1]{

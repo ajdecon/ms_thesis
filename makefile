@@ -51,6 +51,7 @@ clean:
 	$(RM) $(TEXFILES:.tex=.pdf)
 	$(RM) $(TEXFILES:.tex=.dvi)
 	$(RM) $(TEXFILES:.tex=.idx)
+	$(RM) $(TEXFILES:.tex=.toc)
 ifeq ($(HASHBIB), yes)
 	$(RM) *.bbl
 	$(RM) *.blg

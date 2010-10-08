@@ -160,6 +160,15 @@ satisfied (typically 50\%).
 
 \subsection{Calculation of position and orientation}
 
+\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{\linewidth}{
+Positional and orientational coordinates for colloidal rods.~\cite{solomon-rods}}
+
+\begin{equation}
+x_{0,i} = \frac{1}{S_i} \sum_{s}{S_i} x_{s,i} \\
+y_{0,i} = \frac{1}{S_i} \sum_{s}{S_i} y_{s,i} \\
+z_{0,i} = \frac{1}{S_i} \sum_{s}{S_i} z_{s,i} 
+\end{equation}
+
 Position and orientation calculated by Solomon...
 
 Additional position information from Janus.
@@ -205,6 +214,10 @@ rotated skeleton and the sample skeleton.  Maximize pixel sum of ANDed image.}
 
 \section{Implementation}
 \label{sec:matlab-implementation}
+
+\section{Results and Discussion}
+\figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{
+Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
 \tempfigure{Example particle tracks}
 \begin{itemize}

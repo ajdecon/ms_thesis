@@ -160,41 +160,69 @@ satisfied (typically 50\%).
 
 \subsection{Calculation of position and orientation}
 
-\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{\linewidth}{
+\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.5\linewidth}{
 Positional and orientational coordinates for colloidal rods.~\cite{solomon-rods}}
 
+Once the backbone pixels for a given rod have been identified, the position and orientation of each rod may
+be determined based on these pixels' locations.  Each rod's geometric configuration can be
+completely specified by three positional coordinates, $x$, $y$ and $z$, and two
+orientational coordinates $\theta$ and $\phi$, as shown in~\ref{fig:coordinates}.
+The equations for performing this calculation,
+\ref{eq:x-cent}--\ref{eq:phi}, are taken from 
+Mohraz and Solomon, \textit{Langmuir} (2007)~\cite{solomon-rods}.
+
+The rod's center-of-mass position may be calculated
+straightforwardly based on a simple average over the positions of the backbone pixels.  In 
+\ref{eq:x-cent}--\ref{z-cent}, $r_{0,i}$ represents the center-of-mass of coordinate $r$ for 
+rod $i$.  $S_i$ is the set of identified backbone pixels associated with that rod, and $s$ is the index
+variable summing over that set..
+
 \begin{equation}
+\label{eq:x-cent}
 x_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} x_{s,i}
 \end{equation}
 \begin{equation}
+\label{eq:y-cent}
 y_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} y_{s,i}
 \end{equation}
 \begin{equation}
+\label{eq:z-cent}
 z_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} z_{s,i} 
 \end{equation}
 
+Calculating orientation is somewhat more complex.  First, for each dimension $r$, the quantity
+$|<l_r^2>^{1/2}|$ is calculated (\ref{eq:x-len}--\ref{z-len}). 
+Geometrically, this is the size of the projection of the rod's length
+onto the axis $r$, and it is equivalent to the standard deviation of the $r$ coordinate.
+Once these dimensions have been calculated, the angles $\phi$ and $\theta$ may be 
+determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
+
 \begin{equation}
+\label{eq:x-len}
 |<l_x^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (x_{s,i} - x_{0,i} )^2 \right]^{1/2}
 \end{equation}
 \begin{equation}
+\label{eq:y-len}
 |<l_y^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (y_{s,i} - y_{0,i} )^2 \right]^{1/2}
 \end{equation}
 \begin{equation}
+\label{eq:z-len}
 |<l_z^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (z_{s,i} - z_{0,i} )^2 \right]^{1/2}
 \end{equation}
 
 \begin{equation}
+\label{eq:theta}
 \theta_i = \cos^{-1} \left(\frac{<l_z^2>_i^{1/2}}{<l^2>_i^{1/2}} \right)
 \end{equation}
 \begin{equation}
+\label{eq:phi}
 \phi_i = \tan^{-1} \left(\frac{<l_y^2>_i^{1/2}}{<l_x^2>_i^{1/2}} \right)
 \end{equation}
 
+Due to symmetry, orientations of single-component rods may only be determined in a 180$^\circ$ range.
+Janus rods, where each end is tagged with a different fluorescent dye, break this symmetry and orientation
+may be determined in a 360$^\circ$ range.
 
-
-Position and orientation calculated by Solomon...
-
-Additional position information from Janus.
 
 \subsection{Particle tracking}
 

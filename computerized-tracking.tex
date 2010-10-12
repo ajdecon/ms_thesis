@@ -21,27 +21,10 @@ understanding of anisotropic colloids
 therefore calls for the development of image processing techniques for the extraction and analysis of
 structural data from microscopy images.
 
-\section{Literature review}
-
-\subsection{Particle tracking with spherical colloids}
-
-The current state of the art in 
-
-\subsection{Solomon rod tracking}
-
-\tempfigure{Illustration of Solomon technique}
-\tempfigure{SFL particles as 2D extruded objects; flat fluorescence}
-\begin{itemize}
-\statement{Desirable to locate anisotropic particles in microscopy images to study dynamics and assembly.}
-\statement{Previous work in this area: Crocker and Grier, Solomon}
-\statement{Can't use Solomon method: fluorescence is too flat for SFL particles. 2D-extruded objects. (Figure to illustrate.)}
-\statement{Must develop new algorithms which can work on these particles.}
-\end{itemize}
-
-\section{Rod-tracking algorithm}
+\section{Algorithm}
 \label{sec:rod-tracking}
 
-Our algorithm for locating and tracking SFL rods draws heavily from the algorithm published by 
+Our method for locating and tracking SFL rods draws heavily from that published by 
 Mohraz and Solomon for tracking PMMA rods.~\ref{moraz-solomon-rods}.  Briefly, this algorithm 
 took advantage of the gradient in fluorescent intensity throughout the volume of the 
 rods they studied, which were fabricated by stretching spherical PMMA particles along a single axis.
@@ -82,17 +65,19 @@ performs the high-pass operation. This filter takes two parameters, the characte
 of image noise (generally equal to one pixel) and the typical particle size.  This works well,
 but has issues in images with multi-pixel noise.
 
-While the band-pass performed well on most images, some experiments produced data with noise or
+While the band-pass performed well on many images, some experiments produced data with noise or
 extraneous features which did
 not easily yield to the bandpass operation. This can be attributed to the fact that SFL fabrication produces
 solutions which have some amount of fluorescent monomer present in the liquid as well as the particles, which
 could not always be removed effectively.  A second method was devised using morphological
 operations to better neutralize non-particle features.
 
-This method may be divided into four steps. First the image is thresholded to produce a binary image, where the 
+This method may be divided into five steps. First, the 
+image is run through a morphological top-hat transform. This transform is used to account for the effects of
+uneven illumination in the image. Then the image is thresholded to produce a binary image, where the 
 background is black and the fluorescent features are white. The threshold is selected such that pixels which 
 are part of the particle volume are never assigned to the background; Otsu's criterion was found to be reliable
-for this.~\ref{?}  Second, a binary opening is applied with an isotropic structuring element to
+for this.~\ref{?}  Next, a binary opening is applied with an isotropic structuring element to
 suppress small features. The size of the structuring element is selected manually by the user, but a 
 reliable choice was found to be a diameter roughly equal to half the width of the typical rod. 
 
@@ -153,10 +138,12 @@ these effects and produce appreciable fluctuations in the position and orientati
 is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.
 
 For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm; but rather 
-than using an intensity gradient, we instead calculate with respect to the particle geometry. For each particle, 
-we calculate the distance transform and apply a local line maximum constraint. The line maximum constraint is applied
-for eight line orientations, and the pixel is considered a backbone pixel if a certain number of these are
-satisfied (typically 50\%).
+than using an intensity gradient, we instead calculate with respect to the particle geometry. For each particle, we 
+isolate its pixels from the environment (i.e., generate a new image containing only this particle). We then
+calculate the distance transform to allow identification of particles which are closest to the 
+geometric backbone.  These are identified by applying a ``percentile threshold'' in which the all pixels which
+fall below a given percentile in the distribution are reassigned as background pixels. Typical cutoffs used
+are 90-95\%, depending on trial images.
 
 \subsection{Calculation of position and orientation}
 
@@ -219,58 +206,138 @@ determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
 \phi_i = \tan^{-1} \left(\frac{<l_y^2>_i^{1/2}}{<l_x^2>_i^{1/2}} \right)
 \end{equation}
 
-Due to symmetry, orientations of single-component rods may only be determined in a 180$^\circ$ range.
-Janus rods, where each end is tagged with a different fluorescent dye, break this symmetry and orientation
-may be determined in a 360$^\circ$ range.
+\subsection{Algorithm summary}
 
+\begin{enumerate}
 
-\subsection{Particle tracking}
+\item \textbf{Image cleanup}
+    \begin{itemize}
+    \item Option 1: band-pass filter to suppress noise.~\cite{crocker}
+    \item Option 2: morphological processing
+        \begin{enumerate}
+        \item Top-hat transform.
+        \item Threshold.
+        \item Morphological opening.
+        \item Morphological dilation.
+        \item Binary AND with original.
+        \end{enumerate}
+    \end{itemize}
 
-Tracking via Crocker...
+\item \textbf{Segmentation}
+    \begin{enumerate}
+    \item Distance transform.
+    \item H-minima transform.
+    \item Watershed transform.
+    \end{enumerate}
 
-\section{Tracking arbitrary particles}
+\item \textbf{Skeletonization}
+    \begin{enumerate}
+    \item Rod isolation.
+    \item Distance transform.
+    \item Percentile threshold filter.
+    \end{enumerate}
 
-Rod-shaped particles introduce one dimension of anisotropy to the typical spherical case by tuning the
-aspect ratio to values greater than one.  These particles are relatively easy to track, but additional 
-forms of anisotropy exist.  Particles with branching anisotropy...
+\item \textbf{Coordinate calculation}
+    \begin{enumerate}
+    \item Positional coordinates: \ref{eq:x-cent}--\ref{eq:z-cent}
+    \item Calculation of length projections: \ref{eq:x-len}--\ref{eq:z-len}
+    \item Orientational coordinates: \ref{eq:theta}--\ref{eq:phi}
+    \end{enumerate}
 
-\subsection{Skeletonization}
-
-\subsection{Representative skeleton}
-
-\subsection{Rotation/comparison}
-
-
-\tempfigure{Image processing flowchart}
-\tempfigure{Example image: cleanup, segmentation, skeleton, track}
-\tempfigure{Schematic comparison of 2D/3D}
-\tempfigure{Schematic explanation of ``template'' technique for tracking arbitrary shapes}
-\tempfigure{Example images for ``template'' tracking}
-\begin{itemize}
-\notdone{Tracking algorithm for arbitrary shapes}
-
+\end{enumerate}
 
 \section{Implementation}
 \label{sec:matlab-implementation}
 
-\section{Results and Discussion}
+The results of typical experiments with samples of single-component or Janus rods included both 
+large-area tiled images taken of many particles at a single time,
+used to study static self-assembly, and movies consisting of many subsequent images in a 
+particular location, taken to study dynamical behavior.  Each of these experimental types required the processing
+of image sets numbering in the hundreds or thousands.  The analysis of these images using the algorithm developed
+above requires the selection of a number of input parameters, such as the thresholding levels and the 
+structuring elements for morphological processing.  However, while all the images from a typical
+experiment could be expected to share the same parameter values, those values might vary considerably for the 
+analysis of different
+experiments.
+
+To address this, we implemented our algorithm as a set of independent functions which could be carried out manually 
+or called from an automated script. A typical analysis was carried out by selecting one or more 
+test images from the data set; carrying out the various image processing steps on these test images, varying
+the processing parameters to obtain the best results; and then calling the automation script using the 
+optimized values to process the entire data set.  Analysis of test images was generally carried out on a single
+workstation, while full-dataset processing was carried out on dedicated servers to maximize processing efficiency.
+
+All steps of the analysis were implementing in Matlab~\cite{matlab}, making heavy use of functions from the
+Image Processing Toolbox.  The following description summarizes the process of carrying out a manual analysis of
+test images as a guide to future users; a full source-code listing can be found in~\ref{sec:matlab-code}.
+
+\subsection{Image cleanup}
+
+Image cleanup is probably the part of the analysis which is most sensitive to parameter selection.
+Original images of colloidal rod samples from CLSM or FM are often quite noisy, either from 
+
+\subsubsection{Option 1: band-pass}
+
+\texttt{bpass(image\_array, lnoise, lobject[, threshold])}
+
+\begin{itemize}
+\item \texttt{image\_array}: Matlab array containing image pixels.
+\item \texttt{lnoise}: Characteristic length-scale of noise.
+\item \texttt{lobject}: Characteristic length-scale of object to be tracked (i.e., length of a colloidal rod).
+\item \texttt{threshold}: By default, the last step of this algorithm is to set all negative pixels (generated
+by the convolution) to be zeros. This parameter may optionally be used to apply a threshold with a different cut-off.
+\end{itemize}
+
+\texttt{bpass.m} is from the Blair and Dufrense~\cite{blair-matlab} Matlab implementation of the Crocker and Weeks
+package for tracking of spherical particles.~\cite{crocker-tracking}
+
+\subsubsection{Option 2: morphological cleanup}
+
+\texttt{result\_image = mclean(img, thstruct, opstruct[, threshold])}
+
+\begin{itemize}
+\item \texttt{img}: Matlab array containing image pixels.
+\item \texttt{thstruct}: Matlab structuring element used to carry out the top-hat transform.
+\item \texttt{opstruct}: Matlab structuring element used to carry out the opening and dilation operations.
+\item \texttt{threshold}: By default, the threshold used in this algorithm is selected using the built-in
+Matlab function \texttt{graythresh}, which uses Otsu's algorithm~\cite{?}. Here, the user may optionally
+select a different threshold.
+\end{itemize}
+
+\subsection{Segmentation}
+
+\texttt{result\_image = segment(img[, height])}
+
+\begin{itemize}
+\item \texttt{img}: Matlab array containing the image pixels.
+\item \texttt{height}: Maximum height to suppress in h-minima transform. Optional, defaults to 1.
+\end{itemize}
+
+\texttt{segment.m} carries out the image segmentation part of the algorithm, and consists of three calls to
+Matlab built-in functions: \texttt{bwdist}, which carries out the distance transform, 
+\texttt{imhmin}, which carries out the h-minima transform, and \texttt{watershed}, which performs watershed
+segmentation. While these processes are all computationally intensive, the result is relatively insensitive to
+processing parameters. The only parameter available is the height of the h-minima transform, which is generally
+set to 1 to account for single-pixel fluctuations; 
+it is increased only when over-segmentation is observed in the resulting watershed.~\ref{fig:over-segment}
+
+\subsection{Skeletonization}
+
+\texttt{result\_image = backbones(img, percent)}
+
+\begin{itemize}
+\item \texttt{img}: Matlab array containing the image pixels.
+\item \texttt{percent}: Percentile used in the thresholding step.
+\end{itemize}
+
+\subsection{Temporal tracking}
+
+Frame-to-frame tracking of unique rods to form trajectories was accomplished using a Matlab routine, \texttt{track.m}, 
+supplied by Blair and Dufrense~\cite{blair-matlab}, implementing the standard algorithm for particle tracking by
+Crocker and Weeks~\cite{crocker-tracking}. 
+
+\section{Results and discussion}
 \figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{
 Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
-\tempfigure{Example particle tracks}
-\begin{itemize}
-\done{Rod tracking implemented in 2D in Matlab.}
-\statement{Go over the details of the matlab implementation}
-\notdone{Rod tracking implemented in 3D in Matlab, but with major bugs.}
-\notdone{Arbitrary tracker not yet fully implemented, using Matlab.}
-\end{itemize}
 
-\section{Assessment}
-
-\tempfigure{Cartoons to show possible errors}
-\begin{itemize}
-\done{Identify issues caused by morphological image processing for these algorithms.}
-\notdone{Estimate errors in particle segmentation}
-\notdone{Estimate error of rod COM and orientation calculations.}
-\notdone{Estimate error of skeleton-based orientation calculations.}
-\end{itemize}

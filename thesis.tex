@@ -6,6 +6,14 @@
 \usepackage{makeidx}
 \makeindex
 
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
 \newcommand{\microns}{~$\mu m$}
 \newcommand{\uL}{~$\mu L$}
 \newcommand{\degC}{~$^{\circ}C$}

@@ -271,14 +271,44 @@ All steps of the analysis were implementing in Matlab~\cite{matlab}, making heav
 Image Processing Toolbox.  The following description summarizes the process of carrying out a manual analysis of
 test images as a guide to future users; a full source-code listing can be found in~\ref{sec:matlab-code}.
 
+\pagebreak
+
+\begin{lstlisting}[label=ls:manual,caption=Typical sequence of a manual analysis]
+% Load the image.
+img = imread('filename.tif');
+
+% If using bandpass cleaning.
+clean = bpass(img,lnoise,lobject);
+
+% If using morphological cleaning.
+%  top-hat step: radius 50 is greater than rod size.
+%  opening step: radius 2 is a good size for eliminating small variations.
+thstruct = strel('disk',50);
+opstruct = strel('disk',2);
+
+% Segmentation step.
+watershed_labels = segment(clean, 1);
+
+% Now find backbone pixels.
+skeletons = backbones(clean, watershed_labels, 90);
+
+% Finally get the list of positions.
+positions = calc_positions(skeletons);
+\end{lstlisting}
+
 \subsection{Image cleanup}
 
 Image cleanup is probably the part of the analysis which is most sensitive to parameter selection.
-Original images of colloidal rod samples from CLSM or FM are often quite noisy, either from 
+Original images of colloidal rod samples from CLSM or FM are often noisy or unevenly illuminated, and these
+effects vary from experiment to experiment.  However, subsequent steps of the analysis assume that their input
+images will be simple binary images, with white rods and a black background. Choosing the correct parameters 
+to produce such images is a matter of trial and error, and the particular choices must be re-optimized
+for each new experiment.  Two options exist for performing this clean-up: a simple bandpass filter, 
+and a more complex set of morphological operations.
 
 \subsubsection{Option 1: band-pass}
 
-\texttt{bpass(image\_array, lnoise, lobject[, threshold])}
+\texttt{clean = bpass(image\_array, lnoise, lobject[, threshold])}
 
 \begin{itemize}
 \item \texttt{image\_array}: Matlab array containing image pixels.
@@ -293,7 +323,7 @@ package for tracking of spherical particles.~\cite{crocker-tracking}
 
 \subsubsection{Option 2: morphological cleanup}
 
-\texttt{result\_image = mclean(img, thstruct, opstruct[, threshold])}
+\texttt{clean = mclean(img, thstruct, opstruct[, threshold])}
 
 \begin{itemize}
 \item \texttt{img}: Matlab array containing image pixels.
@@ -306,7 +336,7 @@ select a different threshold.
 
 \subsection{Segmentation}
 
-\texttt{result\_image = segment(img[, height])}
+\texttt{watershed\_img = segment(img[, height])}
 
 \begin{itemize}
 \item \texttt{img}: Matlab array containing the image pixels.
@@ -320,21 +350,105 @@ segmentation. While these processes are all computationally intensive, the resul
 processing parameters. The only parameter available is the height of the h-minima transform, which is generally
 set to 1 to account for single-pixel fluctuations; 
 it is increased only when over-segmentation is observed in the resulting watershed.~\ref{fig:over-segment}
+To observe the resulting watershed segmentation, use the code in Listing~\ref{ls:showwater}.
+
+\begin{lstlisting}[label=ls:showwater,caption=Observe watershed segmentation]
+imshow( label2rgb(watershed_img,'jet') );
+\end{lstlisting}
 
 \subsection{Skeletonization}
 
-\texttt{result\_image = backbones(img, percent)}
+\texttt{skeletons = backbones(img, watershed\_img, percent)}
 
 \begin{itemize}
 \item \texttt{img}: Matlab array containing the image pixels.
+\item \texttt{watershed\_img}: Image containing the watershed labels.
 \item \texttt{percent}: Percentile used in the thresholding step.
 \end{itemize}
 
+The generation of the rod skeletons, carried out in \texttt{backbones.m}, is also a relatively simple
+procedure.  The results of the watershed segmentation step are used to find the portion of the 
+image which contains each rod, and this is used to generate a new image in which the rod may
+be analyzed in isolation. The only choice which must be made is the percentile threshold for selecting 
+backbone pixels. This is again a matter of trial and error, but typical values are in the range of 90-95\%.
+
+A final image is generated which contains all the backbones, with the pixels belonging to each one having
+the value of their watershed label. This allows them to be uniquely identified in the following step. The background is 
+assigned again to zero.  Observation of these backbones for quality check requires a thresholding step. Observation
+of all the backbones may be accomplished using the code in Listing~\ref{ls:allbb}, while observing only the backbone 
+with label $n$ may be accomplished using the code in Listing~\ref{ls:onebb}.
+
+\begin{lstlisting}[label=ls:allbb,caption=Show all backbones as an image]
+imshow(im2bw(skeletons, 0));
+\end{lstlisting}
+
+\begin{lstlisting}[label=ls:onebb,caption=Show only backbone with label $n$]
+temp=skeletons;
+temp(temp~=n)=0;
+imshow(im2bw(skeletons, 0));
+\end{lstlisting}
+
+\subsection{Coordinate calculation}
+
+\texttt{positions = calc\_positions(skeletons[, cutoff])}
+
+\begin{itemize}
+\item \texttt{skeletons}: Image containing the rod skeletons.
+\item \texttt{cutoff}: Optional parameter listing a cut-off for ignoring a backbone.
+\end{itemize}
+
+For each individual rod, \texttt{calc\_positions.m} calculates the positional and
+orientational coordinates and saves them to the array \texttt{positions}.  
+\texttt{cutoff} is an optional parameter which allows \texttt{calc\_positions.m} to 
+ignore backbones which contain under a certain number of pixels, as one last noise-protection step.
+
+\texttt{positions} is a 2D Matlab array in which each row represents one backbone, and has 
+the structure:
+
+\begin{tabular}{ | c | c | c | c | c | }
+\hline 
+$x$ & $y$ & $z$ & $\phi$ & $\theta$ \\
+\hline
+\end{tabular}
+
+In any 2D image, $z$ and $\theta$ are always zero.
+
+\subsection{Automated analysis of time series}
+
+\texttt{poslist = rod\_tseries\_bp(imgstack,lnoise,lobject,threshold,height,percent)}
+
+\texttt{poslist = rod\_tseries(imgstack,thstruct,opstruct,threshold,height,percent)}
+
 \subsection{Temporal tracking}
+
+\texttt{tracks = track(xyzs, maxdisp, param)}
+
+\begin{itemize}
+\item \texttt{xyzs}: An array containing a time-sorted list of particle positions (and, here, orientations).
+\item \texttt{maxdisp}: Maximum allowed displacement of a particle between frames.
+\item \texttt{param}: A data structure containing additional processing parameters.
+\end{itemize}
 
 Frame-to-frame tracking of unique rods to form trajectories was accomplished using a Matlab routine, \texttt{track.m}, 
 supplied by Blair and Dufrense~\cite{blair-matlab}, implementing the standard algorithm for particle tracking by
-Crocker and Weeks~\cite{crocker-tracking}. 
+Crocker and Weeks~\cite{crocker-tracking}.  \texttt{track.m} requires that the data be in a time-sorted format where each
+row consists of a list of coordinates followed by a frame number, and the frame numbers increase monotonically.
+
+The output, \texttt{tracks}, is in a similar format which includes one extra column: a particle ``id number'' which
+allows each trajectory to be identified. Rows are ordered so that particle id number increases monotonically, and
+time increases monotonically within each set of particle rows.
+
+The optional input structure, \texttt{param}, contains a variety of settings which alter the behavior of 
+\texttt{track}.  The only setting important to this analysis is \texttt{param.dim}, which tells the program how
+many columns to use as positional dimensions. Any additional columns will be ignored in the tracking calculation and 
+simply ``carried along'' when the new array is built; this gives us a place to put our orientation coordinates, which
+will not be used in the tracking routine.
+
+\subsection{Visualization}
+
+\texttt{singleframe(img,positions)}
+
+\texttt{rodmovie(imgstack,poslist)}
 
 \section{Results and discussion}
 \figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{

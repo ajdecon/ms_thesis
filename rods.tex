@@ -175,16 +175,6 @@ producing rods which incorporated both materials.
 In either case, the resulting particles were ejected at the end of the experiment into the final reservoir, which
 was left empty to allow collection of the maximum volume of particles possible.
 
-
-\begin{itemize}
-\done{Microscope setup}
-\done{Pressure system--Rob}
-\done{LabView controller for SFL}
-\done{Design of microfluidic devices for up to 3-stream SFL}
-\done{Fabrication of microfluidic devices}
-\end{itemize}
-
-
 \subsection{Particle collection and purification}
 
 Particle collection techniques were developed and optimized for a number of different experimental cases,
@@ -279,6 +269,9 @@ described in Section~\ref{sec:rod-tracking} and implemented in Matlab scripts de
 and these data
 were used to calculate two-dimensional diffusion constants.  
 
+\subsection{Tiled microscopy measurements}
+\label{sec:tiled-microscopy}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
 
@@ -324,8 +317,7 @@ rotational MSD are plotted with respect to time in Figure~\ref{fig:rods-rot}.
 \subsubsection{Compare to theory}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Self-Assembly of Janus Rods}
-\figthree{fig:janus-sizes}{figures/rods/janus-rods-4x2um.png}{figures/rods/janus-rods-6x2um.png}{figures/rods/janus-rod-cluster-zoom.png}{Various sizes of Janus rods.}
+\subsection{Self-Assembly of Janus Rods}
 
 \figone{fig:big-janus-high-conc}{figures/rods/large-janus-high-conc.png}{0.8\linewidth}{
 Large Janus rods (45 x 11 x 11~\microns), randomly oriented.}
@@ -333,8 +325,34 @@ Large Janus rods (45 x 11 x 11~\microns), randomly oriented.}
 \figtwo{fig:big-janus-assembly}{figures/rods/large-janus-rods-45x11x11um.jpg}{figures/rods/large-janus-self-assembly.jpg}{
 Large Janus rods (45 x 11 x 11~\microns) self-assemble following agitation.}
 
+Initial hydrophobic/hydrophilic Janus fabrication experiments 
+were performed using microchannels fabricated with a height of 15 \microns, 
+producing relatively large Janus particles (Figure~\ref{fig:big-janus-high-conc}). These particles had dimensions 
+of roughly 45 \by 11 \by 11 \microns, and exhibited little spontaneous self-assembly in water.  However, agitation
+of these particles to drive their rearrangement into new configurations produced substantial substantial
+self-assembly (Figure~\ref{fig:big-janus-assembly}), producing clustered structures with high contact
+areas between the hydrophobic regions of the particles.  This served as a proof-of-concept of 
+hydrophobic self-assembly and duplication of the
+results from Dendukuri \textit{et al.}~\cite{dendukuri-amph}.  
+
+\figthree{fig:janus-sizes}{figures/rods/janus-rods-4x2um.png}{figures/rods/janus-rods-6x2um.png}{figures/rods/janus-rod-cluster-zoom.png}{Various sizes of Janus rods.}
+
+Next, the fabrication microchannel was reduced in height to 7 \microns~and the mask size was varied to explore the
+size limitations in fabricating Janus rods.  ...
+
 \figone{fig:assembly-v-solvent}{figures/rods/janus-rod-assembly-vs-solvent.png}{0.8\linewidth}{
 Self-assembly of Janus rods in (a) water, (b) DMSO and (c) IPA.}
+
+To explore the effect of assembly solvent on the resulting structures, identical Janus rods with dimensions 
+12 \by 3 \by 3 \microns~were fabricated and placed in three different solvents: water, dimethyl sulfoxide 
+(DMSO) and isopropyl alcohol (IPA).  In water, we see a result similar to that seen for the large Janus rods,
+with strong hydrophobic self-assembly producing structured clusters, with strongly-correlated orientations
+between the rods within a cluster.  Suspension and agitation in DMSO, however, shows little or no self-assembly.
+This result is consistent with DMSO's status as a less polar solvent than water, decreasing the driving force
+for hydrophobic self-assembly.  Moving the particles to IPA, a non-polar solvent, shows a completely different
+self-assembly behavior following agitation, in which the green-dyed hydrophilic parts of the particles are 
+assembling to maximize contact area.  This series of experiments illustrates the potential for 
+control of self-assembly via varying the solvent conditions.
 
 \figone{fig:assembly-small-clusters}{figures/rods/janus-rods-large-clusters-ordered.png}{0.8\linewidth}{
 Janus rods self-assemble at low concentrations into small ``micellar'' structures.}
@@ -342,31 +360,99 @@ Janus rods self-assemble at low concentrations into small ``micellar'' structure
 \figone{fig:large-struct}{figures/rods/janus-rods-large-structures.png}{0.8\linewidth}{
 Janus rods self-assemble at high concentration into extended, gel-like structures in water.}
 
-\figone{fig:dilute-large-area}{figures/rods/janus-tiled-large-area.jpg}{0.8\linewidth}{
+Focusing on self-assembly in water, we see that a variety of different structures may be 
+achieved.  In a single sample, local variations in concentration due to uneven mixing may produce
+dramatically different results.  Where the local concentration is low, highly-ordered clusters 
+are produced which have a ``micelle-like'' geometry, with the particles grouped around a common 
+center where the hydrophobic regions tend to maximize contact area 
+(Figure~\ref{fig:assembly-small-clusters}).  Where the local concentration
+is high, however, extended structures containing many more particles may be formed
+(Figure~\ref{fig:large-struct}).  These
+structures have a ``gel-like'' motif in that they are more randomly arranged, but still contain
+sub-clusters which are formed by hydrophobic assembly.
+
+\figtwotb{fig:large-area}{figures/rods/janus-tiled-large-area.jpg}{figures/rods/high-conc-large-area.png}{
 A large-area view of Janus rod self-assembly in DMSO/water at a low concentration.}
 
-\figone{fig:high-conc-large-area}{figures/rods/high-conc-large-area.png}{0.8\linewidth}{
-A large-area view of Janus rod self-assembly in DMSO/water at a high concentration}
-
-\figone{fig:orientation-plot}{figures/rods/struct-plot-1.jpg}{0.8\linewidth}{
-Orientational ordering.}
 
 \figone{fig:bonds-per-particle}{figures/rods/struct-plot-2.jpg}{0.8\linewidth}{
 Bonds per Janus particle.}
 
+\figone{fig:orientation-plot}{figures/rods/struct-plot-1.jpg}{0.8\linewidth}{
+Orientational ordering.}
+
+A more quantitative study of Janus rod self-assembly was attempted by fabricating large 
+numbers of Janus rods and observing their self-assembly in confocal observation chambers.
+Fabrication sample size for each experiment was approximately 50,000 particles; losses
+due to transfer and processing reduced this to an estimated 20,000 particles.
+Two parameters were varied: the assembly solvent, which was a mixture of DMSO and water
+with the relative fraction adjusted; and the aspect ratio of the particle, which was varied
+in the range of 1.5-4.5.  Large-area images were acquired as detailed in 
+Section~\ref{sec:tiled-microscopy}, and analyzed as detailed in Sections~\ref{sec:rod-tracking}
+and~\ref{sec:structure-calcs}.  Sample images at low and high magnification are shown
+in Figure~\ref{fig:large-area}.
+
+Two parameters were calculated for each sample: the average number of contacts or ``bonds''
+per particle, and the degree of orientational ordering for particles in the same cluster.
+The number of ``bonds'' was calculated as the number of particles which were found within a 
+center-to-center distance equal to one rod length.  The orientational ordering was measured
+as the average dot-product of the orientation vectors between pairs of rods which were 
+considered to be in the same cluster, with clusters defined according to the same bond criterion.
+The results of these calculations are plotted for all experiments in Figures~\ref{fig:bonds-per-particle}
+and~\ref{fig:orientation-plot}.  Unfortunately these results are somewhat contradictory, and it 
+is difficult to draw good conclusions about the behavior of Janus rods undergoing self-assembly;
+but it is possible to make a few general comments.
+
+The first thing that should be noted is that for all experiments, the average number of bonds per
+particle never exceeds about 0.6, and in fact most experiments have bond numbers below 0.2.  This
+can be attributed to the fact that despite the high number of particles fabricated relative to
+typical SFL experiments, the rod concentrations are still quite low: settled to the bottom of the
+container, the average areal concentration never exceeds about 5\%.  The bond numbers for 
+DMSO/water mixtures of 50--100\% water are all relatively similar, in the range of 0.1--0.2, and do
+not vary much with aspect ratio.  
+
+For solutions with greater than 
+50\% DMSO, however, we see a striking increase in bond number.  Without carrying out additional experiments it 
+is difficult to determine the cause of this increase. We might speculate that the higher density of DMSO
+and the consequent slower settling might allow the rods more time to ``find'' one another and assemble, but in
+this case we would expect a more continuous variation of bond number with DMSO concentration. Another cause might
+be some experimental error which increased the final particle yield in the high-DMSO samples relative to the others.
+Within these samples, however, we see a consistent variation in bond number with respect to aspect ratio, with
+much higher bond numbers observed at low and high aspect ratios.  The increase in bond number at low aspect ratio, 
+and thus low particle size, might be attributed to the higher mobility of these particles on a surface where
+Janus particles would tend to stick (see Section~\ref{sec:surface-interact}), while the increase at high aspect
+ratio may be due to the higher opportunity for contact available with longer rods.
+
+Turning our attention to the orientational ordering, we see much more consistent results across the
+range of solvent compositions, with little in the way of consistent discernible variation between samples with
+the same aspect ratio.  A dot-product of 1.0 implies perfect parallel ordering, while a dot product of 0.0 implies
+perpendicular ordering; average values close to 0.5 may be interpreted as showing relatively random orientation
+within the sample.  With that in mind, it is interesting to note that particles with low aspect ratio show 
+a relatively strong ordering, and that the dot product decreases towards randomness as the aspect ratio 
+increases.  This is somewhat counter-intuitive, and contradicts some previous imaging which would suggest
+better correlation between particles with a high aspect ratio.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Potential applications}
+\subsection{Potential applications}
 
-\figone{fig:silver-in-channel}{figures/rods/silver-microchannel-twostream.png}{0.8\linewidth}{
-Ag nanoparticles are suspended in ETMPTA-20 monomer solution for Janus SFL fabrication.}
-
-\figone{fig:silver-embedded}{figures/rods/silver-fluorescence-assembly.png}{0.8\linewidth}{
-Ag nanoparticles are embedded in at 5 wt\% in otherwise-standard ETMPTA-20 monomer solution, and Janus rods
+\figtwotb{fig:silver-janus}{figures/rods/silver-microchannel-twostream.png}{figures/rods/silver-fluorescence-assembly.png}{
+(a) Ag nanoparticles are suspended in PEGDA monomer solution for Janus SFL fabrication, and
+(b) Ag nanoparticles are embedded in at 5 wt\% in otherwise-standard PEGDA monomer solution, and Janus rods
 are fabricated as a demonstration of self-assembled functional Janus rods.}
 
+The potential for the incorporation of functional materials into SFL Janus particles was 
+explored in a pilot experiment involving the incorporation of Ag nanoparticles (NPs) into the
+hydrophilic PEGDA monomer solution at 5 wt\%. A Janus fabrication experiment using this 
+solution was set up, and the Ag NPs were shown not to interfere with the establishment of a stable
+pair of co-flowing streams (see Figure~\ref{fig:silver-janus}(a)). Standard Janus SFL was carried
+out using a 400 \microns~mask to produce 12 \microns~Janus rods. When placed in water, these rods
+self-assembled normally, as shown in Figure~\ref{fig:silver-janus}(b).  Note, however, the presence of
+free Ag NPs (fluorescing red) both in the free solution and aggregated around the assembled cluster.
+This illustrates a major difficulty in incorporating any functional material in SFL, i.e. the successful 
+rinsing and removal of functional materials from the suspension solvent.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Potential connections to theory}
+\subsection{Potential connections to theory}
 \figone{fig:assembly-sim}{figures/rods/schweizer-tripathy-janus-rod-simulation.png}{0.8\linewidth}{
 Simulation of Janus rod assembly.}
 

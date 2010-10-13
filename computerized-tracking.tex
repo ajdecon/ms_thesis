@@ -456,19 +456,40 @@ area which is worth exploring.
 
 \subsubsection{Dynamics}
 
-\texttt{result\_image = traj\_vis(tracks[, width, height])}
+\texttt{traj\_vis(tracks[, t0, t1])}
+
+\texttt{showmovie(imgstack,tracks)}
+
+\texttt{traj\_vis.m} is a simple diagnostic tool which plots the trajectories for all the particles. 
+\texttt{t0} and \texttt{t1} are optional beginning and ending times.  \texttt{showmovie.m} visualizes the
+movie from the image stack, plotting a dot-and-bar for each tracked particle on the image to indicate 
+the tracked position and orientation.
 
 \texttt{disps = msd(tracks)}
 
 \texttt{avgs = avg\_msd(disps)}
 
+\texttt{msd.m} calculates the mean-square displacement (MSD) for position and orientation for each particle 
+in \texttt{tracks}, and returns a data structure \texttt{disps} which contains each individual MSD vs time 
+series.  \texttt{avg\_msd.m} takes this structure and averages across particles to produce plots similar 
+to Figure~\ref{fig:example-diffusion-results}. Note that this averaging takes place at each 
+individual particle's \textit{own} frame 2, 3, etc. so that the displacement at frame 2 of two particles 
+will be averaged together--even if the second particle did not appear until a later frame.  This reduces the
+total time over which averaging may take place, but improves statistics.
+
 \subsubsection{Structure}
+\label{sec:structure-calcs}
 
 \texttt{result = nearest\_neighbors(positions, size)}
 
 \texttt{pdf = pair\_dist(positions)}
 
 \texttt{result = orient\_corr(positions)}
+
+\texttt{nearest\_neighbors.m} calculates the average number of nearest neighbors for the particles in 
+\texttt{positions} within a distance given by \texttt{size}. \texttt{pair\_dist.m} produces the pair-distribution
+function (PDF) for all particles in \texttt{positions}, where as \texttt{orient\_corr.m} shows how the 
+dot-product between particle orientations changes with distance.
 
 \section{Results and discussion}
 \figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{

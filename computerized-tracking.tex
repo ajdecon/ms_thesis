@@ -21,10 +21,10 @@ understanding of anisotropic colloids
 therefore calls for the development of image processing techniques for the extraction and analysis of
 structural data from microscopy images.
 
-\section{Algorithm}
+\section{Algorithm for tracking SFL rods}
 \label{sec:rod-tracking}
 
-Our method for locating and tracking SFL rods draws heavily from that published by 
+Our method for locating and tracking rods produced by stop-flow lithography (SFL) draws heavily from that published by 
 Mohraz and Solomon for tracking PMMA rods.~\ref{moraz-solomon-rods}.  Briefly, this algorithm 
 took advantage of the gradient in fluorescent intensity throughout the volume of the 
 rods they studied, which were fabricated by stretching spherical PMMA particles along a single axis.
@@ -444,14 +444,38 @@ many columns to use as positional dimensions. Any additional columns will be ign
 simply ``carried along'' when the new array is built; this gives us a place to put our orientation coordinates, which
 will not be used in the tracking routine.
 
-\subsection{Visualization}
+\subsection{Characterization of rod suspensions}
 
-\texttt{singleframe(img,positions)}
+The location and tracking of colloidal rods within experimental images is not an end in itself, but the
+first step in determining the characteristics of the suspensions they are used to measure.  Data on the 
+position and orientation of all rods within a suspension is an extremely useful tool, and the values of many
+dynamical or structural properties may be directly calculated or inferred from this information.
+While the current work did not proceed so far as to complete a detailed study of all these properties, or 
+implementations of the calculations necessary for such a study, some preliminary work has been done in this
+area which is worth exploring.
 
-\texttt{rodmovie(imgstack,poslist)}
+\subsubsection{Dynamics}
+
+\texttt{result\_image = traj\_vis(tracks[, width, height])}
+
+\texttt{disps = msd(tracks)}
+
+\texttt{avgs = avg\_msd(disps)}
+
+\subsubsection{Structure}
+
+\texttt{result = nearest\_neighbors(positions, size)}
+
+\texttt{pdf = pair\_dist(positions)}
+
+\texttt{result = orient\_corr(positions)}
 
 \section{Results and discussion}
 \figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{
 Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
+\subsection{Rod tracking}
 
+\subsection{Trajectories and MSD}
+
+\subsection{Structure}

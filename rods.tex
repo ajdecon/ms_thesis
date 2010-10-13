@@ -247,6 +247,7 @@ for microscopy. (See Figure~\ref{fig:confocal-chamber-cartoon}
 
 
 \subsection{Diffusion Measurements}
+\label{sec:exp-diffusion}
 
 To carry out diffusion measurements, the rod sample was placed in the solvent of interest and pipetted into an observation 
 chamber.  In some cases the observation chamber was pre-coated with no-stick silane ((tridecafluoro-1,1,2,2-tetrahydrooctyl) 
@@ -278,26 +279,23 @@ described in Section~\ref{sec:rod-tracking} and implemented in Matlab scripts de
 and these data
 were used to calculate two-dimensional diffusion constants.  
 
-
-
-\begin{itemize}
-\done{Confocal microscopy setup}
-\done{Space and time resolution requirements}
-\done{Fluorescence requirements}
-\end{itemize}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
 
 \subsection{Resolution}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Processing techniques}
+\subsection{Collection techniques}
 \label{sec:rod-collection-techniques}
 
+\subsubsection{Collection solvents}
 
-\tempfigure{Image of rod tracking}
-\tempfigure{Plots of translational and rotational diffusion data}
+\subsubsection{Pipettes}
+
+\subsubsection{Solvent exchange}
+
+\subsection{Surface interactions}
+\label{sec:surface-interact}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Translational and Rotational Diffusion}
@@ -306,6 +304,24 @@ were used to calculate two-dimensional diffusion constants.
 
 \figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Mean-square rotational displacement data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods.}
 
+\subsubsection{Experiments}
+
+Dynamics experiments were carried out to study the effect of rod size and aspect ratio on the rate of
+diffusion.  To maximize rod mobility in this study, the results of Section~\ref{sec:surface-interact}
+were taken into account and single-component TMPTA 
+rods with lengths of 6, 9, 12 and 15 \microns~were suspended in toluene and transferred 
+to glass-bottom confocal observation chambers which had 
+also been
+pre-rinsed in toluene.  These chambers were observed by CLSM under the conditions described in 
+Section~\ref{sec:exp-diffusion} for time-series experiments.  The resulting 2D image series were 
+processed and analyzed using the algorithm described in Section~\ref{sec:rod-tracking}, and 
+the translational and rotational mean-square displacements (MSD) were calculated and plotted.
+The translational MSD are plotted with respect to time in Figure~\ref{fig:rods-msd}, and the 
+rotational MSD are plotted with respect to time in Figure~\ref{fig:rods-rot}.
+
+
+
+\subsubsection{Compare to theory}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Self-Assembly of Janus Rods}

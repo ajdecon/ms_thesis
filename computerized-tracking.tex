@@ -21,18 +21,230 @@ understanding of anisotropic colloids
 therefore calls for the development of image processing techniques for the extraction and analysis of
 structural data from microscopy images.
 
+\section{Literature review}
+
+The identification and tracking of single particles is a powerful tool for the characterization 
+of colloidal materials.  
+
+\subsection{Tracking of spherical colloids}
+
+In a 1996 paper in the \textit{Journal of Colloid and Interface Science}~\cite{crocker-grier-spheres},
+John Crocker and David Grier outline a five-stage procedure for the tracking of
+spherical colloidal particles.  This algorithm was implemented in IDL and has become the standard for carrying out 
+3D tracking of spherical particles, and has been ported to other environments such as 
+Matlab~\cite{blair-dufrense-matlab, kilfoil-matlab} and LabView~\cite{optical-trapping-group} which are
+also commonly used in the scientific community.
+
+\subsubsection{Image restoration}
+
+The digital confocal imaging of 
+fluorescent spherical colloids can introduce introduce geometric distortions and single-pixel
+noise into the image.  This can be compensated for by applying a band-pass filter 
+to the image $A$, which is composed of two parts.
+The first part is a boxcar average over a region of extent $2w + 1$, where $w$ is an integer
+larger than a single sphere's apparent radius in pixels, but smaller than an intersphere separation:
+
+\begin{center}\begin{equation}A_w(x,y) = \frac{1}{(2w+1)^2} \sum_{i,j=-w}^w A(x+i,y+j)
+\end{equation}\end{center}
+
+The second part is a convolution of the image with a Gaussian surface of revolution with 
+half-width $\gamma_n \approx $ 1 pixel:
+
+\begin{center}\begin{equation}A_{\gamma_n}(x,y) = \frac{1}{B} \sum_{i,j=-w}^w A(x+i,y+j)\exp{\left(-\frac{i^2+j^2}{4\gamma_n^2}\right)}
+\end{equation}\end{center}
+
+with normalization B = $[\sum_{i=-w}^w \exp{-(i^2/4\gamma_n^2)}]^2$.
+
+These two filters can be applied simultaneously in a single step using the convolution kernel
+
+\begin{center}\begin{equation}K(i,j) = \frac{1}{K_0} \left[ \frac{1}{B} \exp{ \left( -\frac{i^2+j^2}{4\gamma_n^2} \right)} -
+\frac{1}{(2w+1)^2} \right]
+\end{equation}\end{center}
+
+The normalization constant $K_0 = 1/B[\sum_{i=-w}^w \exp{-(i^2/2\gamma_n^2)}] - (B/(2w+1)^2)$ facilitates comparison
+among images filtered with different values of $w$.
+
+\subsubsection{Locating particles}
+
+Particles are located by identifying local brightess maxima within an image. A pixel is identified
+as a candidate if no other pixel within a distance $w$ is brighter, where $w$ is the same value used in
+the filtering step. This was implemented by Crocker and Grier using a gray-scale dilation operation.
+
+\subsubsection{Refining location estimates}
+
+Having located a brightness maximum at $(x, y)$ which is presumably near
+a sphere's geometric center at $(x_0, y_0)$, additional refinements are possible
+which may achieve sub-pixel accuracy.  An offset $(\epsilon_x, \epsilon_y)$ is
+calculated according to:
+
+\begin{center}
+\begin{equation}
+\left( \begin{array}{c} \epsilon_x \\ \epsilon_y \end{array} \right) 
+= \frac{1}{m_0}
+\sum_{i^2+j^2 \leq w^2} 
+\left( \begin{array}{c} i \\ j \end{array} \right)
+A(x+i,y+j)
+\end{equation}
+\end{center}
+
+Here, $m_0 = \sum_{i^2+y^2 \leq w^2} A(x+i,y+j)$ is the integrated brightness of the
+sphere's image. The refined location estimate is then $(x_0, y_0) = (x+\epsilon_x, y+\epsilon_y)$.
+If either $|\epsilon_x|$ or $|\epsilon_y|$ exceeds 0.5, the candidate centroid location can be moved and the
+refinement recalculated.
+
+\subsubsection{Noise discrimination and tracking in depth}
+
+During the centroid refinement calculations, two moments of each sphere image's brightness 
+distribution are calculated.  The first is $m_0$, and the second is 
+
+\begin{center}\begin{equation}m_2 = \frac{1}{m_0} \sum_{i^2+j^2 \leq w^2} (i^2 + j^2)A(x+i,y+j)
+\end{equation}\end{center}
+
+where $(x,y)$ are the refined centroid locations.  The distribution of the $(m_0,m_2)$ data reflects the
+sphere's positions along the direction normal to the imaging plane, and a control experiment using a 
+monolayer of particles is used to calibrate this data.
+
+\subsubsection{Linking locations into trajectories}
+
+Having located colloidal particles in a sequence of video iages, it is possible to 
+match locations in each image with corresponding locations in later images to produce
+trajectories.  This requires determining which particle in a given image
+most likely corresponds to one in the preceding image.  The tracking of 
+multiple particles requires that we seek the most probable set of $N$ identifications 
+between $N$ locations in two consecutive images. If the particles are indistinguishable (as for
+monodisperse colloidal particles), this likelihood can be estimated only using relative
+proximity.
+
+The probability that a single Brownian particle will diffuse a distance $\delta$ in the plane 
+in time $\tau$ is
+
+\begin{center}\begin{equation}P(\delta|\tau) = \frac{1}{4\pi D\tau} \exp{ \left( -\frac{\delta^2}{4D\tau} \right) }
+\end{equation}\end{center}
+
+where $D$ is the particle's self-diffusion coefficient.  For an ensemble of $N$ noninteracting
+identical particles, the corresponding probability distribution is the product of the 
+single-particle results:
+
+\begin{center}\begin{equation}P({\delta_i}|\tau) = \left( \frac{1}{4\pi D\tau} \right)^N 
+\exp{ \left( -\sum_{i=1}^N \frac{\delta_i^2}{4D\tau} \right) }
+\end{equation}\end{center}
+
+Each label assignment can be thought of as a bond drawn between a pair of particles
+in consecutive frames.  $P({\delta_i}|\tau)$ is calculated for all possible combinations which
+represent a displacement below some characteristic length scale $L$, selected by the user based on
+the experimental conditions.
+
+\subsection{Rod tracking}
+
+While the algorithm by Crocker and Grier is used widely for tracking spherical particles, it 
+cannot deal with particles which have an anisotropic shape and some orientation. 
+To begin to deal with simple anisotropy, Mohraz and Solomon have developed an algorithm for tracking 
+ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods-mohraz, solomon-dynamics}
+
+\figone{fig:pmma-fabrication}{figures/computerized-tracking/pmma-fabrication.png}{0.6\linewidth}{
+(a) Synthesis of PMMA-g-PDMS spheres, (b) curing of the PDMS matrix, (c) uniaxial deformation,
+(d) rod harvesting.}
+
+Poly(methyl methacrylate)-g-poly(dimethylsiloxane) (PMMA-g-PDMS) fluorescent colloidal spheres were
+synthesized and suspended in a polymerizable liquid silanol-terminated PDMS, which was then cured to form a solid 
+matrix.  This matrix was then heated above the glass transition temperature and subjected to 
+uniaxial stretching, then cooled while still deformed.  The rods were then harvested from the 
+elastic film by chemical degredation, and transferred to a cyclohexyl bromide (CXB) solution.
+This rod suspension was then visualized via confocal laser scanning microscopy, and 
+subjected to a three-stage image processing algorithm to determine the position and orientation of each rod.
+
+\subsubsection{Image restoration}
+
+To correct for imaging distortions and local noise, voxels are convoluted with neighbors found within a local
+distance $w$ using a Gaussian function, where $w$ is of the order of the rod half-width. The resulting
+voxel intensity $A(x,y,z)$ is
+
+\begin{center}
+\begin{equation}
+A(x,y,z) = \frac{1}{B(x,y,z)} \sum_{i,k,j=-w}^w A(x+i,y+j,z+k) 
+\exp{ \left( -\frac{i^2+j^2+k^2}{6\lambda^2} \right)}
+\end{equation}
+\end{center}
+
+where $B$ is a normalization constant and $\lambda$ is defined to be 1 for these experiments.
+
+\subsubsection{Rod backbone identification}
+
+\figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.6\linewidth}{
+Local line maximum criterion.}
+
+Rod backbones are identified using a local line maximum criterion.  Each voxel is compared with its immediate 
+neighbors in all directions along lines with length $2w+1$.  If a candidate voxel is found to be the brightest
+point on more than a critical fraction of these lines (typically 70\%), it is considered to be a backbone
+pixels.  Backbone pixels are then grouped together by cluster analysis to form rod backbones.
+
+\figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{\linewidth}{
+Rod backbone assignments (a) in a stretched film and (b) in a sediment structure.}
+
+\subsubsection{Orientation and centroid calculation}
+\label{sec:orient-calculate}
+
+\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.5\linewidth}{
+Positional and orientational coordinates for colloidal rods.~\cite{mohraz-rods}}
+
+Once the backbone pixels for a given rod have been identified, the position and orientation of each rod may
+be determined based on these pixels' locations.  Each rod's geometric configuration can be
+completely specified by three positional coordinates, $x$, $y$ and $z$, and two
+orientational coordinates $\theta$ and $\phi$, as shown in~\ref{fig:coordinates}.
+
+The rod's center-of-mass position may be calculated
+straightforwardly based on a simple average over the positions of the backbone pixels.  In 
+\ref{eq:x-cent}--\ref{z-cent}, $r_{0,i}$ represents the center-of-mass of coordinate $r$ for 
+rod $i$.  $S_i$ is the set of identified backbone pixels associated with that rod, and $s$ is the index
+variable summing over that set.
+
+\begin{equation}
+\label{eq:x-cent}
+x_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} x_{s,i}
+\end{equation}
+\begin{equation}
+\label{eq:y-cent}
+y_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} y_{s,i}
+\end{equation}
+\begin{equation}
+\label{eq:z-cent}
+z_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} z_{s,i} 
+\end{equation}
+
+Calculating orientation is somewhat more complex.  First, for each dimension $r$, the quantity
+$|<l_r^2>^{1/2}|$ is calculated (\ref{eq:x-len}--\ref{z-len}). 
+Geometrically, this is the size of the projection of the rod's length
+onto the axis $r$, and it is equivalent to the standard deviation of the $r$ coordinate.
+Once these dimensions have been calculated, the angles $\phi$ and $\theta$ may be 
+determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
+
+\begin{equation}
+\label{eq:x-len}
+|<l_x^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (x_{s,i} - x_{0,i} )^2 \right]^{1/2}
+\end{equation}
+\begin{equation}
+\label{eq:y-len}
+|<l_y^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (y_{s,i} - y_{0,i} )^2 \right]^{1/2}
+\end{equation}
+\begin{equation}
+\label{eq:z-len}
+|<l_z^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (z_{s,i} - z_{0,i} )^2 \right]^{1/2}
+\end{equation}
+
+\begin{equation}
+\label{eq:theta}
+\theta_i = \cos^{-1} \left(\frac{<l_z^2>_i^{1/2}}{<l^2>_i^{1/2}} \right)
+\end{equation}
+\begin{equation}
+\label{eq:phi}
+\phi_i = \tan^{-1} \left(\frac{<l_y^2>_i^{1/2}}{<l_x^2>_i^{1/2}} \right)
+\end{equation}
+
 \section{Algorithm for tracking SFL rods}
 \label{sec:rod-tracking}
 
 Our method for locating and tracking rods produced by stop-flow lithography (SFL) draws heavily from that published by 
-Mohraz and Solomon for tracking PMMA rods.~\ref{moraz-solomon-rods}.  Briefly, this algorithm 
-took advantage of the gradient in fluorescent intensity throughout the volume of the 
-rods they studied, which were fabricated by stretching spherical PMMA particles along a single axis.
-Because these rods had a circular cross-section, scanning the confocal laser through a point nearer
-to the rod axis would pass through a greater volume of fluorescent material, producing a higher intensity.
-By applying a local line maximum criterion to the points inside the particle volume, they were able to 
-build a ``backbone'' of points near the axis, allowing them to reliably calculate orientation.
-
+Mohraz and Solomon for tracking PMMA rods.~\cite{rods-mohraz}.
 While this algorithm performs very well for a restricted class of rods, it fails in cases where the particle
 cross-section is not circular, and points near the particle backbone are not guaranteed to produce higher 
 intensities than their immediate neighbors.  This is the case for our ``rods'' produced by stop-flow
@@ -147,104 +359,8 @@ are 90-95\%, depending on trial images.
 
 \subsection{Calculation of position and orientation}
 
-\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.5\linewidth}{
-Positional and orientational coordinates for colloidal rods.~\cite{solomon-rods}}
-
-Once the backbone pixels for a given rod have been identified, the position and orientation of each rod may
-be determined based on these pixels' locations.  Each rod's geometric configuration can be
-completely specified by three positional coordinates, $x$, $y$ and $z$, and two
-orientational coordinates $\theta$ and $\phi$, as shown in~\ref{fig:coordinates}.
-The equations for performing this calculation,
-\ref{eq:x-cent}--\ref{eq:phi}, are taken from 
-Mohraz and Solomon, \textit{Langmuir} (2007)~\cite{solomon-rods}.
-
-The rod's center-of-mass position may be calculated
-straightforwardly based on a simple average over the positions of the backbone pixels.  In 
-\ref{eq:x-cent}--\ref{z-cent}, $r_{0,i}$ represents the center-of-mass of coordinate $r$ for 
-rod $i$.  $S_i$ is the set of identified backbone pixels associated with that rod, and $s$ is the index
-variable summing over that set..
-
-\begin{equation}
-\label{eq:x-cent}
-x_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} x_{s,i}
-\end{equation}
-\begin{equation}
-\label{eq:y-cent}
-y_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} y_{s,i}
-\end{equation}
-\begin{equation}
-\label{eq:z-cent}
-z_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} z_{s,i} 
-\end{equation}
-
-Calculating orientation is somewhat more complex.  First, for each dimension $r$, the quantity
-$|<l_r^2>^{1/2}|$ is calculated (\ref{eq:x-len}--\ref{z-len}). 
-Geometrically, this is the size of the projection of the rod's length
-onto the axis $r$, and it is equivalent to the standard deviation of the $r$ coordinate.
-Once these dimensions have been calculated, the angles $\phi$ and $\theta$ may be 
-determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
-
-\begin{equation}
-\label{eq:x-len}
-|<l_x^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (x_{s,i} - x_{0,i} )^2 \right]^{1/2}
-\end{equation}
-\begin{equation}
-\label{eq:y-len}
-|<l_y^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (y_{s,i} - y_{0,i} )^2 \right]^{1/2}
-\end{equation}
-\begin{equation}
-\label{eq:z-len}
-|<l_z^2>_i^{1/2}| = \left[\frac{1}{S_i} \sum_s^{S_i} (z_{s,i} - z_{0,i} )^2 \right]^{1/2}
-\end{equation}
-
-\begin{equation}
-\label{eq:theta}
-\theta_i = \cos^{-1} \left(\frac{<l_z^2>_i^{1/2}}{<l^2>_i^{1/2}} \right)
-\end{equation}
-\begin{equation}
-\label{eq:phi}
-\phi_i = \tan^{-1} \left(\frac{<l_y^2>_i^{1/2}}{<l_x^2>_i^{1/2}} \right)
-\end{equation}
-
-\subsection{Algorithm summary}
-
-\begin{enumerate}
-
-\item \textbf{Image cleanup}
-    \begin{itemize}
-    \item Option 1: band-pass filter to suppress noise.~\cite{crocker}
-    \item Option 2: morphological processing
-        \begin{enumerate}
-        \item Top-hat transform.
-        \item Threshold.
-        \item Morphological opening.
-        \item Morphological dilation.
-        \item Binary AND with original.
-        \end{enumerate}
-    \end{itemize}
-
-\item \textbf{Segmentation}
-    \begin{enumerate}
-    \item Distance transform.
-    \item H-minima transform.
-    \item Watershed transform.
-    \end{enumerate}
-
-\item \textbf{Skeletonization}
-    \begin{enumerate}
-    \item Rod isolation.
-    \item Distance transform.
-    \item Percentile threshold filter.
-    \end{enumerate}
-
-\item \textbf{Coordinate calculation}
-    \begin{enumerate}
-    \item Positional coordinates: \ref{eq:x-cent}--\ref{eq:z-cent}
-    \item Calculation of length projections: \ref{eq:x-len}--\ref{eq:z-len}
-    \item Orientational coordinates: \ref{eq:theta}--\ref{eq:phi}
-    \end{enumerate}
-
-\end{enumerate}
+Position and orientation are calculated in an identical fashion as in Mohraz and Solomon~\cite{mohraz-rods}; see
+Section~\ref{sec:orient-calculate} for details.
 
 \section{Implementation}
 \label{sec:matlab-implementation}
@@ -270,8 +386,6 @@ workstation, while full-dataset processing was carried out on dedicated servers 
 All steps of the analysis were implementing in Matlab~\cite{matlab}, making heavy use of functions from the
 Image Processing Toolbox.  The following description summarizes the process of carrying out a manual analysis of
 test images as a guide to future users; a full source-code listing can be found in~\ref{sec:matlab-code}.
-
-\pagebreak
 
 \begin{lstlisting}[label=ls:manual,caption=Typical sequence of a manual analysis]
 % Load the image.
@@ -456,12 +570,13 @@ area which is worth exploring.
 
 \subsubsection{Dynamics}
 
-\texttt{traj\_vis(tracks[, t0, t1])}
+%\texttt{traj\_vis(tracks[, t0, t1])}
 
 \texttt{showmovie(imgstack,tracks)}
 
-\texttt{traj\_vis.m} is a simple diagnostic tool which plots the trajectories for all the particles. 
-\texttt{t0} and \texttt{t1} are optional beginning and ending times.  \texttt{showmovie.m} visualizes the
+%\texttt{traj\_vis.m} is a simple diagnostic tool which plots the trajectories for all the particles. 
+%\texttt{t0} and \texttt{t1} are optional beginning and ending times.  
+\texttt{showmovie.m} visualizes the
 movie from the image stack, plotting a dot-and-bar for each tracked particle on the image to indicate 
 the tracked position and orientation.
 
@@ -492,11 +607,39 @@ function (PDF) for all particles in \texttt{positions}, where as \texttt{orient\
 dot-product between particle orientations changes with distance.
 
 \section{Results and discussion}
-\figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{\linewidth}{
+
+\subsection{Dynamics}
+
+\figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{0.6\linewidth}{
 Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
-\subsection{Rod tracking}
+Poly(ethylene glycol) rods with dimensions 5 \by 3 \by 3 \microns~were fabricated via SFL, suspended in 
+water, and their diffusion was observed as described in Section~\ref{sec:exp-diffusion} with an 
+image collection
+frame-rate of 2 fps.  The resulting image sequence was imported into Matlab, and tracking was carried out
+using the scripts outlined in Section~\ref{sec:matlab-implementation}.  Noise reduction was carried out using 
+a band-pass filter with noise and particle dimensions of 1 pixel and 30 pixels respectively. 
+Watershed segmentation was carried out using a \texttt{height} parameter of 1, and skeletonization
+was performed using a percentile filter of value 0.95 to produce backbones.  The maximum allowable 
+displacement between subsequent frames, \texttt{maxdisp}, was set to be 15 pixels.  Finally, the 
+MSD of translational and rotational diffusion were calculated and averaged to prodice the results in 
+Figure~\ref{fig:example-diffusion-results}.
 
-\subsection{Trajectories and MSD}
+A series of experiments was carried out to study the effect of rod size and aspect ratio on 2D diffusion, as 
+detailed later in Section~\ref{sec:rod-diffusion-results}.
 
 \subsection{Structure}
+
+\figone{fig:track-assembly}{figures/assembled-janus-tracked.png}{0.7\linewidth}{
+Assembled Janus rods are tracked.}
+
+Janus rods are fabricated with hydrophilic and hydrophobic components to induce self-assembly.
+In Figure~\ref{fig:track-assembly}, the results of a 2D image analysis for aligned Janus clusters
+are shown.  This cluster is relatively easy to track, given the highly aligned orientations of the
+rods and the flatness of the clusters; a three-dimensional cluster with rods ``stacked'' would require
+3D confocal imaging to achieve segmentation.
+
+An series of experiments was carried out to study the self-assembly of Janus rods, varying
+the solvent conditions for assembly and rod aspect ratio.  Orientational ordering and
+number of nearest neighbors are calculated across this experiment series; the results are
+detailed in Section~\ref{sec:assembly-janus-rods}.

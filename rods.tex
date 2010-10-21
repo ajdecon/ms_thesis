@@ -148,14 +148,14 @@ Positive-relief photoresist master templates were fabricated by UV photolithogra
 of SU-8 2007 photoresist (Microchem) was laid down on a clean Si wafer via spin-coating at 3000 rpm to produce a 
 7 \microns layer. Next, a ``soft bake'' was carried out by heating the wafer on a hot plate at 120\degC
 for five minutes to evaporate the photoresist solvent.  The device features were patterned by exposing the 
-photoresist to UV light ??? for 40 s through a photomask defining the device design. A ``hard bake'' step
+photoresist to UV light from a 300 W lamp for 40 s through a photomask defining the device design. A ``hard bake'' step
 was then carried out by heating the wafer at 120\degC for ten minutes, to cure the photoresist in the exposed areas.
 Finally, the wafer was immersed in SU-8 developer (Microchem) and agitated for two minutes to remove the unexposed
 photoresist, then rinsed with isopropyl alcohol (IPA).
 
 After fabrication, photoresist masters were subjected to a fluorinated silane vapor coating to inhibit adhesion
 between the SU-8 template and the elastomer to be cast. Masters were placed in a small desiccator (Fisher Scientific)
-along with an open container of (tridecafluoro-1,1,2,2-tetrahydrooctyl) trichlorosilane (Gelest, Inc.)
+along with an open container of (tridecafluoro-1,1,2,2-tetrahydrooctyl) trichlorosilane (``fluorosilane'', Gelest, Inc.)
 This desiccator's vacuum port was then connected to a single-stage vacuum pump and evacuated for two hours to produce
 a silane coating.
 
@@ -283,6 +283,7 @@ In either case, the resulting particles were ejected at the end of the experimen
 was left empty to allow collection of the maximum volume of particles possible.
 
 \subsection{Particle collection and purification}
+\label{sec:exp-collection}
 
 Particle collection techniques were developed and optimized for a number of different experimental cases,
 depending both on the particular monomer solutions involved and on the desired final rod behavior, i.e. 
@@ -335,12 +336,12 @@ Section~\ref{sec:rod-collection-techniques}.
 
 \mnote{Add better details on glass observation chambers. Also explain constraints on observation chambers.}
 
-\figone{fig:confocal-chamber-cartoon}{figures/rods/confocal-chamber-cartoon.png}{0.50\linewidth}{
+\figone{fig:confocal-chamber-cartoon}{figures/rods/confocal-chamber-cartoon.png}{0.25\linewidth}{
 Design of a glass observation chamber for microscopy of particles.}
 
 Observation chambers were constructed by affixing a glass coverslip to one end of short glass tube using 
 five-minute epoxy (3M).  Oriented with the coverslip as the base, this provides a flat transparent surface
-for microscopy. (See Figure~\ref{fig:confocal-chamber-cartoon}
+for microscopy. (See Figure~\ref{fig:confocal-chamber-cartoon}.)
 
 
 \subsection{Diffusion Measurements}
@@ -376,26 +377,164 @@ described in Section~\ref{sec:rod-tracking} and implemented in Matlab scripts de
 and these data
 were used to calculate two-dimensional diffusion constants.  
 
-\subsection{Tiled microscopy measurements}
+\subsection{Large-area imaging}
 \label{sec:tiled-microscopy}
+
+Large-area imaging experiments were carried out using the ??? fluorescence microscope in the Imaging Technology Group
+at the Beckman Institute.  Sample observation chambers with radii between 0.7 and 2 $mm$ were used.
+Samples were imaged using the 60x objective lens.  Large-area images were obtained by taking tiled images of dimensions 
+up to 9 \by 9 images, covering total areas of up to 2 $mm^2$.  These images were then stitched together with overlap 
+areas of 10\%, and new color balance and background images obtained before each new acquisition experiment.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results and Discussion}
 
-\subsection{Resolution}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Collection techniques}
-\label{sec:rod-collection-techniques}
+\label{sec:rod-collection}
+
+In principle, collection of colloidal rods after SFL fabrication should be relatively simple. The 
+procedure outlined in Section~\ref{sec:exp-collection} for the collection of rods seems intuitive and
+straightforward, and it is difficult to see how problems might arise.  However, initial 
+collection and processing experiments 
+with small colloidal rods resulted in
+extremely low yields, with the heavier losses in each subsequent processing step.
+
 
 \subsubsection{Collection solvents}
 
-\subsubsection{Pipettes}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+\hline 
+Solvent & PEGDA & TMPTA & Janus \\ \hline
+\multicolumn{4}{|c|}{Organic solvents} \\ \hline
+Ethanol & Yes & Yes & Yes \\
+IPA & Yes & Poorly & Poorly \\
+Toluene & Poorly & Yes & Poorly \\
+\hline
+\multicolumn{4}{|c|}{Monomeric solvents} \\ \hline
+PEGDA & No & No & No \\
+ETMPTA & No & No & No \\
+TMPTA & No & No & No \\
+Ethylene glycol & Poorly & No & Poorly \\
+\hline
+\multicolumn{4}{|c|}{Polar solvents} \\ \hline
+Water & Yes & No & Poorly \\
+DMSO & Yes & Yes & Yes \\
+\hline
+\end{tabular}
 
-\subsubsection{Solvent exchange}
+\end{center}
+\caption{Collection solvents.}
+\label{tab:collect-solvent}
+\end{table}
+
+Several different collection solvents were explored for experiments involving both Janus rods and single-component
+hydrophilic and hydrophobic rods.  The solvents used included 
+common organic solvents such as ethanol,
+isopropyl alcohol (IPA), and toluene; solvents with similar chemistries to the particles, including solutions of 
+PEGDA, ETMPTA and TMPTA as well as ethylene glycol; and the common polar solvents water and dimethyl sulfoxide (DMSO).
+Collection solvents were compared to each other based on estimating the fraction of particles which remained in the
+fabrication reservoir following the first pipette step.  Collection was deemed successful (a 
+``yes'' in the table) if fewer than 20\% of particles remained; ``poorly'' represents fewer than 50\% remaining; and 
+failure (a ``no'' in the table) if more than 50\% of the particles remained after pipetting.
+The results of these trials are presented qualitatively in Table~\ref{tab:collect-solvent}.  To summarize, the best
+results were generally found with the organic solvents, with ethanol being a good all-purpose collection solvent.
+Collection with solvents similar to the monomer were generally unsuccessful, with repeated pipetting failing to 
+remove more than 20-30\% of particles.  Water was useful only in collectin PEGDA rods.
+DMSO was also fairly successful, but showed more of a tendency to swell the PDMS
+and was more hazardous to work with than ethanol.
+
+\subsubsection{Pipettes and microcentrifuge tubes}
+
+While removing particles from the reservoir was successful for some solvents, the second part of the collection 
+procedure--ejecting those particles from the pipette into a second container--was much less successful.  
+Simple trials in which particles were extracted from the fabrication reservoir and then deposited directly into 
+observation chambers using standard plastic pipette tips showed yields of less than 50\%, 
+even when 90\% or more of the particles had been shown to leave the reservoir.  
+
+\figone{fig:micro-pipette}{figures/rods/micro-capillary-pipette.png}{0.4\linewidth}{
+Micropipette bulb for use with glass microcapillaries.}
+
+Several different types of pipettes were used, including 15 \uL plastic pipette tips (Eppendorf), glass pasteur pipettes and
+glass microcapillaries extracted using micropipette bulbs (see Figure~\ref{fig:micro-pipette}).  Each of these 
+was also coated with fluorosilane to attempt to reduce adhesion between the particles and the pipette surfaces.
+The use of either type of glass pipette typically increased yield to close to 60\%. Fluorosilane coatings on the glass
+pipettes showed additional improvements to 65-70\%, but this improvement was unreliable.  Yield of the fluorosilane-
+coated plastic tips was decreased relative to the uncoated tips.
+
+In addition, yield was also substantially reduced when particles were transferred to a microcentrifuge tube
+(?) and then re-extracted, with yields of less than 10\% of the particles placed in the tube.  This yield was
+not improved by fluorosilane vapor-coating or by the use of any other solvent, and had significant
+negative effects on solvent exchange and particle cleaning procedures.  In many experiments, cleaning 
+steps were neglected entirely to preserve sample size, with possible negative effects on the final results.
 
 \subsection{Surface interactions}
 \label{sec:surface-interact}
+
+Ideally, all experiments involving SFL particles should take place in some experimental
+chamber in which all non-particle surfaces are either repulsive with respect to all
+particle chemistries, so that particles may diffuse freely and self-assemble (or not) without 
+being affected by extraneous surface forces.  Unfortunately, this is a difficult demand to 
+satisfy, especially in the case of Janus rods which incorporate both hydrophilic and 
+hydrophoic functionalities. 
+
+In order to better understand this constraint and optimize future experiments, several different 
+chamber surface
+functionalities were selected: a hydrophobic PDMS surface, a hydrophilic pirahna-rinsed glass surface,
+and a both PDMS and glass surfaces which had been vapor-coated with the same fluorosilane material used
+to coat photoresist masters, chosen to potentially minimize sticking with either particle functionality.
+Particle-surface interactions were measured qualitatively by fabricating single-component rods
+of length 6~\microns and made up of both
+hydrophobic and hydrophilic functionalities which were then placed into chambers incorporating these
+surfaces, suspended in various solvents.  The diffusion of these rods was then observed via CLSM to 
+determine whether or not they were free to diffuse given the current particle/surface/solvent combination.
+The results of these experiments are summarized in Table~\ref{tab:surface-diff}.
+
+\begin{table}[h]
+\begin{center}
+
+\begin{tabular}{| c | c | c | c | c | c |}
+
+\hline
+
+\multicolumn{6}{|c|}{Particles free to move?} \\ \hline
+Solvent & Material & Glass & PDMS & Glass-Silane & PDMS-Silane \\ \hline
+
+\multirow{2}{*}{Water} & PEGDA & No & Hindered & No & No \\
+ & TMPTA & No & No & No & No \\ \hline
+
+\multirow{2}{*}{Ethanol} & PEGDA & No & No & No & Yes \\
+ & TMPTA & No & No & No & No \\ \hline
+
+\multirow{2}{*}{DMSO} & PEGDA & No & No & No & No \\
+ & TMPTA & No & No & No & No \\ \hline
+
+\multirow{2}{*}{IPA} & PEGDA & No & No & No & No \\
+ & TMPTA & No & No & No & Hindered \\ \hline
+
+\multirow{2}{*}{Toluene} & PEGDA & No & Hindered & No & No \\
+ & TMPTA & Yes & Yes & No & Hindered \\ \hline
+
+\end{tabular}
+\end{center}
+\caption{Freedom of diffusion on different surfaces is characterized as either 
+"yes" (free to move), "no" (stuck to the surface), or "hindered" (moves only when agitated).}
+\label{tab:surface-diff}
+\end{table}
+
+Unfortunately, in the majority of combinations the particles were found to be firmly stuck to the
+internal surfaces of the observation chamber, with only a few solvent/surface combinations allowing for 
+free movement even under external agitation.  No combination allowed particles of both materials to move freely
+without agitation at the same time, with the most successful combination, suspension in toluene 
+on PDMS surfaces, allowing free motion of TMPTA particles and only motion under agitation for PEGDA
+particles.  The flurosilane coating showed no particular improvement over bare PDMS or glass.
+
+This lack of free motion may be at least partially caused by the presence of unreacted monomer 
+mixed into the solvent, which may stick to the particle surfaces and then enhance adhesion between the
+particles and the chamber surfaces.  This monomer is still present due to the difficulties in 
+collecting and cleaning the particles outlined in Section~\ref{sec:rod-collection}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Translational and Rotational Diffusion}
@@ -405,7 +544,6 @@ were used to calculate two-dimensional diffusion constants.
 
 \figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Mean-square rotational displacement data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods.}
 
-\subsubsection{Experiments}
 
 Dynamics experiments were carried out to study the effect of rod size and aspect ratio on the rate of
 diffusion.  To maximize rod mobility in this study, the results of Section~\ref{sec:surface-interact}
@@ -421,8 +559,55 @@ The translational MSD are plotted with respect to time in Figure~\ref{fig:rods-m
 rotational MSD are plotted with respect to time in Figure~\ref{fig:rods-rot}.
 
 
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ | c | c | c | }
+\hline
+Rod length [\microns] & $D_{exp} (D_{th})$ [$\mu m^2/s$] & $\theta_{exp} (\theta_{th})$ [rad$^2$/s] \\ \hline
+6 & 0.77 (0.19) & 1.21 (0.81) \\ \hline
+9 & 0.22 (0.12) & 0.80 (0.24) \\ \hline
+12 & 0.29 (0.093) & 0.76 (0.10) \\ \hline
+15 & 0.17 (0.074) & 0.59 (0.052) \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Translational and rotational rod diffusion constants from experiment and theory.~\cite{zero-pecora}}
+\label{tab:diffusion}
+\end{table}
 
-\subsubsection{Compare to theory}
+\begin{center}
+\begin{equation}
+\label{eq:trans-diff}
+<[r(t)-r(0)]^2> = 4Dt
+\end{equation}
+
+\begin{equation}
+\label{eq:rot-diff}
+<[\phi(t) - \phi(0)]^2> = 4\theta t
+\end{equation}
+
+\begin{equation}
+\label{eq:trans-th}
+D = kT/3\pi\nu_s L
+\end{equation}
+
+\begin{equation}
+\label{eq:rot-th}
+\theta = (3kT/\pi \nu_s L^3) \log{2L/d}
+\end{equation}
+\end{center}
+
+Translational and rotational MSD may be related to the translational and rotational diffusion 
+coefficients, $D$ and
+$\theta$, according to Equations~\ref{eq:trans-diff} and~\ref{eq:rot-diff} respectively.  Experimental 
+values for these constants were calculated for each of the four rod lengths by performing least-squares regression linear
+fits to determine the slope of plots of MSD vs time. The resulting diffusion coefficients are shown in 
+Table~\ref{tab:diffusion}, and are compared to theoretical values calculated from Equations~\ref{eq:trans-th}
+and~\ref{eq:rot-th}.~\cite{zero-pecora}  It is interesting to note that in all cases, the experimental diffusion 
+coefficients 
+are measured to be larger than the theoretical values.  This might be attributable to the fact that we are 
+observing 2D diffusion near a surface, rather than 3D diffusion, which could affect the calculation of 
+either or both of the experimental and theoretical values.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Self-Assembly of Janus Rods}
@@ -559,9 +744,4 @@ self-assembled normally, as shown in Figure~\ref{fig:silver-janus}(b).  Note, ho
 free Ag NPs (fluorescing red) both in the free solution and aggregated around the assembled cluster.
 This illustrates a major difficulty in incorporating any functional material in SFL, i.e. the successful 
 rinsing and removal of functional materials from the suspension solvent.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Potential connections to theory}
-\figone{fig:assembly-sim}{figures/rods/schweizer-tripathy-janus-rod-simulation.png}{0.8\linewidth}{
-Simulation of Janus rod assembly.}
 

@@ -3,6 +3,7 @@
 \usepackage[usenames,dvipsnames]{color}
 
 \usepackage{graphicx}
+\usepackage{multirow}
 \usepackage{makeidx}
 \makeindex
 
@@ -23,39 +24,39 @@
 
 \newcommand{\figone}[4]{
 \begin{figure}[h]
-    \label{#1}
+    
     \begin{center}
     \includegraphics[width=#3]{#2}
     \end{center}
     \caption{#4}
-
+	\label{#1}
 \end{figure} }
 
 \newcommand{\figtwo}[4]{
 \begin{figure}
-    \label{#1}
     \begin{center}
     \includegraphics[width=0.45\linewidth]{#2}\includegraphics[width=0.45\linewidth]{#3}
     \caption{#4}
     \end{center}
+\label{#1}
 \end{figure}
 }
 
 \newcommand{\figtwotb}[4]{
 \begin{figure}
-    \label{#1}
     \begin{center}
     \includegraphics[width=0.8\linewidth]{#2}\\
     \includegraphics[width=0.8\linewidth]{#3}
     \caption{#4}
     \end{center}
+    \label{#1}
+
 \end{figure}
 
 }
 
 \newcommand{\figfour}[6]{
 \begin{figure}[h]
-    \label{#1}
     \begin{center}
 
         \includegraphics[width=0.45\linewidth]{#2}\includegraphics[width=0.45\linewidth]{#3} \\
@@ -63,17 +64,19 @@
         \caption{#6}
 
     \end{center}
+    \label{#1}
+
 \end{figure}
 
 }
 
 \newcommand{\figthree}[5]{
 \begin{figure}[h]
-    \label{#1}
     \begin{center}
     \includegraphics[width=0.32\linewidth]{#2}\includegraphics[width=0.32\linewidth]{#3}\includegraphics[width=0.32\linewidth]{#4}
     \caption{#5}
     \end{center}
+    \label{#1}
 
 
 \end{figure}

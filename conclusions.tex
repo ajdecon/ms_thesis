@@ -1,19 +1,41 @@
 \chapter{Conclusions}
 
-\begin{itemize}
-\done{Fabrication of shape and chemical anisotropic colloids by stop-flow lithography}
-\done{Computer-based tracking of rod-shaped colloids}
-\notdone{Computer-based tracking of arbitrary-shaped colloids}
-\done{Fabrication of Janus rods}
-\done{Demonstrated self-assembly of Janus rods}
-\done{Fabrication of more complex colloids}
-\end{itemize}
-
+In this work we studied the fabrication, self-assembly and dynamical behavior
+of shape- and chemically-anisotropic colloidal particles.  The fabrication 
+of colloidal rods of various sizes and aspect ratios was demonstrated via
+stop-flow lithography for rods with
+hydrophilic, hydrophobic and Janus functionalities.  Image processing algorithms
+were developed for identifying, locating and measuring the orientation of 
+colloidal rods in microscopy images, and software was implemented to carry out
+this analysis and characterize structural and dynamical properties.
+Single-component particle 
+dynamics were observed via time-series confocal microscopy using particles of 
+various aspect ratios to study the effects of particle geometry on diffusion.
+The self-assembly of Janus rods was studied using
+3D confocal microscopy for particles of various aspect ratios,
+in a number of different solvent conditions, to determine the effects of size 
+and attraction strength on the resulting structure.  The fabrication of more complex
+multiple-patch particles with several different geometries was also demonstrated via SFL.
 
 \section{Future work}
 
-\begin{itemize}
-\notdone{Microfluidic devices to study self-assembly (see appendix)}
-\notdone{High-concentration studies}
-\notdone{Mixtures of spherical and non-spherical colloids}
-\end{itemize}
+Significant challenges were identified in the areas of particle collection and processing as 
+detailed in Section~\ref{sec:rod-collection} which may have significantly affected the 
+results of dynamics and self-assembly experiments.  It might be possible to solve these
+processing issues using some non-stick coating instead of the fluorosilane coating 
+which was used.  Another avenue to explore includes the use of a microfluidic concentration
+and cleaning solution to exchange the monomer solution for another solvent, 
+which may be integrated with the fabrication system.  
+
+Once these issues have been solved, a number of interesting studies on the dynamics and
+structure of suspensions of microfabricated colloids are possible.  This includes studying 
+self-assembly and dynamics of colloidal suspensions at high concentrations, as well as 
+the behavior of biphasic suspensions containing a mix of particles with different geometries and
+functionalities.~\cite{?}
+
+It should also be possible to develop image processing algorithms to track particles with more
+complex geometries.  The algorithm developed in Chapter~\ref{ch:comp-tracking} is independent 
+of particle geometry throughout the image cleanup, segmentaton and skeletonization steps.
+The development of algorithms which could translate the skeletons of other particle 
+geometries into position and orientation information would greatly expand the 
+capabilities of particle tracking.

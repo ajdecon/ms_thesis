@@ -24,6 +24,8 @@ TEXFILES = \
 	microfluidic-chambers.tex \
 	rods.tex \
         matlab-code.tex \
+	matlab.tex \
+	abstract.tex \
 
 ifeq ($(HASHBIB), yes)
 all: spellcheck makebib makepdf wc

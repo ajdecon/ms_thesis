@@ -1,41 +1,87 @@
 \chapter{Introduction}
 
 \begin{figure}
-
-\includegraphics[width=0.45\linewidth]{figures/literature-review/sphere-crystal.png}\includegraphics[width=0.45\linewidth]{figures/literature-review/sphere-gel.png}
+\begin{center}
+\includegraphics[height=1.5in]{figures/literature-review/sphere-crystal.png}
+\includegraphics[height=1.5in]{figures/literature-review/sphere-gel.png}
+\end{center}
 \caption{Spherical colloids with purely repulsive interactions may assemble into (a) ordered 
-crystal structures with fcc geometry or (b) space-filling disordered ``glass'' structures. Attractive
-colloids assemble into (c) open ``gel'' structures.}
+crystal structures with fcc geometry or (b) open ``gel'' structures.}
 
 \label{fig:isotropic-structs}
 
 \end{figure}
 
 As a class of materials, self-assembled colloidal structures are of interest in applications as widely varied
-as photonic crystals~\ref{?}, photovoltaic devices~\ref{?}, and three-dimensional templates for tissue 
-engineering scaffolds~\ref{?}. However, despite the wide interest in these structures, the range of possible 
+as photonic crystals~\cite{vos-photonic, yang-photonic} and three-dimensional templates for tissue 
+engineering scaffolds~\cite{zhang-tissue}. However, despite the wide interest in these materials, the range of possible 
 structures made available by self-assembled spherical colloids is relatively narrow.  Due to the isotropic nature
-of colloidal interactions, there are three basic structures available.~\ref{?}  When the interparticle interaction is purely 
-repulsive, such as in a hard-core interaction, two structures are available: a stable, ordered face-centered-cubic crystal
-structure(Fig.~\ref{fig:isotropic-structs}(a)) with a volume fraction of ??, and a dynamically-trapped disordered ``glassy''
-state (Fig.~\ref{fig:isotropic-structs}(b)) with a slightly higher volume fraction of up to ??.  Both of these 
-structures are space-filling in the sense that there are no large gaps in the structure larger than the 
-particle size.  When the interparticle interaction is attractive, the particles may form an open, disordered ``gel'' 
-structure (Fig~\ref{fig:isotropic-structs}(c)) 
-with an essentially random arrangement and gap volumes which are potentially larger than the particle size~\ref{?}.
+of colloidal interactions, there are two assembled structures available.
+When the interparticle interaction is purely 
+repulsive, such as in a hard-core interaction,  a stable, ordered face-centered-cubic crystal
+structure(Fig.~\ref{fig:isotropic-structs}(a)) with a volume fraction of 0.54 is formed.~\cite{ise-crystal, wong-crystal}
+When the interparticle interaction is attractive, the particles may form an open, disordered ``gel'' 
+structure (Fig~\ref{fig:isotropic-structs}(b)) 
+with an essentially random arrangement and gap volumes which are potentially larger than the 
+particle size~\cite{warren-gel}.
 
-Many applications, such photonic crystals, would benefit from the availability of ordered structures with different geometries
-than fcc.  One potential route for realizing different structures is to change the building block, replacing the 
-isotropically-interacting spherical particles with some type of anisotropic particle.  Here, we develop techniques for
+Many applications, such photonic crystals, would benefit from the availability of different
+kinds of self-assembled structures.~\cite{glotzer-solomon}  One way to address this is to 
+introduce colloidal particles which incorporate one or more forms of anisotropy, in which the 
+particle is altered such that the interaction between two or more particles becomes non-uniform depending on 
+their relative orientations.  These alterations may be based on the shape of the particles, the chemical makeup, or 
+some combination of the two.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/glotzer-anisotropy-dimensions.png}
+\end{center}
+\caption{Anisotropy dimensions proposed by Glotzer and Solomon~\cite{glotzer-solomon} to classify 
+different forms of particle anisotropy.}
+\label{fig:glotzer-dimensions}
+\end{figure}
+
+
+% Find many of the references in the following paragraph in Glotzer and Solomon's 2007 NatMat paper.
+In a 2007 article in \textit{Nature Materials}~\cite{glotzer-solomon}, Glotzer and Solomon propose a system of anisotropy 
+dimensions shown in Fig.~\ref{fig:glotzer-dimensions}. These include shape-based dimensions such as aspect 
+ratio, faceting, branching, shape gradient 
+and roughness (Fig.~\ref{fig:glotzer-dimensions}(B,C,E,G,H)) and dimensions based on the presence of
+multiple chemistries such as surface coverage, pattern quantization and chemical ordering 
+(Fig.~\ref{fig:glotzer-dimensions}(A,D,G)).  These dimensions do not necessarily 
+represent an exhaustive list of the types
+of anisotropy which are theoretically possible, but are a list of anisotropy types which have been observed in the
+recent literature.  For example, rod-shaped or ellipsoidal particles of moderate aspect ratio have been fabricated 
+by a wide variety of techniques including 
+lithography~\cite{desimone-shear} and the stretching of colloidal spheres~\cite{rods-mohraz}; branched 
+tetrapods have been fabricated of gold~\cite{gold-tetrapods},
+and CdTe~\cite{cdte-tetrapods}; and chemically patterned particles have been produced
+through microfluidic means~\cite{shepherd-janus}
+as well as by conventional photolithography~\cite{desimone-janus}.  This list of dimensions may therefore
+be seen as a useful framework for classification: by combining multiple dimensions, more complex types of particles may be 
+developed (Fig.~\ref{fig:dimensions-combined}), or a complex particle may be classified in terms of which dimensions it includes.
+New forms of anisotropy may be identified as those which cannot be decomposed into dimensions already identified.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/glotzer-combine-dimensions.png}
+\end{center}
+\caption{Multiple anisotropy dimensions may be combined to yield more complex types of particles.~\cite{glotzer-solomon}}
+\label{fig:dimensions-combined}
+\end{figure}
+
+In this work, we develop techniques for
 the fabrication of colliods with geometric and chemical anisotropy and begin to characterize the dynamical behavior
 and self-assembly of these particles.
 
 \section{Thesis Scope}
 
 The aim of this work is to develop techniques for the fabrication and characterization of anisotropic colloids, and begin
-to explore their dynamical and assembly characteristics.  Fabrication is based on flow lithography
-techniques for producing polymeric particles~\ref{doyle-cfl, doyle-sfl}, 
-and characterization is primarily based on fluorescence and confocal microscopy.
+to explore their dynamical and self-assembly behavior.  Fabrication is based on flow lithography
+techniques for producing polymeric particles~\cite{dendukuri-cfl, dendukuri-sfl}, 
+and characterization is primarily based on fluorescence and confocal 
+microscopy~\cite{weitz-confocal} and particle 
+tracking.~\cite{crocker-grier-spheres,rods-mohraz}
 The systems used are based on a combination of a hydrophobic monomer (tri(methylol propane) triacrylate) and hydrophilic 
 monomers (poly(ethylene glycol) diacrylate and 20-mol ethoxylated tri(methylol propane) triacrylate). 
 Single-component particles are used to study the effects of
@@ -46,11 +92,11 @@ water, ethanol, dimethyl sulfoxide, isopropanol and toluene.
 
 \section{Thesis Organization}
 
-A review of the relevant literature on the fabrication of anisotropic colloids, their experimental and simulated
-self-assembly, and their characterization using particle tracking techniques is included in chapter two.  Chapter three
+Chapter~\ref{ch:comp-tracking}
 details algorithms and software developed in the course of this study to analyze microscopy images containing 
-anisotropic colloids.  Chapter four investigates the fabrication, behavior and self-assembly of simple rod-shaped colloids
-in both single-component and ``Janus'' forms, while chapter five investigates colloids with more exotic geometries. The main
-conclusions are presented in chapter six.  Appendices are included which present experimental techniques developed for but not used
-in the final study, including novel microfluidic devices for studying concentrated colloids and a variant of the fabrication
-technique.
+anisotropic colloids.  Chapter~\ref{ch:rods} investigates the fabrication, behavior and self-assembly of simple rod-shaped colloids
+in both single-component and ``Janus'' forms, while Chapter~\ref{ch:exotic} 
+investigates colloids with more exotic geometries. The main
+conclusions are presented in Chapter~\ref{ch:conclusions}.  
+Appendix~\ref{sec:matlab-implementation} details the Matlab implementation of the algorithms developed in
+Chapter~\ref{ch:comp-tracking}.

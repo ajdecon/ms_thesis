@@ -4,45 +4,51 @@
 \section{Introduction}
 
 Confocal laser scanning microscopy (CLSM) is a powerful technique for the study of three-dimensional
-structure in fluorescent materials. When applied to fluorescent colloids, CLSM enables the observation
-and identification of individual particles, determining their positions in three-dimensional space.
-These particle locations alone can be used to derive a great deal
+structure in fluorescent materials. When applied to fluorescent colloids, CLSM allows the observation
+of individual particles and provides detailed data about the geometric configuration of the 
+material.~\cite{weitz-confocal}
+This data alone can be used to derive a great deal
 of information about the material, such as the distribution of number of nearest neighbors and
 the pair distribution function (PDF). Repeated observations at regular intervals allow for dynamical
-measurements of parameters such as the diffusion constant, and may be used to study the microstructural
-differences between different parts of the colloidal phase diagram. CLSM has the additional advantage
-that since it produces real-space position data, it has substantial advantages over scattering techniques
-in coping with samples with highly asymmetric structures.~\ref{?}
+measurements of parameters such as the diffusion constant.~\cite{weitz-confocal,crocker-grier-spheres}
 
 However, 
-the production of 3D structural information requires more than just a powerful imaging technique: it also
-requires powerful computational analysis to translate image data into a list of particles and positions, and
-to determine the relevant physical data from this list.  In addition, the behavior of non-spherical colloids
+the production of useful 3D structural information requires more than just a powerful imaging technique: it also
+requires powerful computational analysis tools to translate image data into a list of particles and positions, and
+to calculate relevant physical characteristics from these positions.  In addition, the behavior of non-spherical colloids
 is governed not only by the relative positions of the particles but also their orientations. Developing an
 understanding of anisotropic colloids
 therefore calls for the development of image processing techniques for the extraction and analysis of
 structural data from microscopy images.
 
-\section{Literature review}
+In Section~\ref{sec:track-background}, we describe techniques from the literature for the tracking of 
+spherical and ellipsoidal colloids.  Section~\ref{sec:rod-tracking} develops an algorithm for the identification
+and tracking of rod-like colloids fabricated by stop-flow lithography, and Section~\ref{sec:track-results}
+demonstrates the use of this algorithm to track diffusing and self-assembled particles.
+Appendix~\ref{sec:matlab-implementation} describes the implementation in Matlab of the algorithm developed in 
+Section~\ref{sec:rod-tracking}.
 
-The identification and tracking of single particles is a powerful tool for the characterization 
-of colloidal materials.  
+\section{Background}
+\label{sec:track-background}
 
 \subsection{Tracking of spherical colloids}
 
 In a 1996 paper in the \textit{Journal of Colloid and Interface Science}~\cite{crocker-grier-spheres},
 John Crocker and David Grier outline a five-stage procedure for the tracking of
 spherical colloidal particles.  This algorithm was implemented in IDL and has become the standard for carrying out 
-3D tracking of spherical particles, and has been ported to other environments such as 
+3D tracking of spherical particles. It has since been ported to other environments such as 
 Matlab~\cite{blair-dufrense-matlab, kilfoil-matlab} and LabView~\cite{optical-trapping-group} which are
 also commonly used in the scientific community.
 
 \subsubsection{Image restoration}
+\label{sec:band-pass}
 
-The digital confocal imaging of 
-fluorescent spherical colloids can introduce introduce geometric distortions and single-pixel
-noise into the image.  This can be compensated for by applying a band-pass filter 
+CLSM imaging of colloidal suspensions may introduce camera noise and geometric distortions which 
+lead to images which do not
+accurately describe the geometry of the suspension. 
+These effects can be compensated for by applying a spatial band-pass filter 
 to the image $A$, which is composed of two parts.
+
 The first part is a boxcar average over a region of extent $2w + 1$, where $w$ is an integer
 larger than a single sphere's apparent radius in pixels, but smaller than an intersphere separation:
 
@@ -50,27 +56,28 @@ larger than a single sphere's apparent radius in pixels, but smaller than an int
 \end{equation}\end{center}
 
 The second part is a convolution of the image with a Gaussian surface of revolution with 
-half-width $\gamma_n \approx $ 1 pixel:
+half-width $\lambda_n \approx $ 1 pixel:
 
-\begin{center}\begin{equation}A_{\gamma_n}(x,y) = \frac{1}{B} \sum_{i,j=-w}^w A(x+i,y+j)\exp{\left(-\frac{i^2+j^2}{4\gamma_n^2}\right)}
+\begin{center}\begin{equation}A_{\lambda_n}(x,y) = \frac{1}{B} \sum_{i,j=-w}^w A(x+i,y+j)\exp{\left(-\frac{i^2+j^2}{4\lambda_n^2}\right)}
 \end{equation}\end{center}
 
-with normalization B = $[\sum_{i=-w}^w \exp{-(i^2/4\gamma_n^2)}]^2$.
+with normalization B = $[\sum_{i=-w}^w \exp{-(i^2/4\lambda_n^2)}]^2$.
 
 These two filters can be applied simultaneously in a single step using the convolution kernel
 
-\begin{center}\begin{equation}K(i,j) = \frac{1}{K_0} \left[ \frac{1}{B} \exp{ \left( -\frac{i^2+j^2}{4\gamma_n^2} \right)} -
+\begin{center}\begin{equation}K(i,j) = \frac{1}{K_0} \left[ \frac{1}{B} \exp{ \left( -\frac{i^2+j^2}{4\lambda_n^2} \right)} -
 \frac{1}{(2w+1)^2} \right]
 \end{equation}\end{center}
 
-The normalization constant $K_0 = 1/B[\sum_{i=-w}^w \exp{-(i^2/2\gamma_n^2)}] - (B/(2w+1)^2)$ facilitates comparison
+The normalization constant $K_0 = 1/B[\sum_{i=-w}^w \exp{-(i^2/2\lambda_n^2)}] - (B/(2w+1)^2)$ facilitates comparison
 among images filtered with different values of $w$.
 
 \subsubsection{Locating particles}
 
 Particles are located by identifying local brightess maxima within an image. A pixel is identified
 as a candidate if no other pixel within a distance $w$ is brighter, where $w$ is the same value used in
-the filtering step. This was implemented by Crocker and Grier using a gray-scale dilation operation.
+the filtering step. This was implemented by Crocker and Grier using a gray-scale dilation 
+operation.~\cite{soille-book}
 
 \subsubsection{Refining location estimates}
 
@@ -97,7 +104,11 @@ refinement recalculated.
 \subsubsection{Noise discrimination and tracking in depth}
 
 During the centroid refinement calculations, two moments of each sphere image's brightness 
-distribution are calculated.  The first is $m_0$, and the second is 
+distribution are calculated:
+
+\begin{center}\begin{equation}
+m_0 = \sum_{i^2+y^2 \leq w^2} A(x+i,y+j)
+\end{equation}\end{center}
 
 \begin{center}\begin{equation}m_2 = \frac{1}{m_0} \sum_{i^2+j^2 \leq w^2} (i^2 + j^2)A(x+i,y+j)
 \end{equation}\end{center}
@@ -107,9 +118,10 @@ sphere's positions along the direction normal to the imaging plane, and a contro
 monolayer of particles is used to calibrate this data.
 
 \subsubsection{Linking locations into trajectories}
+\label{sec:time-tracking}
 
-Having located colloidal particles in a sequence of video iages, it is possible to 
-match locations in each image with corresponding locations in later images to produce
+Having located the colloidal particles in a sequence of video images, it is possible to 
+match particle locations in each image with corresponding locations in later images to produce
 trajectories.  This requires determining which particle in a given image
 most likely corresponds to one in the preceding image.  The tracking of 
 multiple particles requires that we seek the most probable set of $N$ identifications 
@@ -140,7 +152,7 @@ the experimental conditions.
 
 While the algorithm by Crocker and Grier is used widely for tracking spherical particles, it 
 cannot deal with particles which have an anisotropic shape and some orientation. 
-To begin to deal with simple anisotropy, Mohraz and Solomon have developed an algorithm for tracking 
+To begin to deal with simple anisotropy, Mohraz and Solomon developed an algorithm for tracking 
 ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods-mohraz, solomon-dynamics}
 
 \figone{fig:pmma-fabrication}{figures/computerized-tracking/pmma-fabrication.png}{0.6\linewidth}{
@@ -149,10 +161,11 @@ ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods
 
 Poly(methyl methacrylate)-g-poly(dimethylsiloxane) (PMMA-g-PDMS) fluorescent colloidal spheres were
 synthesized and suspended in a polymerizable liquid silanol-terminated PDMS, which was then cured to form a solid 
-matrix.  This matrix was then heated above the glass transition temperature and subjected to 
+matrix.  This matrix was then heated above the glass transition temperature 
+of PMMA-g-PDMS and subjected to 
 uniaxial stretching, then cooled while still deformed.  The rods were then harvested from the 
 elastic film by chemical degredation, and transferred to a cyclohexyl bromide (CXB) solution.
-This rod suspension was then visualized via confocal laser scanning microscopy, and 
+This rod suspension was then visualized via CLSM, and 
 subjected to a three-stage image processing algorithm to determine the position and orientation of each rod.
 
 \subsubsection{Image restoration}
@@ -172,7 +185,7 @@ where $B$ is a normalization constant and $\lambda$ is defined to be 1 for these
 
 \subsubsection{Rod backbone identification}
 
-\figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.6\linewidth}{
+\figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.3\linewidth}{
 Local line maximum criterion.}
 
 Rod backbones are identified using a local line maximum criterion.  Each voxel is compared with its immediate 
@@ -180,24 +193,24 @@ neighbors in all directions along lines with length $2w+1$.  If a candidate voxe
 point on more than a critical fraction of these lines (typically 70\%), it is considered to be a backbone
 pixels.  Backbone pixels are then grouped together by cluster analysis to form rod backbones.
 
-\figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{\linewidth}{
+\figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{0.6\linewidth}{
 Rod backbone assignments (a) in a stretched film and (b) in a sediment structure.}
 
 \subsubsection{Orientation and centroid calculation}
 \label{sec:orient-calculate}
 
-\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.5\linewidth}{
+\figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.4\linewidth}{
 Positional and orientational coordinates for colloidal rods.~\cite{mohraz-rods}}
 
 Once the backbone pixels for a given rod have been identified, the position and orientation of each rod may
 be determined based on these pixels' locations.  Each rod's geometric configuration can be
 completely specified by three positional coordinates, $x$, $y$ and $z$, and two
-orientational coordinates $\theta$ and $\phi$, as shown in~\ref{fig:coordinates}.
+orientational coordinates $\theta$ and $\phi$, as shown in Figure~\ref{fig:coordinates}.
 
 The rod's center-of-mass position may be calculated
 straightforwardly based on a simple average over the positions of the backbone pixels.  In 
-\ref{eq:x-cent}--\ref{z-cent}, $r_{0,i}$ represents the center-of-mass of coordinate $r$ for 
-rod $i$.  $S_i$ is the set of identified backbone pixels associated with that rod, and $s$ is the index
+Equations \ref{eq:x-cent}--\ref{eq:z-cent}, $r_{0,i}$ represents the center-of-mass of coordinate $r$ for 
+rod $i$.  $S_i$ is the number of identified backbone pixels associated with that rod, and $s$ is the index
 variable summing over that set.
 
 \begin{equation}
@@ -214,9 +227,9 @@ z_{0,i} = \frac{1}{S_i} \sum_{s}^{S_i} z_{s,i}
 \end{equation}
 
 Calculating orientation is somewhat more complex.  First, for each dimension $r$, the quantity
-$|<l_r^2>^{1/2}|$ is calculated (\ref{eq:x-len}--\ref{z-len}). 
+$|<l_r^2>^{1/2}|$ is calculated (Equations~\ref{eq:x-len}--\ref{eq:z-len}). 
 Geometrically, this is the size of the projection of the rod's length
-onto the axis $r$, and it is equivalent to the standard deviation of the $r$ coordinate.
+onto the axis $r$.
 Once these dimensions have been calculated, the angles $\phi$ and $\theta$ may be 
 determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
 
@@ -258,7 +271,7 @@ We have developed an algorithm for processing 2D and 3D CLSM data of fluorescent
 produce position and orientation data.  Starting from raw CLSM images, this algorithm can be divided
 into several phases, including (i) image cleanup; (ii) segmentation; (iii) skeletonization;
 (iv) position calculation; and
-(v) particle tracking over the time series.  
+(v) particle tracking over a time series.  
 
 A note on terminology: the algorithm described below is identical for both 2D and 3D images, as all
 operations are defined for both cases and used identically. However, where the individual elements of
@@ -267,19 +280,17 @@ For simplicity, all such elements are referred to as pixels in the explanation b
 
 \subsection{Image cleanup}
 
-Two different image cleanup methods were considered, and used depending on their effectiveness with
-sample data.
+For any given set of images, two different image cleanup techniques were used for test
+images, and the best result was used for the entire set.
 
-The first method, a real-space bandpass filter, is derived from the filter published in the 
-Matlab implementation of spherical particle tracking~\ref{crocker-weeks} by Blair and
-Dufrense. This filter performs a band-pass by convolving the image with two kernels: 
-a Gaussian kernel and a boxcar kernel.  The Gaussian convolution performs the low-pass
-operation, while subtracting the result of the boxcar convolution from the Gaussian result
-performs the high-pass operation. This filter takes two parameters, the characteristic scale
-of image noise (generally equal to one pixel) and the typical particle size.  This works well,
+The first method was a spatial bandpass filter, described in 
+Section~\ref{sec:band-pass} and implemented in Matlab by Blair and
+Dufrense~\cite{blair-dufrense-matlab}. This filter takes two parameters, the characteristic scale
+of image noise (generally equal to one pixel) and the typical particle size.  This 
+generally works well,
 but has issues in images with multi-pixel noise.
 
-While the band-pass performed well on many images, some experiments produced data with noise or
+While the band-pass performed well on some images, many experiments produced data with noise or
 extraneous features which did
 not easily yield to the bandpass operation. This can be attributed to the fact that SFL fabrication produces
 solutions which have some amount of fluorescent monomer present in the liquid as well as the particles, which
@@ -291,7 +302,7 @@ image is run through a morphological top-hat transform. This transform is used t
 uneven illumination in the image. Then the image is thresholded to produce a binary image, where the 
 background is black and the fluorescent features are white. The threshold is selected such that pixels which 
 are part of the particle volume are never assigned to the background; Otsu's criterion was found to be reliable
-for this.~\ref{?}  Next, a binary opening is applied with an isotropic structuring element to
+for this.~\cite{otsu-threshold}  Next, a binary opening is applied with an isotropic structuring element to
 suppress small features. The size of the structuring element is selected manually by the user, but a 
 reliable choice was found to be a diameter roughly equal to half the width of the typical rod. 
 
@@ -306,31 +317,39 @@ all pixels which are marked as background.
 \subsection{Segmentation}
 
 The next step of the algorithm is image segmentation, in which individual particles are identified and each pixel
-in the image is assigned to a specific particle, or to the background. This is especially important in the study 
-of Janus rods, which are come into contact during self-assembly and which therefore often touch or overlap in 
-CLSM images. 
+in the image is assigned to a specific particle, or to the background. 
+
+%This is especially important in the study 
+%of Janus rods, which are come into contact during self-assembly and which therefore often touch or overlap in 
+%CLSM images. 
 
 First, the image is thresholded to produce a binary image, with a threshold selected such that all pixels which
-are part of the rods are assigned to the foreground. This may generally be accomplished through the use of 
-Otsu's criterion.~\ref{?}
+are part of the rods are assigned to the foreground. Again, this may generally be accomplished through the use of 
+Otsu's criterion.~\cite{otsu-threshold}
 
-Second, the distance transform is calculated.  In this step, each foreground pixel is assigned a number which
+Second, the Euclidean distance transform is 
+calculated.~\cite{matlab-bwdist}  In this step, each foreground pixel is assigned a number which
 gives the distance between this pixel and the nearest background pixel. In this algorithm, the distance measure used
 is simple Euclidean distance, calculated center-to-center between this pixel and the closest background pixel.  Alternative
 distance measures such as the ``chessboard'' measure may also be used to speed up computation, but these measures were
 found to negatively impact segmentation.  To prepare the image for watershed segmentation, the distance 
 transform is transformed such that all distances are made
-negative, while the background remains at a flat zero. An h-minima transform is applied to remove small local minima
-due to noise in the image.
+negative, while the background remains at a flat zero. 
+An h-minima transform is applied to remove small local minima
+due to noise in the image.~\cite{soille-book}
 
-The primary segmentation step is the watershed transform. In this transform, a gray-level image is viewed as
+The primary segmentation step is the watershed 
+transform.~\cite{matlab-watershed} In this transform, a gray-level image is viewed as
 a topographic relief map where the pixel values represent altitude. A drop of water falling on a relief 
-surface will run down to a minimum, and many drops will fill any basins present until the basins merge.
+surface will run down to a local minimum, and many drops will fill any 
+local minima present until the basins meet.
 Implementations of the watershed transform use this concept to calculate the boundaries between catchment basins,
 fully segmenting the image.  The number of basins is calculated either by using local minima in the image, or by 
 pre-assigning a set of markers.  In our algorithm, we generally use the Matlab implementation of \texttt{watershed} which
-uses the local minima method.  This carries some danger of over-segmentation (mitigated somewhat by the 
-h-minima transform), but is better suited to automatic processing of a large number of images than manual markers.
+uses the local minima method.  A local-minima based watershed transform generally does result in some 
+over-segmentation, but this effect can be mitigated by using the h-minima transform to remove 
+artifacts.  While a marker-based technique would avoid this issue, it is much more cumbersome when a large number
+of images must be processed.
 
 \texttt{watershed} outputs an image which labels each pixel according to a region ID number, and labels both background
 and foreground pixels with these regions. To restrict these labels so that the background is labeled separately, all 
@@ -349,276 +368,46 @@ pixel.  If we are calculated particle position as the average of all the identif
 the calculated position changing, even if the particle did not physically move. The next frame after that, it 
 may be re-identified as a foreground pixel.  While the effect is small, experimental conditions may magnify
 these effects and produce appreciable fluctuations in the position and orientation. One way to get around this issue
-is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.
+is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.~\cite{soille-book}
 
 For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm; but rather 
 than using an intensity gradient, we instead calculate with respect to the particle geometry. For each particle, we 
 isolate its pixels from the environment (i.e., generate a new image containing only this particle). We then
 calculate the distance transform to allow identification of particles which are closest to the 
 geometric backbone.  These are identified by applying a ``percentile threshold'' in which the all pixels which
-fall below a given percentile in the distribution are reassigned as background pixels. Typical cutoffs used
-are 90-95\%, depending on trial images.
+fall below a given percentile in the distribution are reassigned as background pixels. 
+The correct value of this threshold is determined by the analysis of a trial image from the image set,
+and typically falls in the 85--95\% range.
 
 \subsection{Calculation of position and orientation}
 
-Position and orientation are calculated in an identical fashion as in Mohraz and Solomon~\cite{mohraz-rods}; see
+Position and orientation are calculated from particle backbones 
+in an identical fashion as in Mohraz and Solomon~\cite{rods-mohraz}; see
 Section~\ref{sec:orient-calculate} for details.
 
-\section{Implementation}
-\label{sec:matlab-implementation}
+\subsection{Time-series tracking}
 
-The results of typical experiments with samples of single-component or Janus rods included both 
-large-area tiled images taken of many particles at a single time,
-used to study static self-assembly, and movies consisting of many subsequent images in a 
-particular location, taken to study dynamical behavior.  Each of these experimental types required the processing
-of image sets numbering in the hundreds or thousands.  The analysis of these images using the algorithm developed
-above requires the selection of a number of input parameters, such as the thresholding levels and the 
-structuring elements for morphological processing.  However, while all the images from a typical
-experiment could be expected to share the same parameter values, those values might vary considerably for the 
-analysis of different
-experiments.
+Building a set of particle trajectories from the frame-by-frame list of particle positions
+was accomplished using the Blair and Dufrense implementation~\cite{blair-dufrense-matlab} of 
+the tracking procedure developed by Crocker and Grier~\cite{crocker-grier-spheres} and outlined 
+in Section~\ref{sec:time-tracking}, with the orientation information ignored for the purposes of
+tracking and simple ``carried along'' with the corresponding position data.
 
-To address this, we implemented our algorithm as a set of independent functions which could be carried out manually 
-or called from an automated script. A typical analysis was carried out by selecting one or more 
-test images from the data set; carrying out the various image processing steps on these test images, varying
-the processing parameters to obtain the best results; and then calling the automation script using the 
-optimized values to process the entire data set.  Analysis of test images was generally carried out on a single
-workstation, while full-dataset processing was carried out on dedicated servers to maximize processing efficiency.
-
-All steps of the analysis were implementing in Matlab~\cite{matlab}, making heavy use of functions from the
-Image Processing Toolbox.  The following description summarizes the process of carrying out a manual analysis of
-test images as a guide to future users; a full source-code listing can be found in~\ref{sec:matlab-code}.
-
-\begin{lstlisting}[label=ls:manual,caption=Typical sequence of a manual analysis]
-% Load the image.
-img = imread('filename.tif');
-
-% If using bandpass cleaning.
-clean = bpass(img,lnoise,lobject);
-
-% If using morphological cleaning.
-%  top-hat step: radius 50 is greater than rod size.
-%  opening step: radius 2 is a good size for eliminating small variations.
-thstruct = strel('disk',50);
-opstruct = strel('disk',2);
-
-% Segmentation step.
-watershed_labels = segment(clean, 1);
-
-% Now find backbone pixels.
-skeletons = backbones(clean, watershed_labels, 90);
-
-% Finally get the list of positions.
-positions = calc_positions(skeletons);
-\end{lstlisting}
-
-\subsection{Image cleanup}
-
-Image cleanup is probably the part of the analysis which is most sensitive to parameter selection.
-Original images of colloidal rod samples from CLSM or FM are often noisy or unevenly illuminated, and these
-effects vary from experiment to experiment.  However, subsequent steps of the analysis assume that their input
-images will be simple binary images, with white rods and a black background. Choosing the correct parameters 
-to produce such images is a matter of trial and error, and the particular choices must be re-optimized
-for each new experiment.  Two options exist for performing this clean-up: a simple bandpass filter, 
-and a more complex set of morphological operations.
-
-\subsubsection{Option 1: band-pass}
-
-\texttt{clean = bpass(image\_array, lnoise, lobject[, threshold])}
-
-\begin{itemize}
-\item \texttt{image\_array}: Matlab array containing image pixels.
-\item \texttt{lnoise}: Characteristic length-scale of noise.
-\item \texttt{lobject}: Characteristic length-scale of object to be tracked (i.e., length of a colloidal rod).
-\item \texttt{threshold}: By default, the last step of this algorithm is to set all negative pixels (generated
-by the convolution) to be zeros. This parameter may optionally be used to apply a threshold with a different cut-off.
-\end{itemize}
-
-\texttt{bpass.m} is from the Blair and Dufrense~\cite{blair-matlab} Matlab implementation of the Crocker and Weeks
-package for tracking of spherical particles.~\cite{crocker-tracking}
-
-\subsubsection{Option 2: morphological cleanup}
-
-\texttt{clean = mclean(img, thstruct, opstruct[, threshold])}
-
-\begin{itemize}
-\item \texttt{img}: Matlab array containing image pixels.
-\item \texttt{thstruct}: Matlab structuring element used to carry out the top-hat transform.
-\item \texttt{opstruct}: Matlab structuring element used to carry out the opening and dilation operations.
-\item \texttt{threshold}: By default, the threshold used in this algorithm is selected using the built-in
-Matlab function \texttt{graythresh}, which uses Otsu's algorithm~\cite{?}. Here, the user may optionally
-select a different threshold.
-\end{itemize}
-
-\subsection{Segmentation}
-
-\texttt{watershed\_img = segment(img[, height])}
-
-\begin{itemize}
-\item \texttt{img}: Matlab array containing the image pixels.
-\item \texttt{height}: Maximum height to suppress in h-minima transform. Optional, defaults to 1.
-\end{itemize}
-
-\texttt{segment.m} carries out the image segmentation part of the algorithm, and consists of three calls to
-Matlab built-in functions: \texttt{bwdist}, which carries out the distance transform, 
-\texttt{imhmin}, which carries out the h-minima transform, and \texttt{watershed}, which performs watershed
-segmentation. While these processes are all computationally intensive, the result is relatively insensitive to
-processing parameters. The only parameter available is the height of the h-minima transform, which is generally
-set to 1 to account for single-pixel fluctuations; 
-it is increased only when over-segmentation is observed in the resulting watershed.~\ref{fig:over-segment}
-To observe the resulting watershed segmentation, use the code in Listing~\ref{ls:showwater}.
-
-\begin{lstlisting}[label=ls:showwater,caption=Observe watershed segmentation]
-imshow( label2rgb(watershed_img,'jet') );
-\end{lstlisting}
-
-\subsection{Skeletonization}
-
-\texttt{skeletons = backbones(img, watershed\_img, percent)}
-
-\begin{itemize}
-\item \texttt{img}: Matlab array containing the image pixels.
-\item \texttt{watershed\_img}: Image containing the watershed labels.
-\item \texttt{percent}: Percentile used in the thresholding step.
-\end{itemize}
-
-The generation of the rod skeletons, carried out in \texttt{backbones.m}, is also a relatively simple
-procedure.  The results of the watershed segmentation step are used to find the portion of the 
-image which contains each rod, and this is used to generate a new image in which the rod may
-be analyzed in isolation. The only choice which must be made is the percentile threshold for selecting 
-backbone pixels. This is again a matter of trial and error, but typical values are in the range of 90-95\%.
-
-A final image is generated which contains all the backbones, with the pixels belonging to each one having
-the value of their watershed label. This allows them to be uniquely identified in the following step. The background is 
-assigned again to zero.  Observation of these backbones for quality check requires a thresholding step. Observation
-of all the backbones may be accomplished using the code in Listing~\ref{ls:allbb}, while observing only the backbone 
-with label $n$ may be accomplished using the code in Listing~\ref{ls:onebb}.
-
-\begin{lstlisting}[label=ls:allbb,caption=Show all backbones as an image]
-imshow(im2bw(skeletons, 0));
-\end{lstlisting}
-
-\begin{lstlisting}[label=ls:onebb,caption=Show only backbone with label $n$]
-temp=skeletons;
-temp(temp~=n)=0;
-imshow(im2bw(skeletons, 0));
-\end{lstlisting}
-
-\subsection{Coordinate calculation}
-
-\texttt{positions = calc\_positions(skeletons[, cutoff])}
-
-\begin{itemize}
-\item \texttt{skeletons}: Image containing the rod skeletons.
-\item \texttt{cutoff}: Optional parameter listing a cut-off for ignoring a backbone.
-\end{itemize}
-
-For each individual rod, \texttt{calc\_positions.m} calculates the positional and
-orientational coordinates and saves them to the array \texttt{positions}.  
-\texttt{cutoff} is an optional parameter which allows \texttt{calc\_positions.m} to 
-ignore backbones which contain under a certain number of pixels, as one last noise-protection step.
-
-\texttt{positions} is a 2D Matlab array in which each row represents one backbone, and has 
-the structure:
-
-\begin{tabular}{ | c | c | c | c | c | }
-\hline 
-$x$ & $y$ & $z$ & $\phi$ & $\theta$ \\
-\hline
-\end{tabular}
-
-In any 2D image, $z$ and $\theta$ are always zero.
-
-\subsection{Automated analysis of time series}
-
-\texttt{poslist = rod\_tseries\_bp(imgstack,lnoise,lobject,threshold,height,percent)}
-
-\texttt{poslist = rod\_tseries(imgstack,thstruct,opstruct,threshold,height,percent)}
-
-\subsection{Temporal tracking}
-
-\texttt{tracks = track(xyzs, maxdisp, param)}
-
-\begin{itemize}
-\item \texttt{xyzs}: An array containing a time-sorted list of particle positions (and, here, orientations).
-\item \texttt{maxdisp}: Maximum allowed displacement of a particle between frames.
-\item \texttt{param}: A data structure containing additional processing parameters.
-\end{itemize}
-
-Frame-to-frame tracking of unique rods to form trajectories was accomplished using a Matlab routine, \texttt{track.m}, 
-supplied by Blair and Dufrense~\cite{blair-matlab}, implementing the standard algorithm for particle tracking by
-Crocker and Weeks~\cite{crocker-tracking}.  \texttt{track.m} requires that the data be in a time-sorted format where each
-row consists of a list of coordinates followed by a frame number, and the frame numbers increase monotonically.
-
-The output, \texttt{tracks}, is in a similar format which includes one extra column: a particle ``id number'' which
-allows each trajectory to be identified. Rows are ordered so that particle id number increases monotonically, and
-time increases monotonically within each set of particle rows.
-
-The optional input structure, \texttt{param}, contains a variety of settings which alter the behavior of 
-\texttt{track}.  The only setting important to this analysis is \texttt{param.dim}, which tells the program how
-many columns to use as positional dimensions. Any additional columns will be ignored in the tracking calculation and 
-simply ``carried along'' when the new array is built; this gives us a place to put our orientation coordinates, which
-will not be used in the tracking routine.
-
-\subsection{Characterization of rod suspensions}
-
-The location and tracking of colloidal rods within experimental images is not an end in itself, but the
-first step in determining the characteristics of the suspensions they are used to measure.  Data on the 
-position and orientation of all rods within a suspension is an extremely useful tool, and the values of many
-dynamical or structural properties may be directly calculated or inferred from this information.
-While the current work did not proceed so far as to complete a detailed study of all these properties, or 
-implementations of the calculations necessary for such a study, some preliminary work has been done in this
-area which is worth exploring.
-
-\subsubsection{Dynamics}
-
-%\texttt{traj\_vis(tracks[, t0, t1])}
-
-\texttt{showmovie(imgstack,tracks)}
-
-%\texttt{traj\_vis.m} is a simple diagnostic tool which plots the trajectories for all the particles. 
-%\texttt{t0} and \texttt{t1} are optional beginning and ending times.  
-\texttt{showmovie.m} visualizes the
-movie from the image stack, plotting a dot-and-bar for each tracked particle on the image to indicate 
-the tracked position and orientation.
-
-\texttt{disps = msd(tracks)}
-
-\texttt{avgs = avg\_msd(disps)}
-
-\texttt{msd.m} calculates the mean-square displacement (MSD) for position and orientation for each particle 
-in \texttt{tracks}, and returns a data structure \texttt{disps} which contains each individual MSD vs time 
-series.  \texttt{avg\_msd.m} takes this structure and averages across particles to produce plots similar 
-to Figure~\ref{fig:example-diffusion-results}. Note that this averaging takes place at each 
-individual particle's \textit{own} frame 2, 3, etc. so that the displacement at frame 2 of two particles 
-will be averaged together--even if the second particle did not appear until a later frame.  This reduces the
-total time over which averaging may take place, but improves statistics.
-
-\subsubsection{Structure}
-\label{sec:structure-calcs}
-
-\texttt{result = nearest\_neighbors(positions, size)}
-
-\texttt{pdf = pair\_dist(positions)}
-
-\texttt{result = orient\_corr(positions)}
-
-\texttt{nearest\_neighbors.m} calculates the average number of nearest neighbors for the particles in 
-\texttt{positions} within a distance given by \texttt{size}. \texttt{pair\_dist.m} produces the pair-distribution
-function (PDF) for all particles in \texttt{positions}, where as \texttt{orient\_corr.m} shows how the 
-dot-product between particle orientations changes with distance.
 
 \section{Results and discussion}
+\label{sec:track-results}
 
 \subsection{Dynamics}
 
 \figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{0.6\linewidth}{
 Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
-Poly(ethylene glycol) rods with dimensions 5 \by 3 \by 3 \microns~were fabricated via SFL, suspended in 
+Poly(ethylene glycol) diacrylate rods with dimensions 5 \by 3 \by 3 \microns~were fabricated via 
+stop-flow lithography, suspended in 
 water, and their diffusion was observed as described in Section~\ref{sec:exp-diffusion} with an 
 image collection
-frame-rate of 2 fps.  The resulting image sequence was imported into Matlab, and tracking was carried out
+rate of 2 
+frames per second.  The resulting image sequence was imported into Matlab, and tracking was carried out
 using the scripts outlined in Section~\ref{sec:matlab-implementation}.  Noise reduction was carried out using 
 a band-pass filter with noise and particle dimensions of 1 pixel and 30 pixels respectively. 
 Watershed segmentation was carried out using a \texttt{height} parameter of 1, and skeletonization
@@ -632,16 +421,18 @@ detailed later in Section~\ref{sec:rod-diffusion-results}.
 
 \subsection{Structure}
 
-\figone{fig:track-assembly}{figures/assembled-janus-tracked.png}{0.7\linewidth}{
+\figone{fig:track-assembly}{figures/assembled-janus-tracked.png}{0.5\linewidth}{
 Assembled Janus rods are tracked.}
 
 Janus rods are fabricated with hydrophilic and hydrophobic components to induce self-assembly.
 In Figure~\ref{fig:track-assembly}, the results of a 2D image analysis for aligned Janus clusters
-are shown.  This cluster is relatively easy to track, given the highly aligned orientations of the
-rods and the flatness of the clusters; a three-dimensional cluster with rods ``stacked'' would require
-3D confocal imaging to achieve segmentation.
+are shown.  This analysis is carried out using the morphological clean-up process with
+a top-hat structuring element of radius 40, a opening structuring element of
+radius 2, and the default thresholding method. Segmentation was carried out using a 
+\texttt{height} parameter of 4, and skeletonization used a percentile threshold of 0.9.  A 
+\texttt{cutoff} value of 50 was used in the position calculation step.
 
-An series of experiments was carried out to study the self-assembly of Janus rods, varying
+A series of experiments was carried out to study the self-assembly of Janus rods, varying
 the solvent conditions for assembly and rod aspect ratio.  Orientational ordering and
 number of nearest neighbors are calculated across this experiment series; the results are
 detailed in Section~\ref{sec:assembly-janus-rods}.

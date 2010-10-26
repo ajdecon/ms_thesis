@@ -1,8 +1,11 @@
+%\documentclass[fancy,edeposit]{uiucthesis2009}
 \documentclass[fullpage,draftthesis,edeposit]{uiucthesis2009}
 %\documentclass[fancy,fullpage]{uiucthesis2009}
+
 \usepackage[usenames,dvipsnames]{color}
 
 \usepackage{graphicx}
+\usepackage{url}
 \usepackage{multirow}
 \usepackage{makeidx}
 \makeindex
@@ -61,9 +64,9 @@
 
         \includegraphics[width=0.45\linewidth]{#2}\includegraphics[width=0.45\linewidth]{#3} \\
         \includegraphics[width=0.45\linewidth]{#4}\includegraphics[width=0.45\linewidth]{#5} \\
-        \caption{#6}
 
     \end{center}
+    \caption{#6}
     \label{#1}
 
 \end{figure}
@@ -125,9 +128,7 @@
 
 \frontmatter
 
-\begin{abstract}
-This work details the development of techniques to fabricate and study structured colloidal particles...
-\end{abstract}
+\include{abstract}
 
 \begin{dedication}
 To Leigh.
@@ -137,6 +138,7 @@ To Leigh.
 
 \tableofcontents
 \listoffigures
+\listoftables
 
 \mainmatter
 
@@ -148,11 +150,13 @@ To Leigh.
 
 \include{rods}
 
-%\include{complex-shapes}
+\include{complex-shapes}
 
 \include{conclusions}
 
 \appendix
+
+\include{matlab}
 
 %\include{matlab-code}
 
@@ -162,9 +166,9 @@ To Leigh.
 
 \backmatter
 
-\bibliographystyle{plain}
-\bibliography{bib/flow-lithography}
+\bibliographystyle{unsrt}
+\bibliography{bib/thesis}
 
-\printindex
+%b\printindex
 
 \end{document}

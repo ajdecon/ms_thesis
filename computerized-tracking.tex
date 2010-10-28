@@ -1,21 +1,24 @@
-\chapter{Computerized Tracking of Anisotropic Colloids}
+\chapter{Computerized Tracking of Rod-Shaped Colloids}
 \label{ch:comp-tracking}
 
 \section{Introduction}
 
 Confocal laser scanning microscopy (CLSM) is a powerful technique for the study of three-dimensional
-structure in fluorescent materials. When applied to fluorescent colloids, CLSM allows the observation
+structure in fluorescent materials. When applied to colloidal suspensions, CLSM allows the observation
 of individual particles and provides detailed data about the geometric configuration of the 
 material.~\cite{weitz-confocal}
 This data alone can be used to derive a great deal
-of information about the material, such as the distribution of number of nearest neighbors and
+of information about the material
+characteristics, such as the distribution of number of nearest neighbors and
 the pair distribution function (PDF). Repeated observations at regular intervals allow for dynamical
 measurements of parameters such as the diffusion constant.~\cite{weitz-confocal,crocker-grier-spheres}
 
 However, 
-the production of useful 3D structural information requires more than just a powerful imaging technique: it also
-requires powerful computational analysis tools to translate image data into a list of particles and positions, and
-to calculate relevant physical characteristics from these positions.  In addition, the behavior of non-spherical colloids
+the production of useful 3D structural information requires more than just a 
+high-resolution imaging technique: it also
+requires powerful computational analysis tools to translate image data into a list of particles and positions and
+calculate the physical characteristics of interest
+from these positions.  In addition, the behavior of non-spherical colloids
 is governed not only by the relative positions of the particles but also their orientations. Developing an
 understanding of anisotropic colloids
 therefore calls for the development of image processing techniques for the extraction and analysis of
@@ -31,25 +34,26 @@ Section~\ref{sec:rod-tracking}.
 \section{Background}
 \label{sec:track-background}
 
-\subsection{Tracking of spherical colloids}
+\subsection{Tracking of Spherical Colloids}
 
 In a 1996 paper in the \textit{Journal of Colloid and Interface Science}~\cite{crocker-grier-spheres},
 John Crocker and David Grier outline a five-stage procedure for the tracking of
-spherical colloidal particles.  This algorithm was implemented in IDL and has become the standard for carrying out 
+spherical colloidal particles.  This algorithm was implemented in IDL~\cite{idl-track}
+and has become the standard for carrying out 
 3D tracking of spherical particles. It has since been ported to other environments such as 
 Matlab~\cite{blair-dufrense-matlab, kilfoil-matlab} and LabView~\cite{optical-trapping-group} which are
 also commonly used in the scientific community.
 
-\subsubsection{Image restoration}
+\subsubsection{Image Restoration}
 \label{sec:band-pass}
 
-CLSM imaging of colloidal suspensions may introduce camera noise and geometric distortions which 
-lead to images which do not
+CLSM imaging of colloidal suspensions may introduce camera noise and geometric distortions that
+lead to images that do not
 accurately describe the geometry of the suspension. 
 These effects can be compensated for by applying a spatial band-pass filter 
-to the image $A$, which is composed of two parts.
+to the image, $A$. This filter is composed of two parts.
 
-The first part is a boxcar average over a region of extent $2w + 1$, where $w$ is an integer
+The first part is a boxcar average~\cite{soille-book} over a region of extent $2w + 1$, where $w$ is an integer
 larger than a single sphere's apparent radius in pixels, but smaller than an intersphere separation:
 
 \begin{center}\begin{equation}A_w(x,y) = \frac{1}{(2w+1)^2} \sum_{i,j=-w}^w A(x+i,y+j)
@@ -72,16 +76,16 @@ These two filters can be applied simultaneously in a single step using the convo
 The normalization constant $K_0 = 1/B[\sum_{i=-w}^w \exp{-(i^2/2\lambda_n^2)}] - (B/(2w+1)^2)$ facilitates comparison
 among images filtered with different values of $w$.
 
-\subsubsection{Locating particles}
+\subsubsection{Locating Particles}
 
-Particles are located by identifying local brightess maxima within an image. A pixel is identified
-as a candidate if no other pixel within a distance $w$ is brighter, where $w$ is the same value used in
+Particles are located by identifying local brightness maxima within an image. A pixel is identified
+as a position candidate if no other pixel within a distance $w$ is brighter, where $w$ is the same value used in
 the filtering step. This was implemented by Crocker and Grier using a gray-scale dilation 
 operation.~\cite{soille-book}
 
-\subsubsection{Refining location estimates}
+\subsubsection{Refining Location Estimates}
 
-Having located a brightness maximum at $(x, y)$ which is presumably near
+Having located a brightness maximum at coordinates $(x, y)$ which is presumably near
 a sphere's geometric center at $(x_0, y_0)$, additional refinements are possible
 which may achieve sub-pixel accuracy.  An offset $(\epsilon_x, \epsilon_y)$ is
 calculated according to:
@@ -101,7 +105,7 @@ sphere's image. The refined location estimate is then $(x_0, y_0) = (x+\epsilon_
 If either $|\epsilon_x|$ or $|\epsilon_y|$ exceeds 0.5, the candidate centroid location can be moved and the
 refinement recalculated.
 
-\subsubsection{Noise discrimination and tracking in depth}
+\subsubsection{Noise Discrimination and Tracking in Depth}
 
 During the centroid refinement calculations, two moments of each sphere image's brightness 
 distribution are calculated:
@@ -117,13 +121,13 @@ where $(x,y)$ are the refined centroid locations.  The distribution of the $(m_0
 sphere's positions along the direction normal to the imaging plane, and a control experiment using a 
 monolayer of particles is used to calibrate this data.
 
-\subsubsection{Linking locations into trajectories}
+\subsubsection{Linking Locations Into Trajectories}
 \label{sec:time-tracking}
 
 Having located the colloidal particles in a sequence of video images, it is possible to 
 match particle locations in each image with corresponding locations in later images to produce
-trajectories.  This requires determining which particle in a given image
-most likely corresponds to one in the preceding image.  The tracking of 
+trajectories.  This requires determining which particle location in a given image
+most likely corresponds to the same particle in the preceding image.  The tracking of 
 multiple particles requires that we seek the most probable set of $N$ identifications 
 between $N$ locations in two consecutive images. If the particles are indistinguishable (as for
 monodisperse colloidal particles), this likelihood can be estimated only using relative
@@ -148,10 +152,10 @@ in consecutive frames.  $P({\delta_i}|\tau)$ is calculated for all possible comb
 represent a displacement below some characteristic length scale $L$, selected by the user based on
 the experimental conditions.
 
-\subsection{Rod tracking}
+\subsection{Rod Tracking}
 
 While the algorithm by Crocker and Grier is used widely for tracking spherical particles, it 
-cannot deal with particles which have an anisotropic shape and some orientation. 
+cannot deal with particles that have an anisotropic shape and some orientation. 
 To begin to deal with simple anisotropy, Mohraz and Solomon developed an algorithm for tracking 
 ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods-mohraz, solomon-dynamics}
 
@@ -159,8 +163,11 @@ ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods
 (a) Synthesis of PMMA-g-PDMS spheres, (b) curing of the PDMS matrix, (c) uniaxial deformation,
 (d) rod harvesting.}
 
+To provide experimental data for the development of this algorithm, a suspension of 
+ellipsoidal rods was fabricated (see Figure~\ref{fig:pmma-fabrication}).
 Poly(methyl methacrylate)-g-poly(dimethylsiloxane) (PMMA-g-PDMS) fluorescent colloidal spheres were
-synthesized and suspended in a polymerizable liquid silanol-terminated PDMS, which was then cured to form a solid 
+synthesized, and then suspended in a polymerizable liquid silanol-terminated PDMS.
+This was then cured to form a solid 
 matrix.  This matrix was then heated above the glass transition temperature 
 of PMMA-g-PDMS and subjected to 
 uniaxial stretching, then cooled while still deformed.  The rods were then harvested from the 
@@ -183,7 +190,7 @@ A(x,y,z) = \frac{1}{B(x,y,z)} \sum_{i,k,j=-w}^w A(x+i,y+j,z+k)
 
 where $B$ is a normalization constant and $\lambda$ is defined to be 1 for these experiments.
 
-\subsubsection{Rod backbone identification}
+\subsubsection{Rod Backbone Identification}
 
 \figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.3\linewidth}{
 Local line maximum criterion.}
@@ -196,7 +203,7 @@ pixels.  Backbone pixels are then grouped together by cluster analysis to form r
 \figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{0.6\linewidth}{
 Rod backbone assignments (a) in a stretched film and (b) in a sediment structure.}
 
-\subsubsection{Orientation and centroid calculation}
+\subsubsection{Orientation and Centroid Calculation}
 \label{sec:orient-calculate}
 
 \figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.4\linewidth}{
@@ -255,7 +262,7 @@ determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
 \phi_i = \tan^{-1} \left(\frac{<l_y^2>_i^{1/2}}{<l_x^2>_i^{1/2}} \right)
 \end{equation}
 
-\section{Algorithm for tracking SFL rods}
+\section{Tracking Algorithm}
 \label{sec:rod-tracking}
 
 Our method for locating and tracking rods produced by stop-flow lithography (SFL) draws heavily from that published by 
@@ -278,7 +285,7 @@ operations are defined for both cases and used identically. However, where the i
 2D images are referred to as pixels, the elements of 3D images are generally referred to as voxels.
 For simplicity, all such elements are referred to as pixels in the explanation below.
 
-\subsection{Image cleanup}
+\subsection{Image Cleanup}
 
 For any given set of images, two different image cleanup techniques were used for test
 images, and the best result was used for the entire set.
@@ -379,13 +386,13 @@ fall below a given percentile in the distribution are reassigned as background p
 The correct value of this threshold is determined by the analysis of a trial image from the image set,
 and typically falls in the 85--95\% range.
 
-\subsection{Calculation of position and orientation}
+\subsection{Calculation of Position and Orientation}
 
 Position and orientation are calculated from particle backbones 
 in an identical fashion as in Mohraz and Solomon~\cite{rods-mohraz}; see
 Section~\ref{sec:orient-calculate} for details.
 
-\subsection{Time-series tracking}
+\subsection{Time-series Tracking}
 
 Building a set of particle trajectories from the frame-by-frame list of particle positions
 was accomplished using the Blair and Dufrense implementation~\cite{blair-dufrense-matlab} of 
@@ -394,7 +401,7 @@ in Section~\ref{sec:time-tracking}, with the orientation information ignored for
 tracking and simple ``carried along'' with the corresponding position data.
 
 
-\section{Results and discussion}
+\section{Results and Discussion}
 \label{sec:track-results}
 
 \subsection{Dynamics}

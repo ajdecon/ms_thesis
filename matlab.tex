@@ -46,7 +46,7 @@ skeletons = backbones(clean, watershed_labels, 90);
 positions = calc_positions(skeletons);
 \end{lstlisting}
 
-\section{Image cleanup}
+\section{Image Cleanup}
 
 Image cleanup is probably the part of the analysis which is most sensitive to parameter selection.
 Original images of colloidal rod samples from CLSM or FM are often noisy or unevenly illuminated, and these
@@ -56,7 +56,7 @@ to produce such images is a matter of trial and error, and the particular choice
 for each new experiment.  Two options exist for performing this clean-up: a simple bandpass filter, 
 and a more complex set of morphological operations.
 
-\subsection{Option 1: band-pass}
+\subsection{Option 1: Band-Pass}
 
 \texttt{clean = bpass(image\_array, lnoise, lobject[, threshold])}
 
@@ -71,7 +71,7 @@ by the convolution) to be zeros. This parameter may optionally be used to apply 
 \texttt{bpass.m} is from the Blair and Dufrense~\cite{blair-dufrense-matlab} Matlab implementation of the Crocker and Weeks
 package for tracking of spherical particles.~\cite{crocker-grier-spheres}
 
-\subsection{Option 2: morphological cleanup}
+\subsection{Option 2: Morphological Cleanup}
 
 \texttt{clean = mclean(img, thstruct, opstruct[, threshold])}
 
@@ -138,7 +138,7 @@ temp(temp~=n)=0;
 imshow(im2bw(skeletons, 0));
 \end{lstlisting}
 
-\section{Coordinate calculation}
+\section{Coordinate Calculation}
 
 \texttt{positions = calc\_positions(skeletons[, cutoff])}
 
@@ -169,13 +169,13 @@ $x$ & $y$ & $z$ & $\phi$ & $\theta$ \\
 
 In any 2D image, $z$ and $\theta$ are always zero.
 
-\section{Automated analysis of time series}
+\section{Automated Analysis of Time Series}
 
 \texttt{poslist = rod\_tseries\_bp(imgstack,lnoise,lobject,threshold,height,percent)}
 
 \texttt{poslist = rod\_tseries(imgstack,thstruct,opstruct,threshold,height,percent)}
 
-\section{Temporal tracking}
+\section{Temporal Tracking}
 
 \texttt{tracks = track(xyzs, maxdisp, param)}
 
@@ -200,7 +200,7 @@ many columns to use as positional dimensions. Any additional columns will be ign
 simply ``carried along'' when the new array is built; this gives us a place to put our orientation coordinates, which
 will not be used in the tracking routine.
 
-\section{Characterization of rod suspensions}
+\section{Characterization of Rod Suspensions}
 
 The location and tracking of colloidal rods within experimental images is not an end in itself, but the
 first step in determining the characteristics of the suspensions they are used to measure.  Data on the 

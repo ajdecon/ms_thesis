@@ -161,7 +161,7 @@ ellipsoidal colloidal rods based on the spherical tracking algorithm.~\cite{rods
 
 \figone{fig:pmma-fabrication}{figures/computerized-tracking/pmma-fabrication.png}{0.6\linewidth}{
 (a) Synthesis of PMMA-g-PDMS spheres, (b) curing of the PDMS matrix, (c) uniaxial deformation,
-(d) rod harvesting.}
+and (d) rod harvesting.~\cite{rods-mohraz}}
 
 To provide experimental data for the development of this algorithm, a suspension of 
 ellipsoidal rods was fabricated (see Figure~\ref{fig:pmma-fabrication}).
@@ -177,9 +177,9 @@ subjected to a three-stage image processing algorithm to determine the position 
 
 \subsubsection{Image restoration}
 
-To correct for imaging distortions and local noise, voxels are convoluted with neighbors found within a local
+To correct for imaging distortions and local noise, pixels are convoluted with neighbors found within a local
 distance $w$ using a Gaussian function, where $w$ is of the order of the rod half-width. The resulting
-voxel intensity $A(x,y,z)$ is
+pixel intensity $A(x,y,z)$ is
 
 \begin{center}
 \begin{equation}
@@ -193,21 +193,27 @@ where $B$ is a normalization constant and $\lambda$ is defined to be 1 for these
 \subsubsection{Rod Backbone Identification}
 
 \figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.3\linewidth}{
-Local line maximum criterion.}
+To identify candidate backbone pixels, each pixel is compared in its immediate
+neighbors in a local line maximum criterion.}
 
-Rod backbones are identified using a local line maximum criterion.  Each voxel is compared with its immediate 
-neighbors in all directions along lines with length $2w+1$.  If a candidate voxel is found to be the brightest
+Rod backbones are identified using a local line maximum criterion (Figure~\ref{fig:local-line-max}).  
+Each pixel is compared with its immediate 
+neighbors in all directions along lines with length $2w+1$.  If a candidate pixel is found to be the brightest
 point on more than a critical fraction of these lines (typically 70\%), it is considered to be a backbone
-pixels.  Backbone pixels are then grouped together by cluster analysis to form rod backbones.
+pixel.  Backbone pixels are then grouped together via cluster analysis to form rod backbones.  
+Figure~\ref{fig:pmma-rod-backbones}(a)
+shows both the original fluorescence image and identified backbones for PMMA-g-PDMS rods
+embedded in a stretched PDMS film (Figure~\ref{fig:pmma-fabrication}(c)), and 
+Figure~\ref{fig:pmma-rod-backbones}(b) shows the same images for freely-suspended rods.
 
 \figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{0.6\linewidth}{
-Rod backbone assignments (a) in a stretched film and (b) in a sediment structure.}
+Rod backbone assignments in (a) a stretched film and (b) a sediment structure.}
 
 \subsubsection{Orientation and Centroid Calculation}
 \label{sec:orient-calculate}
 
 \figone{fig:coordinates}{figures/computerized-tracking/rod-schematic-solomon.png}{0.4\linewidth}{
-Positional and orientational coordinates for colloidal rods.~\cite{mohraz-rods}}
+Positional and orientational coordinates for colloidal rods.~\cite{rods-mohraz}}
 
 Once the backbone pixels for a given rod have been identified, the position and orientation of each rod may
 be determined based on these pixels' locations.  Each rod's geometric configuration can be
@@ -237,8 +243,8 @@ Calculating orientation is somewhat more complex.  First, for each dimension $r$
 $|<l_r^2>^{1/2}|$ is calculated (Equations~\ref{eq:x-len}--\ref{eq:z-len}). 
 Geometrically, this is the size of the projection of the rod's length
 onto the axis $r$.
-Once these dimensions have been calculated, the angles $\phi$ and $\theta$ may be 
-determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
+Once these dimensions have been calculated, the angles $\theta$ and $\phi$ may be 
+determined according to \ref{eq:theta} and \ref{eq:phi}, respectively.
 
 \begin{equation}
 \label{eq:x-len}
@@ -267,16 +273,17 @@ determined according to \ref{eq:phi} and \ref{eq:theta}, respectively.
 
 Our method for locating and tracking rods produced by stop-flow lithography (SFL) draws heavily from that published by 
 Mohraz and Solomon for tracking PMMA rods.~\cite{rods-mohraz}.
-While this algorithm performs very well for a restricted class of rods, it fails in cases where the particle
-cross-section is not circular, and points near the particle backbone are not guaranteed to produce higher 
-intensities than their immediate neighbors.  This is the case for our ``rods'' produced by stop-flow
-lithography (SFL), in which the sides of the rods are relatively flat due to the fabrication
-geometry. These particles have correspondingly flat fluorescence profiles, and require a more complex analysis
+While this algorithm performs very well for a restricted class of 
+elliptical rods, it fails in cases where the particle
+cross-section is not circular, so that points near the particle backbone are not guaranteed to produce higher 
+intensities than their immediate neighbors.  This is the case for our ``rods'' produced by SFL,
+ in which the thickness of the rods is relatively uniform due to the fabrication
+geometry. These particles have correspondingly flat fluorescence profiles and require a more complex analysis
 to calculate a ``backbone''.
 
 We have developed an algorithm for processing 2D and 3D CLSM data of fluorescent SFL rods to
 produce position and orientation data.  Starting from raw CLSM images, this algorithm can be divided
-into several phases, including (i) image cleanup; (ii) segmentation; (iii) skeletonization;
+into five phases, including (i) image cleanup; (ii) segmentation; (iii) skeletonization;
 (iv) position calculation; and
 (v) particle tracking over a time series.  
 
@@ -290,33 +297,35 @@ For simplicity, all such elements are referred to as pixels in the explanation b
 For any given set of images, two different image cleanup techniques were used for test
 images, and the best result was used for the entire set.
 
-The first method was a spatial bandpass filter, described in 
+The first method was a spatial band-pass filter, described in 
 Section~\ref{sec:band-pass} and implemented in Matlab by Blair and
 Dufrense~\cite{blair-dufrense-matlab}. This filter takes two parameters, the characteristic scale
-of image noise (generally equal to one pixel) and the typical particle size.  This 
-generally works well,
-but has issues in images with multi-pixel noise.
+of image noise, generally equal to one pixel, and the typical particle size.  This 
+approach generally works well
+but has difficulty in images with multi-pixel noise.
 
 While the band-pass performed well on some images, many experiments produced data with noise or
-extraneous features which did
+extraneous features that did
 not easily yield to the bandpass operation. This can be attributed to the fact that SFL fabrication produces
-solutions which have some amount of fluorescent monomer present in the liquid as well as the particles, which
-could not always be removed effectively.  A second method was devised using morphological
-operations to better neutralize non-particle features.
+solutions which contain some amount of residual fluorescent monomer which
+can not always be removed effectively.  A second image cleanup technique was devised using morphological
+operations to better suppress non-particle features.
 
 This method may be divided into five steps. First, the 
-image is run through a morphological top-hat transform. This transform is used to account for the effects of
-uneven illumination in the image. Then the image is thresholded to produce a binary image, where the 
+image is run through a morphological top-hat transform.~\cite{soille-book}
+This transform is used to compensate for the effects of
+uneven illumination in the image. The image is then thresholded to produce a binary image, where the 
 background is black and the fluorescent features are white. The threshold is selected such that pixels which 
 are part of the particle volume are never assigned to the background; Otsu's criterion was found to be reliable
 for this.~\cite{otsu-threshold}  Next, a binary opening is applied with an isotropic structuring element to
-suppress small features. The size of the structuring element is selected manually by the user, but a 
+suppress small features. The size of the structuring element was selected manually by the user
+based on performance in test images, but a 
 reliable choice was found to be a diameter roughly equal to half the width of the typical rod. 
 
 At this point a binary image has been produced which suppresses most non-particle features, but morphological
 image operations are not guaranteed to preserve shape and orientation of image features.  To retain the noise suppression
 but regain the original shape, we perform one additional morphological dilation using the same structuring element to
-guarantee that the foreground regions fully overlap with the rods, then perform a binary AND between the result and the
+guarantee that the foreground regions fully overlap with the rods. Finally, we perform a binary AND between the result and the
 original image. This is effectively equivalent to using the result of our morphological operations as a mask on
 the original, suppressing
 all pixels which are marked as background.
@@ -324,7 +333,7 @@ all pixels which are marked as background.
 \subsection{Segmentation}
 
 The next step of the algorithm is image segmentation, in which individual particles are identified and each pixel
-in the image is assigned to a specific particle, or to the background. 
+in the image is assigned to either a specific particle or the background. 
 
 %This is especially important in the study 
 %of Janus rods, which are come into contact during self-assembly and which therefore often touch or overlap in 
@@ -345,15 +354,15 @@ negative, while the background remains at a flat zero.
 An h-minima transform is applied to remove small local minima
 due to noise in the image.~\cite{soille-book}
 
-The primary segmentation step is the watershed 
-transform.~\cite{matlab-watershed} In this transform, a gray-level image is viewed as
+The primary segmentation step is the \textit{watershed 
+transform}.~\cite{matlab-watershed} In this transform, a gray-level image is viewed as
 a topographic relief map where the pixel values represent altitude. A drop of water falling on a relief 
 surface will run down to a local minimum, and many drops will fill any 
 local minima present until the basins meet.
 Implementations of the watershed transform use this concept to calculate the boundaries between catchment basins,
 fully segmenting the image.  The number of basins is calculated either by using local minima in the image, or by 
 pre-assigning a set of markers.  In our algorithm, we generally use the Matlab implementation of \texttt{watershed} which
-uses the local minima method.  A local-minima based watershed transform generally does result in some 
+uses the local minima method.  A local-minima based watershed transform may result in some 
 over-segmentation, but this effect can be mitigated by using the h-minima transform to remove 
 artifacts.  While a marker-based technique would avoid this issue, it is much more cumbersome when a large number
 of images must be processed.
@@ -374,14 +383,17 @@ region. In the next image in the time series, this pixel's intensity is reduced 
 pixel.  If we are calculated particle position as the average of all the identified pixels, this will result in 
 the calculated position changing, even if the particle did not physically move. The next frame after that, it 
 may be re-identified as a foreground pixel.  While the effect is small, experimental conditions may magnify
-these effects and produce appreciable fluctuations in the position and orientation. One way to get around this issue
+these effects and produce appreciable fluctuations in the position and orientation. One way to 
+avoid this problem
 is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.~\cite{soille-book}
 
 For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm; but rather 
-than using an intensity gradient, we instead calculate with respect to the particle geometry. For each particle, we 
-isolate its pixels from the environment (i.e., generate a new image containing only this particle). We then
-calculate the distance transform to allow identification of particles which are closest to the 
-geometric backbone.  These are identified by applying a ``percentile threshold'' in which the all pixels which
+than using an intensity gradient. However, because of the flat fluorescence profile of SFL rods
+we may not use the fluorescence intensity maximum to identify backbone pixels. Instead, we calculate 
+the backbone position with respect to the particle geometry. For each particle, we 
+isolate its pixels from the environment, i.e., generate a new image containing only this particle. We then
+calculate the distance transform to allow identification of pixels which are closest to the 
+geometric backbone.  These are identified by applying a ``percentile threshold'' in which all pixels that
 fall below a given percentile in the distribution are reassigned as background pixels. 
 The correct value of this threshold is determined by the analysis of a trial image from the image set,
 and typically falls in the 85--95\% range.
@@ -392,13 +404,13 @@ Position and orientation are calculated from particle backbones
 in an identical fashion as in Mohraz and Solomon~\cite{rods-mohraz}; see
 Section~\ref{sec:orient-calculate} for details.
 
-\subsection{Time-series Tracking}
+\subsection{Time-Series Tracking}
 
 Building a set of particle trajectories from the frame-by-frame list of particle positions
 was accomplished using the Blair and Dufrense implementation~\cite{blair-dufrense-matlab} of 
 the tracking procedure developed by Crocker and Grier~\cite{crocker-grier-spheres} and outlined 
 in Section~\ref{sec:time-tracking}, with the orientation information ignored for the purposes of
-tracking and simple ``carried along'' with the corresponding position data.
+tracking and simply ``carried along'' with the corresponding position data.
 
 
 \section{Results and Discussion}
@@ -406,40 +418,40 @@ tracking and simple ``carried along'' with the corresponding position data.
 
 \subsection{Dynamics}
 
-\figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{0.6\linewidth}{
+\figone{fig:example-diffusion-results}{figures/computerized-tracking/rod-diffusion-results-old.jpg}{0.5\linewidth}{
 Translational and rotational diffusion results for 12~\microns~SFL-fabricated rods.}
 
-Poly(ethylene glycol) diacrylate rods with dimensions 5 \by 3 \by 3 \microns~were fabricated via 
-stop-flow lithography, suspended in 
-water, and their diffusion was observed as described in Section~\ref{sec:exp-diffusion} with an 
+Poly(ethylene glycol) diacrylate rods with dimensions 5 \by~3 \by~3 \microns~were fabricated via 
+SFL and suspended in 
+water. Their diffusion was observed as described in Section~\ref{sec:exp-diffusion} with an 
 image collection
 rate of 2 
 frames per second.  The resulting image sequence was imported into Matlab, and tracking was carried out
-using the scripts outlined in Section~\ref{sec:matlab-implementation}.  Noise reduction was carried out using 
+using the scripts outlined in Appendix~\ref{sec:matlab-implementation}.  Noise reduction was carried out using 
 a band-pass filter with noise and particle dimensions of 1 pixel and 30 pixels respectively. 
 Watershed segmentation was carried out using a \texttt{height} parameter of 1, and skeletonization
-was performed using a percentile filter of value 0.95 to produce backbones.  The maximum allowable 
+was performed using a percentile filter of 0.95.  The maximum allowable 
 displacement between subsequent frames, \texttt{maxdisp}, was set to be 15 pixels.  Finally, the 
-MSD of translational and rotational diffusion were calculated and averaged to prodice the results in 
-Figure~\ref{fig:example-diffusion-results}.
-
+MSD of translational and rotational diffusion were calculated to prodice the results in 
+Figure~\ref{fig:example-diffusion-results}.  
 A series of experiments was carried out to study the effect of rod size and aspect ratio on 2D diffusion, as 
 detailed later in Section~\ref{sec:rod-diffusion-results}.
 
 \subsection{Structure}
 
 \figone{fig:track-assembly}{figures/assembled-janus-tracked.png}{0.5\linewidth}{
-Assembled Janus rods are tracked.}
+Janus rods were observed to assemble in micelle-like clusters (top), and 
+the particle centers-of-mass and orientations are tracked (bottom).}
 
-Janus rods are fabricated with hydrophilic and hydrophobic components to induce self-assembly.
+Janus rods were fabricated with hydrophilic and hydrophobic components to induce self-assembly.
 In Figure~\ref{fig:track-assembly}, the results of a 2D image analysis for aligned Janus clusters
 are shown.  This analysis is carried out using the morphological clean-up process with
-a top-hat structuring element of radius 40, a opening structuring element of
+a top-hat structuring element of radius 40 pixels, a opening structuring element of
 radius 2, and the default thresholding method. Segmentation was carried out using a 
-\texttt{height} parameter of 4, and skeletonization used a percentile threshold of 0.9.  A 
+\texttt{height} parameter of 4, and skeletonization used a percentile filter of 0.9.  A 
 \texttt{cutoff} value of 50 was used in the position calculation step.
 
-A series of experiments was carried out to study the self-assembly of Janus rods, varying
+A series of experiments was carried out to study the self-assembly of Janus rods by varying
 the solvent conditions for assembly and rod aspect ratio.  Orientational ordering and
-number of nearest neighbors are calculated across this experiment series; the results are
+number of nearest neighbors are calculated across this experiment series, and the results are
 detailed in Section~\ref{sec:assembly-janus-rods}.

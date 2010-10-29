@@ -6,17 +6,18 @@ When one is first presented with the different dimensions of anisotropy proposed
 Glotzer and Solomon (Figure~\ref{fig:glotzer-dimensions},~\cite{glotzer-solomon}), the
 potential variety of particle types can be overwhelming. It is therefore useful to begin by studying 
 particles which draw from only one or two of these anisotropy dimensions. To this end, our
-initial study has focused on particles which vary only in the dimension of 
-aspect ratio, i.e. colloidal rods. This study covers the fabrication of both single-component and 
+initial study has focused on particles that vary only in the dimension of 
+aspect ratio, i.e., colloidal rods. This study covers the fabrication of both single-component and 
 Janus rods by stop-flow lithography, the study of rod diffusion by particle tracking, and the basics
 of self-assembly for Janus rods in different solvents.
 
 In Section~\ref{sec:rods-background}, the flow lithography technique for particle microfabrication
 is described in detail. Section~\ref{sec:rods-exp} describes the experimental procedure for 
-the fabrication of SFL microfluidic devices, the fabrication of single-component and Janus rods,
-particle collection and purification
+the fabrication of microfluidic devices for flow
+lithography, the fabrication of single-component and Janus rods,
+particle collection and purification,
 and the observation of rod suspensions by fluorescence and confocal microscopy. 
-Section~\ref{sec:rod-collection} describes the results of trials on different rod collection
+Section~\ref{sec:rod-collection} describes the results of trials of different rod collection
 techniques, while Section~\ref{sec:surface-interact} describes observations of 
 surface interactions between colloidal rods and various surfaces. Section~\ref{sec:rod-diffusion-results}
 shows the results of translational and rotational diffusion measurements, and 
@@ -30,22 +31,18 @@ self-assembly of Janus rods.
 \subsection{Continuous-Flow Lithography}
 
 One method for the fabrication of structured particles which has undergone active development in recent years is 
-\textit{flow lithography}, a technique developed by Patrick Doyle at MIT which combines microfluidics with 
-UV lithography.  Flow lithography may be carried out either in a continuous-flow mode or in a 
+\textit{flow lithography}, a technique developed by the Doyle Group at 
+the Massachusetts Institute of Technology which combines microfluidics with 
+ultraviolet (UV) lithography.  Flow lithography may be carried out in either a continuous-flow mode or a 
 mode where flow is stopped for the photopolymerization step.
 
-\figone{fig:sfl-schematic}{figures/literature-review/doyle-sfl-schematic.png}{\linewidth}{
-Schematic of stop-flow lithography experiment.~\cite{dendukuri-sfl}}
 
-\figone{fig:sfl-o2-inhib}{figures/literature-review/doyle-sfl-o2-inhibition.png}{\linewidth}{
-Oxygen inhibition of photopolymerization in a PDMS microfluidic device.~\cite{dendukuri-oxygen}}
-
-In a typical continuous flow lithography experiment,~\cite{dendukuri-cfl},
-we construct a microfluidic device out of polydimethylsiloxane (PDMS)
+In a typical continuous-flow lithography (CFL) experiment,~\cite{dendukuri-cfl},
+a polydimethylsiloxane (PDMS) microfluidic device is constructed
 which contains a simple straight microchannel with cross-sectional dimensions between 5-400 \microns. As a feedstock
-material we use some fast-photocuring low-viscosity liquid, typically a photocurable monomer solution. The device is 
-placed on a microscope which includes some UV illumination source which may be reversed through the optical path (i.e.
-it is emitted at the objective lens) and a fast electronic shutter. A typical example might be a conventional 
+material we use a fast-photocuring low-viscosity liquid, typically a photocurable monomer solution. The device is 
+placed on a microscope that includes a UV illumination source that may be reversed through the optical path (i.e.
+emitted at the objective lens) and a fast electronic shutter. A typical example would be a conventional 
 fluorescence microscope with a mercury lamp.  A
 transparency photomask defining the particle geometry is placed at the microscope
 field stop to mask the UV beam.
@@ -56,7 +53,11 @@ volume, and the
 electronic shutter is opened at intervals. If the UV light is intense enough and the liquid is moving at a slow enough speed,
 the UV-exposed region will cure into one or more solid particles.  
 The microchannel flow carries these particles out of the ``active 
-region'', and provides fresh material.
+region'', and then provides fresh unpolymerized material.
+
+\figone{fig:sfl-o2-inhib}{figures/literature-review/doyle-sfl-o2-inhibition.png}{\linewidth}{
+Oxygen inhibition of photopolymerization in a PDMS microfluidic device.~\cite{dendukuri-oxygen}}
+
 
 The particle geometry is defined by a combination of the photomask and the microchannel.  The two-dimensional cross-section
 is determined by the shape of the UV beam at its intersection with the microchannel, and the particle height is defined by
@@ -64,10 +65,13 @@ the height of the microchannel. The upper and lower surfaces of the particles
 are flat, as they conform to the upper and lower microchannel surfaces, so that the particle geometry
 is a 3D extrusion of the photomask.
 Friction or sticking with these top and bottom
-surfaces are prevented in the case where PDMS is the channel material and a hydrogel monomer is the feedstock: hydrogel
-curing is inhibited by the presence of oxygen, and PDMS is oxygen permeable. This results in the formation of an 
-``inhibition layer'' along the internal surfaces of the channel where the liquid will not cure, preserving the mobility 
-of the particles (see Figure~\ref{sfl-o2-inhib}).~\cite{dendukuri-oxygen}
+surfaces are prevented when PDMS is used as the channel material and a hydrogel monomer is 
+used as the feedstock,
+because hydrogel
+curing is inhibited by the presence of oxygen and PDMS is oxygen permeable. This results in the formation of an 
+``inhibition layer'' of dissolved oxygen
+along the internal surfaces of the channel where the liquid will not cure, preserving the mobility 
+of the particles (see Figure~\ref{fig:sfl-o2-inhib}).~\cite{dendukuri-oxygen}
 This layer is typically a few microns thick, depending on 
 details of the channel construction.
 The resolution and quality of the 2D pattern 
@@ -77,23 +81,28 @@ and the magnification and numerical aperture of the objective lens.
 \subsection{Stop-Flow Lithography}
 \label{sec:SFL}
 
+\figone{fig:sfl-schematic}{figures/literature-review/doyle-sfl-schematic.png}{\linewidth}{
+Schematic of stop-flow lithography experiment.~\cite{dendukuri-sfl}}
+
 In \textit{stop-flow lithography} (SFL), the cure-during-flow
 procedure in continuous flow lithography is replaced with a flow-stop-cure cycle in which the microchannel flow
-is allowed to come to a halt before UV exposure. This change allows for a substantial improvement in both 
+is allowed to come to a halt before UV exposure. (See Figure~\ref{fig:sfl-schematic} for an experimental
+schematic.) This change allows for a substantial improvement in both 
 fabrication resolution and throughput.~\cite{dendukuri-sfl}
 
 First, resolution is improved because stopping the microchannel flow minimizes the effect of polymerization
 ``smearing'', which distorts the shape of the resulting particles.
 When flowing monomer solution is exposed to UV light for some finite time, any monomer which occupies the exposed volume 
 during that time begins to undergo photo-polymerization.  Some of the solution will flow out of this region 
-during this time, and be replaced by additional solution from up-stream. This results in a particle which is ``smeared''
-or ``stretched'' along the direction of flow, and does not precisely reproduce the shape defined on the mask.  
+during this time and be replaced by additional solution from up-stream. This results in a particle which is ``smeared''
+or ``stretched'' along the direction of flow and does not precisely reproduce the shape defined on the mask.  
 When flow is 
 stopped, this effect is minimized, and the only limitations imposed on the resolution are due to the optical system,
-the mask resolution and materials constraints.
+the mask resolution, and materials constraints.
 
 Second, throughput is greatly increased because higher rates of flow may be used during the periods when pressure is
-applied.  In continuous-flow lithography, the rate of flow must be kept relatively slow to allow curing to take place
+applied.  In continuous-flow lithography, the rate of flow must be kept relatively slow 
+in order to to allow curing to take place
 at all.
 Once particles have cured, no 
 additional exposure step may take place until this flow has carried the particles out of the
@@ -104,7 +113,8 @@ When the cure step is finished in SFL, a high pressure is applied to quickly cle
 short pause to allow the fluid to stop flowing.  This procedure has allowed fabrication rates as high as 
 $10^5$ particles min$^{-1}$.~\cite{dendukuri-sfl}
 
-Note that the advantage in throughput is reduced somewhat when the experiment design necessitates a long pause step
+It is important to note 
+that the advantage in throughput is reduced somewhat when the experiment design necessitates a long pause step
 after the flow. The length of this pause step is dependent on the fluid viscosity, but especially on the 
 response time of the PDMS device.  When a high pressure is applied to elastic PDMS microchannel, the 
 walls of the channel deform to allow it to expand.  Removing that pressure, as in SFL, produces a ``squeeze flow''
@@ -113,6 +123,7 @@ cannot take place until this flow has ceased.  This response time may be given a
 
 \begin{equation}
 \tau_r \sim \frac{\mu L^2 W}{EH^3}
+\label{eq:resp-time}
 \end{equation}
 
 where $L$ is the channel length, $W$ is the channel width, $H$ is the channel height and $E$ is the elastic
@@ -125,22 +136,23 @@ and more complicated when the deformation in channel height $\Delta h$ is compar
 Polymeric particles consisting of multiple components of different chemistries may be produced by taking advantage
 of laminar flow in the fabrication microchannel.  
 In the laminar flow regime, several different streams may flow in parallel through
-the same microchannel without turbulence, with mixing limited to that caused by 
+the same microchannel without turbulence and with mixing limited to that caused by 
 diffusion.~\cite{stone-laminar}  Diffusion alone
 will produce very little mixing, so that a sharp boundary between two streams may spread only a few microns over
 millimeters of linear flow.~\cite{mohr-flow} The result is a multiple-stream microchannel flow in which multiple materials
 co-exist and are geometrically distinct.
 
 If each co-flowing stream is made up of a photopolymerizable solution with similar curing kinetics, one may perform
-flow lithography using a mask which illuminates several streams at once to produce particles which contain geometrically
+flow lithography using a mask which illuminates several streams at once in order
+to produce particles which contain geometrically
 distinct regions of different chemical makeup.  A simple case 
 is demonstrated in Dendukuri \textit{et al.}~\cite{dendukuri-sfl}
 for SFL, in which dyed and un-dyed PEGDA solutions are cured in the laminar flow regime to produce particles whose
 fluorescence is confined to one part of the particle.  Fabrication of amphiphilic microparticles containing both
-hydrophobic and hydrophilic materials is demonstrated in another Dendukuri paper in 
+hydrophobic and hydrophilic materials is demonstrated Dendukuri in 
 \textit{Langmuir}~\cite{dendukuri-amph}, and particles which incorporate biomolecule probes and lithographically-defined
-``barcodes'' in different regions are fabricated by Pregibon \textit{et al.} in a 2007 paper in 
-\textit{Science}.~\cite{pregibon-dna}
+``barcodes'' in different regions are fabricated by Pregibon \textit{et al.} in a 2007 
+\textit{Science} paper.~\cite{pregibon-dna}
 
 \section{Experimental Procedure}
 \label{sec:rods-exp}
@@ -150,9 +162,6 @@ hydrophobic and hydrophilic monomer solutions.
 
 \subsection{Microchannel Device Fabrication}
 
-\figone{fig:device-design}{figures/rods/four-channels-together.jpg}{0.5\linewidth}{
-Four Y-channel microchannel patterns, sharing a common reservoir for accumulation of particles from multiple experiments.}
-
 Particle fabrication was carried out in 
 three-input Y-junction microchannel devices (Figure~\ref{fig:device-design}).
 The primary channel of these devices had a typical 
@@ -160,14 +169,24 @@ height of 7 \microns, width of 200 \microns, and length of 3000-5000 \microns. T
 to facilitate the fabrication of large numbers of particles with small size in all dimensions: the low height
 facilitated small-particle fabrication by limiting the height of the particles, while the comparatively large
 width allowed many particles to be fabricated simultaneously. Multiple inputs were included to allow up to three
-monomer streams to be simultaneously flowed, with a single exit point for collecting particles.
+monomer streams to be simultaneously flowed with a single exit point for collecting particles.
 
 \subsubsection{Photoresist Masters}
-Positive-relief photoresist master templates were fabricated by UV photolithography. A thin film
+
+\figone{fig:device-design}{figures/rods/four-channels-together.jpg}{0.5\linewidth}{
+Photomask used in the exposure step of the photoresist master fabrication.  Four 
+fabrication microchannels, each containing three inputs, are arranged so that they share
+a common output.  The channels are arranged thus so that the particle samples fabricated
+in multiple experiments may be combined to increase the volume of the combined sample.
+This is desirable due to the difficulties with collecting and processing particles
+with high yield (see Section~\ref{sec:exp-collection} and~\ref{sec:rod-collection}).}
+
+Positive-relief photoresist master templates (or ``masters'') were fabricated by UV photolithography. A thin film
 of SU-8 2007 photoresist (Microchem) was laid down on a clean Si wafer by spin-coating at 3000 rpm to produce a 
 7 \microns~layer. Next, a ``soft bake'' was carried out by heating the wafer on a hot plate at 
 120\degC~for five minutes to evaporate the photoresist solvent.  The device features were patterned by exposing the 
-photoresist to UV light from a 300 W lamp for 40 s through a photomask defining the device design. A ``hard bake'' step
+photoresist to UV light from a 300 W lamp for 40 s through a photomask defining the device design 
+(Figure~\ref{fig:device-design}). A ``hard bake'' step
 was then carried out by heating the wafer at 120\degC for ten minutes, to cure the photoresist in the exposed areas.
 Finally, the wafer was immersed in SU-8 developer (Microchem) and agitated for two minutes to remove the unexposed
 photoresist, then rinsed with isopropyl alcohol (IPA).
@@ -182,10 +201,10 @@ a silane coating.
 \subsubsection{Elastomer Device Construction}
 
 Microchannel devices were constructed from polydimethylsiloxane (PDMS, Dow Corning, Sylgard 184). PDMS
-elastomer and curing agent were mixed at a ratio of 10:1 by weight, and pored over the photoresist master 
-in a plastic petri dish to a depth of about 2 mm.  PDMS was also spun-coat onto a 48 x 60 mm \#1 cover-slip (Gold Seal)
+elastomer and curing agent were mixed at a ratio of 10:1 by weight and poured over the photoresist master 
+in a petri dish to a depth of about 2 mm.  PDMS was also spun-coat onto a 48 x 60 mm \#1 cover-slip (Gold Seal)
 to form the substrate for the device.
-Both of these  were then baked at 65\degC~for six hours or more to cure
+Both of these  were then baked at 65 \degC~for six hours or more to cure
 the PDMS.  
 
 Once the PDMS was fully cured, a razor blade was used to carefully cut out a section which encompassed some or all of
@@ -194,24 +213,24 @@ in a block of PDMS with negative features defining the tops and sides of the mic
 For each microchannel, three small holes ($\sim$0.5 mm) were punched at each entrance using a syringe press, and a larger
 hole ($\sim$3 mm) was punched at the exit using a biopsy punch.
 
-For each of the ``top side'' PDMS block and the PDMS-coated glass substrate, the PDMS surface was rinsed with 
-deionized water and IPA.  Following this, small particles were removed by first laying down and then peeling up
+Both the PDMS block defining the channels and the PDMS-coated glass substrate were rinsed
+with deionized water and IPA. Following this, small particles were removed by first laying down and then peeling up
 Scotch Magic brand transparent tape.  Each section was then placed below a UV light-emitting
-tube lamp with the channel surface facing the lamp, and exposed to UV light for ten minutes to promote PDMS-PDMS
+tube lamp with the channel surface facing the lamp and exposed to UV light for ten minutes to promote PDMS-PDMS
 adhesion.  After UV exposure, the channels and the 
 substrate were then firmly pressed together with the channel surface of the top
-block against the PDMS-coated surface of the substrate.  The resulting device was then baked at 100\degC~for one hour
+block against the PDMS-coated surface of the substrate.  The resulting device was then baked at 100 \degC~for one hour
 to promote device bonding.
 
 \subsection{Photocurable Solutions}
 \label{sec:janus-materials}
-The hydrophobic solution was composed of 95 v/o 
-tri(methylol propane) triacrylate (TMPTA, Sartomer) and 5 v/o Darocur 1173 photoinitiator (Ciba), 
+The hydrophobic solution was composed of 95 vol\% 
+tri(methylol propane) triacrylate (TMPTA, Sartomer) and 5 vol\% Darocur 1173 photoinitiator (Ciba), 
 with 0.005 wt\% methacryloxyethyl thiocarbamoyl rhodamine B (Polysciences) as a cross-linking 
 fluorescent dye.
 The hydrophilic solution was composed of either 20 mol ethoxylated tri(methylol propane) triacrylate (20-ETMPTA,
-Sartomer) or poly(ethylene glycol) diacrylate (PEGDA, $M_n$ = 700, Sigma Aldrich) at 80 v/o, 
-15 v/o deionized water, and 5 v/o Darocur 1173 photoinitiator, with 0.005 wt\% 
+Sartomer) or poly(ethylene glycol) diacrylate (PEGDA, $M_n$ = 700, Sigma Aldrich) at 80 vol\%, 
+15 vol\% deionized water, and 5 vol\% Darocur 1173 photoinitiator, with 0.005 wt\% 
 3,8-dimethacryloyl ethidium bromide (Polysciences) as a cross-linking fluorescent dye.
 
 
@@ -219,7 +238,7 @@ Sartomer) or poly(ethylene glycol) diacrylate (PEGDA, $M_n$ = 700, Sigma Aldrich
 
 Masks used for single-component fabrication contained two-dimensional arrays of identical aligned 
 rods, with a separation in each direction equal to twice the length of the rod to avoid inter-particle
-curing (Figure~\ref{fig:rod-masks}(a)). These arrays were designed to maximize the number of 
+curing. These arrays were designed to maximize the number of 
 rods cured per cycle by making them large enough to, at minimum,
 cover the field stop aperture for the transmission of the UV beam. This circular aperture 
 had a diameter of 1.5 inches.  For example, the photomask containing 500 \microns~rod features
@@ -233,40 +252,28 @@ masks was the same as for single-component fabrication.
 \subsection{SFL Experiment}
 \label{sec:sfl-expt-rods}
 
-\figone{fig:sfl-experiment-photo}{figures/rods/SFL-photo-alternate.jpg}{0.6\linewidth}{
-A microfluidic device platform containing multiple Y-junction microchannels is placed on 
-the microscope used for SFL, and connected to two pressure sources to pump PEGDA and TMPTA 
-monomer solutions.}
-
-%\figone{fig:sfl-schematic}{figures/literature-review/doyle-sfl-schematic.png}{0.8\linewidth}{
-%General schematic of SFL experiment, illustrating computer-controlled operation of the pressure source,
-%three-way valve and shutter to control flow and exposure conditions. Figure from~\cite{dendukuri-sfl}}
-
-\figone{fig:janus-sfl-schematic}{figures/rods/janus-rod-sfl-schematic.png}{0.70\linewidth}{
-SFL fabrication of Janus rods.}
-
 UV exposure and experimental imaging for small-rod fabrication was carried out using a 60x 
 oil-immersion objective lens 
-on an IX72 inverted microscope(Olympus America), with an additional 1.6x lens added to the beam path for
+on an IX71 inverted microscope (Olympus America), with an additional 1.6x lens added to the beam path for
 the fabrication of smaller rods.  Using the 60x objective, a demagnification factor of approximately 
 33 was typically observed between the mask and the resulting rods; i.e., a rod of 500 \microns~length defined on
 the photomask would typically result in the fabrication of a 12 \microns~rod in the microchannel.
 
 Microchannel flow was driven by gas pressure supplied by a house nitrogen line and/or a compressed air tank 
-(SJ Smith Welding Supply). Pressure control was achieved using a custom-built pressure box, consisting of
+(SJ Smith Welding Supply). Pressure control was achieved using a custom-built pressure box consisting of
 four computer-controlled regulators and four duplex valves connected to a USB
-controller (National Instruments) allowing for 
+controller (National Instruments). This system allowed for 
 up to four independent pressure
 settings driving up to eight separate valves. UV light was supplied by a 100 W mercury lamp
-connected in fluorescence microscope configuration, with exposure time controlled using a Lambda SC 
+connected in fluorescence microscope configuration with exposure time controlled using a Lambda SC 
 electronic shutter (Sutter Instruments).
-
-The SFL experiment was driven using LabView software (National Instruments) with a custom
-interface. The process
+The SFL experiment was driven using custom LabView software (National Instruments) using
+hardware drivers provided by the manufacturers. The process
 flow of an SFL experiment consists of the following sequence of steps:
 
 \begin{enumerate}
-\item Specify ``flow time'' $t_{flow}$, ``pause time'' $t_{pause}$, and exposure time $t_{expose}$.
+\item Specify ``flow time'' $t_{flow}$, ``pause time'' $t_{pause}$, and 
+``exposure time'' $t_{expose}$.
 \item Set pressure for each port on electronic regulators.
 \item Until the experiment is stopped:
 \begin{enumerate}
@@ -277,28 +284,40 @@ flow of an SFL experiment consists of the following sequence of steps:
 \end{enumerate}
 \end{enumerate}
 
-For a schematic of the SFL experimental setup, see Figure~\ref{fig:sfl-schematic}.
 For each monomer solution, a 10-100\uL~pipette tip (Eppendorf) was filled with approximately 60\uL~of solution.
 A silicone tube was connected at one end to the output of one valve of the pressure box, and the other end
 was inserted into the top of the pipette tip.  The bottom of the pipette tip was then inserted into one of the
-small entrance holes in the microchannel device.  This device was the placed on above the microscope objective,
+small entrance holes in the microchannel device.  This device was placed above the microscope objective,
 and the microscope was focused such that the focal place was inside the channel.  After starting the 
 experiment, the shutter was allowed to open and the fine focus was adjusted manually to optimize
 curing conditions. Optimization was judged by visual inspection of the resulting particles. 
 
+\figone{fig:sfl-experiment-photo}{figures/rods/SFL-photo-alternate.jpg}{0.6\linewidth}{
+A microfluidic device platform containing multiple Y-junction microchannels is placed on 
+the microscope used for SFL and connected to two pressure sources to pump PEGDA and TMPTA 
+monomer solutions.}
+
 Single-component rods were fabricated using the central entrance channel to supply monomer to the system, 
-leaving the other two entrances unused. Typical experimental settings for these experiments were pressure
-8 psi, flow time 1.5 s, and pause time 2 s.  Exposure times for PEGDA or 20-ETMPTA were typically 0.05-0.15 s
-depending on the mask dimensions, while exposure times for TMPTA were typically 0.2-0.3 s to compensate for
+leaving the other two entrances unused. (See Figure~\ref{fig:sfl-experiment-photo} for a 
+photo of a single-component experiment.)  Typical experimental settings for these experiments were pressure
+8 psi, flow time 1.5 s, and pause time 2 s.  This pause time was substantially longer than
+typical SFL pause times for larger particles, generally less than 0.5 s, due to the small
+height of the channels (see Equation~\ref{eq:resp-time}).  Exposure times for PEGDA or 20-ETMPTA were typically 
+0.05--0.15 s
+depending on the mask dimensions, while exposure times for TMPTA were typically 0.2--0.3 s to compensate for
 the less favorable curing behavior of the hydrophobic monomer.  The fabrication of smaller rods generally
 necessitated slightly higher exposure times.  
 
+\figone{fig:janus-sfl-schematic}{figures/rods/janus-rod-sfl-schematic.png}{0.70\linewidth}{
+SFL fabrication of Janus rods.}
+
 Janus rods were fabricated using the two side entrance channels to supply each type of monomer solution,
-with the central channel left unused.  (All three channels were used for fabricating
+with the central channel left unused (Figure~\ref{fig:janus-sfl-schematic}).  
+(All three channels were used for fabricating
 particles with complex anisotropy; see
 section~\ref{sec:SFLx3}.)  Typical experimental settings for these experiments were pressure 7 psi on each side, 
-flow time 2 s, pause time 2 s, and exposure time 0.2-0.3 s depending on the mask dimensions.
-The two monomer streams would enter the main channel on either side, and form
+flow time 2 s, pause time 2 s, and exposure time 0.2--0.3 s depending on the mask dimensions.
+The two monomer streams would enter the main channel on either side and form
 an interface along the center of the channel. Because the hydrophobic and
 hydrophilic streams were immiscible and the microchannel flow took place in the laminar flow regime, 
 this interface persisted for several hundred microns down the channel.
@@ -312,12 +331,13 @@ was left empty to allow collection of the maximum volume of particles possible.
 \label{sec:exp-collection}
 
 Particle collection techniques were developed and optimized for a number of different experimental cases,
-depending both on the particular monomer solutions involved and on the desired final rod behavior, i.e. 
+depending both on the particular monomer solutions involved and on the desired final rod behavior, i.e., 
 non-interacting or self-assembling.  Details of the differences
 in collection techniques and their effectiveness will be explored in Section~\ref{sec:rod-collection}.
 
 In general, SFL-fabricated rods were ejected, still in monomer solution, from the fabrication microchannel into 
-an open reservoir, with the bottom and sides formed of PDMS and the top open to the environment.  Owing to the
+an open reservoir, with the bottom and sides formed of PDMS and the top open to the 
+laboratory environment.  Owing to the
 surface tension of the monomer, these particles generally stayed near the side walls of the reservoir, often
 collecting in corners or imperfections of the walls.  Note that in the single-component case, the particles in
 the reservoir may be assumed to be perfectly non-interacting as they are still suspended in the monomer solution, 
@@ -339,23 +359,28 @@ manually using the microscope.
 \end{enumerate}
 
 The particular solvent used, the dispersal time, and the type of pipette were all varied for different experimental
-cases.
+cases; see Section~\ref{sec:rod-collection} for details.
 
-Following pipette collection, the particles were either transferred into a micro-centrifuge tube for solvent 
-exchange, or directly into an observation chamber.  Solvent exchange was carried out in cases where the desired
+Following pipette collection, the particles were transferred either  into a micro-centrifuge tube for solvent 
+exchange or directly into an observation chamber.  Solvent exchange was carried out in cases where the desired
 observation solvent was either incompatible with PDMS, such as toluene, or of sufficiently high viscosity to make
-direct collection in this solvent difficult, such as collecting in PEGDA.  Solvent exchange was also used to reduce
-the concentration of the monomer solution components in the final solution, i.e. to remove liquid monomer and 
+direct collection difficult, such as in PEGDA.  Solvent exchange was also used to reduce
+the concentration of the monomer solution components in the final solution, i.e., to remove liquid monomer and 
 reduce the background fluorescence due to free dye.
 
-To carry out solvent exchange, particles in a micro-centrifuge tube were either centrifuged at 3000 rpm for 10 minutes or
-allowed to settle due to gravity for 6+ hours in order separate particles from solution.  A quantity of solution equivalent
+To carry out solvent exchange, particles 
+were placed in a micro-centrifuge tube and either centrifuged at 3000 rpm for 10 minutes or
+allowed to settle due to gravity for 6+ hours in order separate particles from solution.  A quantity of 
+supernatant solution equivalent
 to one-half the total volume was then carefully pipetted from the top of the tube, and replaced with the same quantity of 
 the desired \textit{observation solvent}.  The tube was then agitated using a vortex mixer in order to mix the solvents and
-re-suspend the particles.  This process was planned to be repeated seven times in order to increase the volume fraction of
-the new observation solvent to over 99\%.  However, experimental results indicating that this procedure was resulting in heavy
-particle losses resulted in a reduction in some experiments including only a few rinse 
-steps.  These results will be detailed in 
+re-suspend the particles.  This process was intended
+to be repeated seven times in order to increase the volume fraction of
+the new observation solvent to over 99\%.  However, experimental results indicating that this 
+procedure resulted in heavy
+particle losses, with each additional exchange step reducing the yield significantly.
+Some experiments therefore included only a few exchange steps.  The results of
+collection trials will be detailed in 
 Section~\ref{sec:rod-collection}.
 
 
@@ -363,7 +388,8 @@ Section~\ref{sec:rod-collection}.
 Design of a glass observation chamber for microscopy of particles.}
 
 Observation chambers were constructed by affixing a glass coverslip to one end of short glass tube using 
-five-minute epoxy (Devcon).  Oriented with the coverslip as the base, this provides a flat transparent surface
+five-minute epoxy (Devcon).  Oriented with the coverslip as the base, this 
+construct provides a flat transparent surface
 for microscopy. (See Figure~\ref{fig:confocal-chamber-cartoon}.)
 
 
@@ -373,8 +399,8 @@ for microscopy. (See Figure~\ref{fig:confocal-chamber-cartoon}.)
 To carry out diffusion measurements, the rod sample was placed in the solvent of interest and pipetted into an observation 
 chamber.  In some cases the observation chamber was pre-coated with no-stick fluorosilane 
 to inhibit sticking between the rods and the chamber surfaces; in others,
-the observation chamber was partially pre-filled with solvent in order to pre-treat the 
-bottom surface, and the rods were allowed to settle for 20-30 minutes before observation.
+the observation chamber was partially pre-filled with solvent in order to pre-wet the 
+bottom surface, and the rods were allowed to settle for 20--30 minutes before observation.
 
 The observation chamber was then placed on the sample stage of a fast confocal laser scanning microscope (CLSM; 
 an IX71 inverted microscope, Olympus America, connected to a vt$^{eye}$ confocal scanner, Visitech International). The CLSM
@@ -389,6 +415,8 @@ based on the particular sample, and two-dimensional rod diffusion at the
 bottom of the chamber was imaged in time-series mode.  The microscope was configured such that images were acquired at
 a rate of 1 frame per second (fps), 
 each image consisting of the average of eight frames acquired at 30 fps.  
+After this acquisition (8/30 s long), the laser shutter is closed until the next one-second image is aquired
+to minimize photobleaching.
 (For fast diffusion of the smallest rods,
 image acquisition was adjusted to 2 fps.)  Laser exposure was triggered only during active 
 acquisition, and shuttered otherwise.  Image dimensions were 512 $\times$ 512 pixels with a scale of 10 pixels
@@ -397,10 +425,11 @@ The intensity scale was adjusted relative to the actual intensity to maximize th
 The total time of a typical experiment was 10 minutes.
 
 Time-series image data were saved as 8-bit TIFF image stacks and transferred to computation servers for analysis.
-Analyses were carried out to compute mean-square-displacement and orientation displacement for each rod using algorithms as 
+Analyses were carried out to compute mean-square-displacement and orientation displacement for each rod using 
+the algorithms as 
 described in Section~\ref{sec:rod-tracking} and implemented in Matlab scripts described in 
-Appendix~\ref{sec:matlab-implementation}, 
-and these data
+Appendix~\ref{sec:matlab-implementation}.
+These data
 were used to calculate two-dimensional diffusion constants.  
 
 \subsection{Large-Area Imaging}
@@ -457,7 +486,8 @@ DMSO & Yes & Yes & Yes \\
 \end{center}
 \caption{PEGDA, TMPTA and Janus rods may be collected using different solvents. ``Yes'' indicates that
 a single pipette collection can successfully extract more than 80\% of the particles;
-``Poorly'' indicates that a single collection extracts more than 50\% of the particles; and
+``Poorly'' indicates that a single collection extracts more than 50\% of the particles
+but less than 80\%; and
 ``No'' indicates that a single collection extracts fewer than 50\% of the particles.}
 \label{tab:collect-solvent}
 \end{table}
@@ -466,7 +496,7 @@ Several different collection solvents were explored for experiments involving bo
 hydrophilic and hydrophobic rods.  The solvents used included 
 common organic solvents such as ethanol,
 isopropyl alcohol (IPA), and toluene; solvents with similar chemistries to the particles, including solutions of 
-PEGDA, ETMPTA and TMPTA as well as ethylene glycol; and the common polar solvents water and dimethyl sulfoxide (DMSO).
+PEGDA, ETMPTA, TMPTA, and ethylene glycol; and the common polar solvents water and dimethyl sulfoxide (DMSO).
 Collection solvents were compared to each other based on estimating the fraction of particles which remained in the
 fabrication reservoir following the first pipette step.  Collection was deemed successful (a 
 ``yes'' in the table) if fewer than 20\% of particles remained; ``poorly'' represents fewer than 50\% remaining; and 
@@ -475,28 +505,29 @@ The results of these trials are presented qualitatively in Table~\ref{tab:collec
 results were generally found with the organic solvents, with ethanol being a good all-purpose collection solvent.
 Collection with solvents similar to the monomer were generally unsuccessful, with repeated pipetting failing to 
 remove more than 20-30\% of particles.  Water was useful only in collectin PEGDA rods.
-DMSO was also fairly successful, but showed more of a tendency to swell the PDMS
+DMSO was also fairly successful, but demonstrated more of a tendency to swell the PDMS
 and was more hazardous to work with than ethanol.
 
 \subsubsection{Pipettes and Micro-Centrifuge Tubes}
 
 While removing particles from the reservoir was successful for some solvents, the second part of the collection 
-procedure--ejecting those particles from the pipette into a second container--was much less successful.  
+procedure, demonstrated ejecting those particles from the pipette into a second container, was much less successful.  
 Simple trials in which particles were extracted from the fabrication reservoir and then deposited directly into 
 observation chambers using standard plastic pipette tips showed yields of less than 50\%, 
 even when 90\% or more of the particles had been shown to leave the reservoir.  
 
 
-Several different types of pipettes were used, including 15 \uL~plastic pipette tips (Eppendorf), glass pasteur pipettes and
+Several different types of pipettes were used, including 15 \uL~plastic pipette tips (Eppendorf), glass pasteur pipettes,
+and
 glass microcapillaries extracted using micropipette bulbs.  Each of these 
 was also coated with fluorosilane to attempt to reduce adhesion between the particles and the pipette surfaces.
 The use of either type of glass pipette typically increased yield to close to 60\%. Fluorosilane coatings on the glass
-pipettes showed additional improvements to 65-70\%, but this improvement was unreliable.  Yield of the fluorosilane-
-coated plastic tips was decreased relative to the uncoated tips.
+pipettes showed additional improvements to 65-70\%, but this improvement was unreliable.  Yield of the 
+fluorosilane-coated plastic tips was decreased relative to the uncoated tips.
 
 In addition, yield was also substantially reduced when particles were transferred to a microcentrifuge tube
 and then re-extracted, with yields of less than 10\% of the particles placed in the tube.  This yield was
-not improved by fluorosilane vapor-coating or by the use of any other solvent, and had significant
+not improved by fluorosilane vapor-coating or by the use of any other solvent and had significant
 negative effects on solvent exchange and particle cleaning procedures.  In many experiments, cleaning 
 steps were neglected entirely to preserve sample size, with possible negative effects on the final results.
 
@@ -570,9 +601,11 @@ collecting and cleaning the particles outlined in Section~\ref{sec:rod-collectio
 \subsection{Translational and Rotational Diffusion}
 \label{sec:rod-diffusion-results}
 
-\figfour{fig:rods-msd}{figures/rods/dynamics-data/msd6um.png}{figures/rods/dynamics-data/msd9um.png}{figures/rods/dynamics-data/msd12um.png}{figures/rods/dynamics-data/msd15um.png}{Mean-square displacement plots for (a) 6 \microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods.}
+\figfour{fig:rods-msd}{figures/rods/dynamics-data/msd6um.png}{figures/rods/dynamics-data/msd9um.png}{figures/rods/dynamics-data/msd12um.png}{figures/rods/dynamics-data/msd15um.png}{Mean-square displacement plots for (a) 6 \microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods. The straight lines have a slope of one, representing
+ideal diffusion behavior.}
 
-\figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Mean-square rotational displacement data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods.}
+\figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Mean-square rotational displacement data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods. The straight lines have a slope of one, representing
+ideal diffusion behavior.}
 
 
 Dynamics experiments were carried out to study the effect of rod size and aspect ratio on the rate of
@@ -650,9 +683,10 @@ either or both of the experimental and theoretical values.
 \subsection{Self-Assembly of Janus Rods}
 \label{sec:assembly-janus-rods}
 
-\figone{fig:big-janus-high-conc}{figures/rods/large-janus-high-conc.png}{0.8\linewidth}{
+\figone{fig:big-janus-high-conc}{figures/rods/large-janus-high-conc.png}{0.9\linewidth}{
 Large Janus rods (45 x 11 x 11~\microns), randomly oriented. The narrower ends are 
-composed of hydrophobic TMPTA.}
+composed of hydrophobic TMPTA, while the broader ends are composed of
+hydrophilic PEGDA.}
 
 \begin{figure}
 \begin{center}
@@ -672,7 +706,7 @@ of these particles to drive their rearrangement into new configurations produced
 self-assembly (Figure~\ref{fig:big-janus-assembly}), producing clustered structures with high contact
 areas between the hydrophobic regions of the particles.  This served as a proof-of-concept of 
 hydrophobic self-assembly and duplication of the
-results from Dendukuri \textit{et al.}~\cite{dendukuri-amph}.  
+results from Dendukuri \textit{et al.}~\cite{dendukuri-amph}  
 
 \begin{figure}
 \begin{center}
@@ -689,7 +723,7 @@ size limitations in fabricating Janus rods.  Janus rods were successfully fabric
 using 500 \microns, 300 \microns~and 200 \microns~masks to produce Janus rods with lengths of 
 15 \microns, 7 \microns~and 4 \microns~respectively. (See Figure~\ref{fig:janus-sizes}(a,b,c).)
 
-\figone{fig:assembly-v-solvent}{figures/rods/janus-rod-assembly-vs-solvent.png}{0.8\linewidth}{
+\figone{fig:assembly-v-solvent}{figures/rods/janus-rod-assembly-vs-solvent.png}{0.9\linewidth}{
 Self-assembly of Janus rods in (a) water, (b) DMSO and (c) IPA.}
 
 To explore the effect of assembly solvent on the resulting structures, identical Janus rods with dimensions 
@@ -703,10 +737,10 @@ self-assembly behavior following agitation, in which the green-dyed hydrophilic 
 assembling to maximize contact area.  This series of experiments illustrates the potential for 
 control of self-assembly via varying the solvent conditions.
 
-\figone{fig:assembly-small-clusters}{figures/rods/janus-rods-large-clusters-ordered.png}{0.8\linewidth}{
+\figone{fig:assembly-small-clusters}{figures/rods/janus-rods-large-clusters-ordered.png}{0.9\linewidth}{
 Janus rods self-assemble at low concentrations into small ``micellar'' structures.}
 
-\figone{fig:large-struct}{figures/rods/janus-rods-large-structures.png}{0.8\linewidth}{
+\figone{fig:large-struct}{figures/rods/janus-rods-large-structures.png}{0.9\linewidth}{
 Janus rods self-assemble at high concentration into extended, gel-like structures in water.}
 
 Focusing on self-assembly in water, we see that a variety of different structures may be 
@@ -734,11 +768,14 @@ at low and high magnifications.}
 \label{fig:large-area}
 \end{figure}
 
-\figone{fig:bonds-per-particle}{figures/rods/struct-plot-2.jpg}{0.8\linewidth}{
-Bonds per Janus particle.}
+\figone{fig:bonds-per-particle}{figures/rods/struct-plot-2.jpg}{0.9\linewidth}{
+The average number of nearest neighbors of ``bonds'' per Janus particle is determined
+for samples of different aspect ratios and solvent compositions.}
 
-\figone{fig:orientation-plot}{figures/rods/struct-plot-1.jpg}{0.8\linewidth}{
-Orientational ordering.}
+\figone{fig:orientation-plot}{figures/rods/struct-plot-1.jpg}{0.9\linewidth}{
+The orientational ordering of Janus rods within a cluster, as represented by the 
+mean dot product of orientation vectors in rods within the same cluster, is
+determined for samples of different aspect ratios and solvent compositions.}
 
 A more quantitative study of Janus rod self-assembly was attempted by fabricating large 
 numbers of Janus rods and observing their self-assembly in confocal observation chambers.
@@ -801,9 +838,10 @@ better correlation between particles with a high aspect ratio.
 \includegraphics[height=2.5in]{figures/rods/silver-fluorescence-assembly.png}
 \end{center}
 \caption{
-(a) Ag nanoparticles are suspended in PEGDA monomer solution for Janus SFL fabrication, and
-(b) Ag nanoparticles are embedded in at 5 wt\% in otherwise-standard PEGDA monomer solution, and Janus rods
-are fabricated as a demonstration of self-assembled functional Janus rods.}
+(a) Ag nanoparticles are suspended in PEGDA monomer solution at 
+a concentration of 5 wt\% for Janus SFL fabrication.  The resulting
+Janus rods (b) contain embedded Ag nanoparticles, 
+as a demonstration of self-assembled functional Janus rods.}
 \label{fig:silver-janus}
 \end{figure}
 

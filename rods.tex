@@ -5,15 +5,15 @@
 When one is first presented with the different dimensions of anisotropy proposed by 
 Glotzer and Solomon (Figure~\ref{fig:glotzer-dimensions},~\cite{glotzer-solomon}), the
 potential variety of particle types can be overwhelming. It is therefore useful to begin by studying 
-particles which draw from only one or two of these anisotropy dimensions. To this end, our
-initial study has focused on particles that vary only in the dimension of 
-aspect ratio, i.e., colloidal rods. This study covers the fabrication of both single-component and 
+particles engineered with only one or two of these anisotropy dimensions. To this end, we first
+focused on particles that vary only in the dimension of 
+aspect ratio, i.e., colloidal rods. In this chapter, we present the fabrication of both single-component and 
 Janus rods by stop-flow lithography, the study of rod diffusion by particle tracking, and the basics
 of self-assembly for Janus rods in different solvents.
 
 In Section~\ref{sec:rods-background}, the flow lithography technique for particle microfabrication
 is described in detail. Section~\ref{sec:rods-exp} describes the experimental procedure for 
-the fabrication of microfluidic devices for flow
+the fabrication of microfluidic devices for stop-flow
 lithography, the fabrication of single-component and Janus rods,
 particle collection and purification,
 and the observation of rod suspensions by fluorescence and confocal microscopy. 
@@ -30,18 +30,19 @@ self-assembly of Janus rods.
 
 \subsection{Continuous-Flow Lithography}
 
-One method for the fabrication of structured particles which has undergone active development in recent years is 
+One method for the fabrication of structured particles that has undergone active development in recent years is 
 \textit{flow lithography}, a technique developed by the Doyle Group at 
 the Massachusetts Institute of Technology which combines microfluidics with 
-ultraviolet (UV) lithography.  Flow lithography may be carried out in either a continuous-flow mode or a 
-mode where flow is stopped for the photopolymerization step.
+ultraviolet (UV) lithography.  Flow lithography may be carried out in either a continuous- or stop-flow 
+for the photopolymerization step.
 
 
 In a typical continuous-flow lithography (CFL) experiment,~\cite{dendukuri-cfl},
 a polydimethylsiloxane (PDMS) microfluidic device is constructed
-which contains a simple straight microchannel with cross-sectional dimensions between 5-400 \microns. As a feedstock
-material we use a fast-photocuring low-viscosity liquid, typically a photocurable monomer solution. The device is 
-placed on a microscope that includes a UV illumination source that may be reversed through the optical path (i.e.
+that contains a simple straight microchannel with cross-sectional dimensions between 5-400 \microns. As a feedstock
+material, a fast-photocuring low-viscosity liquid, typically a photocurable monomer solution,
+is used. The device is 
+placed on a microscope that includes a UV illumination source that may be reversed through the optical path (i.e.,
 emitted at the objective lens) and a fast electronic shutter. A typical example would be a conventional 
 fluorescence microscope with a mercury lamp.  A
 transparency photomask defining the particle geometry is placed at the microscope
@@ -61,7 +62,8 @@ channel walls due to the presence of a layer dissolved oxygen,
 which has diffused into the channel due through the oxygen-permeable PDMS.~\cite{dendukuri-oxygen}}
 
 
-The particle geometry is defined by a combination of the photomask and the microchannel.  The two-dimensional cross-section
+The particle geometry is defined by a combination of the photomask and the microchannel
+geometry.  The two-dimensional cross-section
 is determined by the shape of the UV beam at its intersection with the microchannel, and the particle height is defined by
 the height of the microchannel. The upper and lower surfaces of the particles
 are flat, as they conform to the upper and lower microchannel surfaces, so that the particle geometry
@@ -83,6 +85,12 @@ and the magnification and numerical aperture of the objective lens.
 \subsection{Stop-Flow Lithography}
 \label{sec:SFL}
 
+In \textit{stop-flow lithography} (SFL), the cure-during-flow
+procedure in continuous flow lithography is replaced with a flow-stop-cure cycle in which the microchannel flow
+is allowed to come to a halt before UV exposure. (See Figure~\ref{fig:sfl-schematic} for an experimental
+schematic.) This change allows for a substantial improvement in both 
+fabrication resolution and throughput.~\cite{dendukuri-sfl}
+
 \figone{fig:sfl-schematic}{figures/literature-review/doyle-sfl-schematic.png}{\linewidth}{
 In a stop-flow lithography experiment, gas pressure is used to drive the flow of
 the photocurable solution. The flow is stopped at intervals using a three-way valve to
@@ -91,12 +99,6 @@ UV photopolymerization, carried out using an electronic shutter to actuate the U
 exposure and a transparency mask to define the particle geometry. The valve and the shutter
 are synchronized by computer control; the pressure source may also be optionally
 controlled using the PC.~\cite{dendukuri-sfl}}
-
-In \textit{stop-flow lithography} (SFL), the cure-during-flow
-procedure in continuous flow lithography is replaced with a flow-stop-cure cycle in which the microchannel flow
-is allowed to come to a halt before UV exposure. (See Figure~\ref{fig:sfl-schematic} for an experimental
-schematic.) This change allows for a substantial improvement in both 
-fabrication resolution and throughput.~\cite{dendukuri-sfl}
 
 First, resolution is improved because stopping the microchannel flow minimizes the effect of polymerization
 ``smearing'', which distorts the shape of the resulting particles.
@@ -134,7 +136,8 @@ cannot take place until this flow has ceased.  This response time may be given a
 \label{eq:resp-time}
 \end{equation}
 
-where $L$ is the channel length, $W$ is the channel width, $H$ is the channel height and $E$ is the elastic
+where $\mu$ is the liquid viscosity,
+$L$ is the channel length, $W$ is the channel width, $H$ is the channel height and $E$ is the elastic
 modulus of PDMS.  Note that this response time is not dependent on the input pressure, so that relatively high
 flow rates may be used without affecting the length of the pause step. However, this scaling becomes pressure-dependent
 and more complicated when the deformation in channel height $\Delta h$ is comparable to $H$.~\cite{dendukuri-sfl}
@@ -142,7 +145,7 @@ and more complicated when the deformation in channel height $\Delta h$ is compar
 \subsection{Multiple-Component Fabrication}
 
 Polymeric particles consisting of multiple components of different chemistries may be produced by taking advantage
-of laminar flow in the fabrication microchannel.  
+of laminar flow in the device.  
 In the laminar flow regime, several different streams may flow in parallel through
 the same microchannel without turbulence and with mixing limited to that caused by 
 diffusion.~\cite{stone-laminar}  Diffusion alone
@@ -152,20 +155,20 @@ co-exist and are geometrically distinct.
 
 If each co-flowing stream is made up of a photopolymerizable solution with similar curing kinetics, one may perform
 flow lithography using a mask which illuminates several streams at once in order
-to produce particles which contain geometrically
+to produce particles that contain geometrically
 distinct regions of different chemical makeup.  A simple case 
 is demonstrated in Dendukuri \textit{et al.}~\cite{dendukuri-sfl}
 for SFL, in which dyed and un-dyed PEGDA solutions are cured in the laminar flow regime to produce particles whose
 fluorescence is confined to one part of the particle.  Fabrication of amphiphilic microparticles containing both
-hydrophobic and hydrophilic materials is demonstrated Dendukuri in 
-\textit{Langmuir}~\cite{dendukuri-amph}, and particles which incorporate biomolecule probes and lithographically-defined
+hydrophobic and hydrophilic materials is demonstrated by Dendukuri in 
+\textit{Langmuir}~\cite{dendukuri-amph}, and particles that incorporate biomolecule probes and lithographically-defined
 ``barcodes'' in different regions are fabricated by Pregibon \textit{et al.} in a 2007 
 \textit{Science} paper.~\cite{pregibon-dna}
 
 \section{Experimental Procedure}
 \label{sec:rods-exp}
 
-Colloidal rods were fabricated by stop-flow lithography (SFL) as described in Section~\ref{sec:SFL} using
+Colloidal rods were fabricated by stop-flow lithography (SFL), as described in Section~\ref{sec:SFL} using
 hydrophobic and hydrophilic monomer solutions.  
 
 \subsection{Microchannel Device Fabrication}
@@ -465,7 +468,7 @@ procedure outlined in Section~\ref{sec:exp-collection} for the collection of rod
 straightforward.  However, initial 
 collection and processing experiments 
 with small colloidal rods resulted in
-extremely low yields, with the heavier losses in each subsequent processing step.
+extremely low yields, with additional losses in each subsequent processing step.
 
 
 \subsubsection{Collection Solvents}
@@ -513,7 +516,7 @@ failure (a ``no'' in the table) if more than 50\% of the particles remained afte
 The results of these trials are presented qualitatively in Table~\ref{tab:collect-solvent}.  To summarize, the best
 results were generally found with the organic solvents, with ethanol being a good all-purpose collection solvent.
 Collection with solvents similar to the monomer were generally unsuccessful, with repeated pipetting failing to 
-remove more than 20-30\% of particles.  Water was useful only in collectin PEGDA rods.
+remove more than 20-30\% of particles.  Water was useful only in the collection of PEGDA rods.
 DMSO was also fairly successful, but demonstrated more of a tendency to swell the PDMS
 and was more hazardous to work with than ethanol.
 
@@ -538,7 +541,7 @@ In addition, yield was also substantially reduced when particles were transferre
 and then re-extracted, with yields of less than 10\% of the particles placed in the tube.  This yield was
 not improved by fluorosilane vapor-coating or by the use of any other solvent and had significant
 negative effects on solvent exchange and particle cleaning procedures.  In many experiments, cleaning 
-steps were neglected entirely to preserve sample size, with possible negative effects on the final results.
+steps were neglected entirely to preserve sample volume, with possible negative effects on the final results.
 
 \subsection{Surface Interactions}
 \label{sec:surface-interact}
@@ -553,7 +556,7 @@ hydrophoic functionalities.
 In order to better understand this constraint and optimize future experiments, several different 
 chamber surface
 functionalities were selected: a hydrophobic PDMS surface, a hydrophilic pirahna-rinsed glass surface,
-and both PDMS and glass surfaces which had been vapor-coated with the same fluorosilane material used
+and both PDMS and glass surfaces that had been vapor-coated with the same fluorosilane material used
 to coat photoresist masters, chosen to potentially minimize sticking with either particle functionality.
 Particle-surface interactions were measured qualitatively by suspending 6~\microns~single-component rods
 of either hydrophobic or hydrophilic functionality in a series of different solvents.
@@ -739,7 +742,7 @@ results from the amphiphilic particle experiments in Dendukuri \textit{et al.}~\
 
 Next, the fabrication microchannel was reduced in height to 7 \microns~and the mask size was varied to explore the
 size limitations in fabricating Janus rods.  Janus rods were successfully fabricated 
-using 500 \microns, 300 \microns~and 200 \microns~masks to produce Janus rods with lengths of 
+using 200 \microns, 300 \microns~and 500 \microns~masks to produce Janus rods with lengths of 
 4 \microns, 7 \microns~and 15 \microns~respectively. Particle width in all cases
 was $\simeq$ 3 \microns, defined by the photomask, the 
 microchannel height and the thickness of the oxygen inhibition layer. (See Figure~\ref{fig:janus-sizes}(a,b,c).)

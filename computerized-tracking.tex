@@ -11,7 +11,7 @@ This data alone can be used to derive a great deal
 of information about the material
 characteristics, such as the distribution of number of nearest neighbors and
 the pair distribution function (PDF). Repeated observations at regular intervals allow for dynamical
-measurements of parameters such as the diffusion constant.~\cite{weitz-confocal,crocker-grier-spheres}
+measurements of parameters, such as the diffusion constant.~\cite{weitz-confocal,crocker-grier-spheres}
 
 However, 
 the production of useful 3D structural information requires more than just a 
@@ -167,12 +167,12 @@ To provide experimental data for the development of this algorithm, a suspension
 ellipsoidal rods was fabricated (see Figure~\ref{fig:pmma-fabrication}).
 Poly(methyl methacrylate)-g-poly(dimethylsiloxane) (PMMA-g-PDMS) fluorescent colloidal spheres were
 synthesized, and then suspended in a polymerizable liquid silanol-terminated PDMS.
-This was then cured to form a solid 
+The film then cured to form a solid 
 matrix.  This matrix was then heated above the glass transition temperature 
 of PMMA-g-PDMS and subjected to 
 uniaxial stretching, then cooled while still deformed.  The rods were then harvested from the 
-elastic film by chemical degredation, and transferred to a cyclohexyl bromide (CXB) solution.
-This rod suspension was then visualized via CLSM, and 
+elastic film by chemical degradation, and transferred to a cyclohexyl bromide (CXB) solution.
+The suspension of the colloidal rods was then visualized via CLSM, and 
 subjected to a three-stage image processing algorithm to determine the position and orientation of each rod.
 
 \subsubsection{Image restoration}
@@ -192,10 +192,6 @@ where $B$ is a normalization constant and $\lambda$ is defined to be 1 for these
 
 \subsubsection{Rod Backbone Identification}
 
-\figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.3\linewidth}{
-To identify candidate backbone pixels, each pixel is compared in its immediate
-neighbors in a local line maximum criterion.}
-
 Rod backbones are identified using a local line maximum criterion (Figure~\ref{fig:local-line-max}).  
 Each pixel is compared with its immediate 
 neighbors in all directions along lines with length $2w+1$.  If a candidate pixel is found to be the brightest
@@ -205,6 +201,10 @@ Figure~\ref{fig:pmma-rod-backbones}(a)
 shows both the original fluorescence image and identified backbones for PMMA-g-PDMS rods
 embedded in a stretched PDMS film (Figure~\ref{fig:pmma-fabrication}(c)), and 
 Figure~\ref{fig:pmma-rod-backbones}(b) shows the same images for freely-suspended rods.
+
+\figone{fig:local-line-max}{figures/computerized-tracking/local-line-max.png}{0.5\linewidth}{
+To identify candidate backbone pixels, each pixel is compared in its immediate
+neighbors in a local line maximum criterion.}
 
 \figone{fig:pmma-rod-backbones}{figures/computerized-tracking/backbone-assignment.png}{0.6\linewidth}{
 Rod backbone assignments in (a) a stretched film and (b) a sediment structure.}
@@ -301,34 +301,35 @@ The first method was a spatial band-pass filter, described in
 Section~\ref{sec:band-pass} and implemented in Matlab by Blair and
 Dufrense~\cite{blair-dufrense-matlab}. This filter takes two parameters, the characteristic scale
 of image noise, generally equal to one pixel, and the typical particle size.  This 
-approach generally works well
+approach generally works well,
 but has difficulty in images with multi-pixel noise.
 
 While the band-pass performed well on some images, many experiments produced data with noise or
 extraneous features that did
-not easily yield to the bandpass operation. This can be attributed to the fact that SFL fabrication produces
-solutions which contain some amount of residual fluorescent monomer which
-can not always be removed effectively.  A second image cleanup technique was devised using morphological
+not easily yield to the bandpass operation. This issue can be attributed to the fact that SFL fabrication produces
+solutions that contain some amount of residual fluorescent monomer, which
+can not always be removed effectively.  A second image cleanup technique was therefore 
+devised using morphological
 operations to better suppress non-particle features.
 
 This method may be divided into five steps. First, the 
 image is run through a morphological top-hat transform.~\cite{soille-book}
 This transform is used to compensate for the effects of
 uneven illumination in the image. The image is then thresholded to produce a binary image, where the 
-background is black and the fluorescent features are white. The threshold is selected such that pixels which 
+background is black and the fluorescent features are white. The threshold is selected such that pixels that 
 are part of the particle volume are never assigned to the background; Otsu's criterion was found to be reliable
 for this.~\cite{otsu-threshold}  Next, a binary opening is applied with an isotropic structuring element to
 suppress small features. The size of the structuring element was selected manually by the user
 based on performance in test images, but a 
 reliable choice was found to be a diameter roughly equal to half the width of the typical rod. 
 
-At this point a binary image has been produced which suppresses most non-particle features, but morphological
-image operations are not guaranteed to preserve shape and orientation of image features.  To retain the noise suppression
+At this point a binary image has been produced that suppresses most non-particle features, but morphological
+image operations are not guaranteed to preserve shape and orientation of image features.  To retain the noise suppression,
 but regain the original shape, we perform one additional morphological dilation using the same structuring element to
 guarantee that the foreground regions fully overlap with the rods. Finally, we perform a binary AND between the result and the
 original image. This is effectively equivalent to using the result of our morphological operations as a mask on
 the original, suppressing
-all pixels which are marked as background.
+all pixels that are marked as background.
 
 \subsection{Segmentation}
 
@@ -339,7 +340,7 @@ in the image is assigned to either a specific particle or the background.
 %of Janus rods, which are come into contact during self-assembly and which therefore often touch or overlap in 
 %CLSM images. 
 
-First, the image is thresholded to produce a binary image, with a threshold selected such that all pixels which
+First, the image is thresholded to produce a binary image, with a threshold selected such that all pixels that
 are part of the rods are assigned to the foreground. Again, this may generally be accomplished through the use of 
 Otsu's criterion.~\cite{otsu-threshold}
 
@@ -351,7 +352,7 @@ distance measures such as the ``chessboard'' measure may also be used to speed u
 found to negatively impact segmentation.  To prepare the image for watershed segmentation, the distance 
 transform is transformed such that all distances are made
 negative, while the background remains at a flat zero. 
-An h-minima transform is applied to remove small local minima
+An $h$-minima transform is applied to remove small local minima
 due to noise in the image.~\cite{soille-book}
 
 The primary segmentation step is the \textit{watershed 
@@ -363,13 +364,13 @@ Implementations of the watershed transform use this concept to calculate the bou
 fully segmenting the image.  The number of basins is calculated either by using local minima in the image, or by 
 pre-assigning a set of markers.  In our algorithm, we generally use the Matlab implementation of \texttt{watershed} which
 uses the local minima method.  A local-minima based watershed transform may result in some 
-over-segmentation, but this effect can be mitigated by using the h-minima transform to remove 
+over-segmentation, but this effect can be mitigated by using the $h$-minima transform to remove 
 artifacts.  While a marker-based technique would avoid this issue, it is much more cumbersome when a large number
 of images must be processed.
 
-\texttt{watershed} outputs an image which labels each pixel according to a region ID number, and labels both background
+\texttt{watershed} outputs an image that labels each pixel according to a region ID number, and labels both background
 and foreground pixels with these regions. To restrict these labels so that the background is labeled separately, all 
-watershed pixels which correspond to background-valued pixels in the thresholded image are assigned a label number of zero.
+watershed pixels that correspond to background-valued pixels in the thresholded image are assigned a label number of zero.
 
 \subsection{Skeletonization}
 
@@ -377,23 +378,23 @@ Once we have identified which image pixels belong to each particle, we need to p
 which reliable position and orientation information can be calculated.  While it is tempting to simply
 calculate the centroid and associated moments from the raw pixel data, this can be problematic when working with
 time-series data due to boundary noise. Consider a single foreground pixel belonging to 
-an identified particle which is experimentally
+an identified particle that is experimentally
 constrained to be stationary, and which is adjacent to a background pixel because it is on the edge of the identified 
 region. In the next image in the time series, this pixel's intensity is reduced and it is identified as a background
-pixel.  If we are calculated particle position as the average of all the identified pixels, this will result in 
+pixel.  If we calculated particle position as the average of all the identified pixels, this would result in 
 the calculated position changing, even if the particle did not physically move. The next frame after that, it 
 may be re-identified as a foreground pixel.  While the effect is small, experimental conditions may magnify
 these effects and produce appreciable fluctuations in the position and orientation. One way to 
 avoid this problem
-is to calculate a particle ``skeleton'' which is less sensitive to this form of noise.~\cite{soille-book}
+is to calculate a particle ``skeleton'', which is less sensitive to this form of noise.~\cite{soille-book}
 
-For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm; but rather 
-than using an intensity gradient. However, because of the flat fluorescence profile of SFL rods
-we may not use the fluorescence intensity maximum to identify backbone pixels. Instead, we calculate 
+For a rod, we calculate a backbone very similar to the backbone calculated in the Mohraz-Solomon algorithm.
+However, because of the flat fluorescence profile of SFL rods,
+we cannot use the fluorescence intensity maximum to identify backbone pixels. Instead, we calculate 
 the backbone position with respect to the particle geometry. For each particle, we 
 isolate its pixels from the environment, i.e., generate a new image containing only this particle. We then
-calculate the distance transform to allow identification of pixels which are closest to the 
-geometric backbone.  These are identified by applying a ``percentile threshold'' in which all pixels that
+calculate the distance transform to allow identification of pixels that are closest to the 
+geometric backbone.  These are identified by applying a ``percentile threshold'', in which all pixels that
 fall below a given percentile in the distribution are reassigned as background pixels. 
 The correct value of this threshold is determined by the analysis of a trial image from the image set,
 and typically falls in the 85--95\% range.

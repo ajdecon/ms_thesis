@@ -84,6 +84,31 @@ Matlab function \texttt{graythresh}, which uses Otsu's algorithm~\cite{otsu-thre
 select a different threshold.
 \end{itemize}
 
+
+The morphological method for image cleanup is implemented in \texttt{mclean.m}, and consists of a top-hat transform,
+a thresholding, a binary opening, a dilation, and a bitwise AND operation performed in sequence.  
+The function expects the structuring elements for the morphological operations
+to be passed as arguments, produced by the 
+\texttt{strel} function.  This is a 
+highly computationally-intensive sequence of operations, but is easily produced using the the functions provided
+by the Matlab Image Processing Toolkit.  The sequence of operations, in Matlab, is illustrated in 
+Listing~\ref{ls:mclean}.
+
+\begin{lstlisting}[label=ls:mclean,caption=Morphological image cleanup]
+% Even out illumination using top-hat transform.
+th = imtophat(img,thstruct);
+
+% Threshold to produce a binary image.
+bw = im2bw(th, graythresh(th));
+
+% Morphological operations: open and dilate to remove noise.
+mo = imdilate(imopen(bw,opstruct),opstruct);
+
+% Produce final image with AND mask.
+clean = img;
+clean(mo==0) = 0;
+\end{lstlisting}
+
 \section{Segmentation}
 
 \texttt{watershed\_img = segment(img[, height])}
@@ -92,6 +117,7 @@ select a different threshold.
 \item \texttt{img}: Matlab array containing the image pixels.
 \item \texttt{height}: Maximum height to suppress in h-minima transform. Optional, defaults to 1.
 \end{itemize}
+
 
 \texttt{segment.m} carries out the image segmentation part of the algorithm, and consists of three calls to
 Matlab built-in functions: \texttt{bwdist}, which carries out the distance transform, 
@@ -239,12 +265,14 @@ total time over which averaging may take place, but improves statistics.
 
 \texttt{result = nearest\_neighbors(positions, size)}
 
-\texttt{pdf = pair\_dist(positions)}
+%\texttt{pdf = pair\_dist(positions)}
 
 \texttt{result = orient\_corr(positions)}
 
 \texttt{nearest\_neighbors.m} calculates the average number of nearest neighbors for the particles in 
-\texttt{positions} within a distance given by \texttt{size}. \texttt{pair\_dist.m} produces the pair-distribution
-function (PDF) for all particles in \texttt{positions}, where as \texttt{orient\_corr.m} shows how the 
+\texttt{positions} within a distance given by \texttt{size}. 
+%\texttt{pair\_dist.m} produces the pair-distribution
+%function (PDF) for all particles in \texttt{positions}, where as 
+\texttt{orient\_corr.m} shows how the 
 dot-product between particle orientations changes with distance.
 

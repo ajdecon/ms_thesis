@@ -56,7 +56,9 @@ The microchannel flow carries these particles out of the ``active
 region'', and then provides fresh unpolymerized material.
 
 \figone{fig:sfl-o2-inhib}{figures/literature-review/doyle-sfl-o2-inhibition.png}{\linewidth}{
-Oxygen inhibition of photopolymerization in a PDMS microfluidic device.~\cite{dendukuri-oxygen}}
+Photopolymerization is inhibited at the 
+channel walls due to the presence of a layer dissolved oxygen,
+which has diffused into the channel due through the oxygen-permeable PDMS.~\cite{dendukuri-oxygen}}
 
 
 The particle geometry is defined by a combination of the photomask and the microchannel.  The two-dimensional cross-section
@@ -82,7 +84,13 @@ and the magnification and numerical aperture of the objective lens.
 \label{sec:SFL}
 
 \figone{fig:sfl-schematic}{figures/literature-review/doyle-sfl-schematic.png}{\linewidth}{
-Schematic of stop-flow lithography experiment.~\cite{dendukuri-sfl}}
+In a stop-flow lithography experiment, gas pressure is used to drive the flow of
+the photocurable solution. The flow is stopped at intervals using a three-way valve to
+divert the pressure, after which particles are produced via
+UV photopolymerization, carried out using an electronic shutter to actuate the UV
+exposure and a transparency mask to define the particle geometry. The valve and the shutter
+are synchronized by computer control; the pressure source may also be optionally
+controlled using the PC.~\cite{dendukuri-sfl}}
 
 In \textit{stop-flow lithography} (SFL), the cure-during-flow
 procedure in continuous flow lithography is replaced with a flow-stop-cure cycle in which the microchannel flow
@@ -92,7 +100,7 @@ fabrication resolution and throughput.~\cite{dendukuri-sfl}
 
 First, resolution is improved because stopping the microchannel flow minimizes the effect of polymerization
 ``smearing'', which distorts the shape of the resulting particles.
-When flowing monomer solution is exposed to UV light for some finite time, any monomer which occupies the exposed volume 
+When flowing monomer solution is exposed to UV light for a finite time, any monomer which occupies the exposed volume 
 during that time begins to undergo photo-polymerization.  Some of the solution will flow out of this region 
 during this time and be replaced by additional solution from up-stream. This results in a particle which is ``smeared''
 or ``stretched'' along the direction of flow and does not precisely reproduce the shape defined on the mask.  
@@ -118,7 +126,7 @@ that the advantage in throughput is reduced somewhat when the experiment design 
 after the flow. The length of this pause step is dependent on the fluid viscosity, but especially on the 
 response time of the PDMS device.  When a high pressure is applied to elastic PDMS microchannel, the 
 walls of the channel deform to allow it to expand.  Removing that pressure, as in SFL, produces a ``squeeze flow''
-phenomenon in which the relaxation of the device walls generates some fluid flow within the channel. The cure step 
+phenomenon in which the relaxation of the device walls generates fluid flow within the channel. The cure step 
 cannot take place until this flow has ceased.  This response time may be given as
 
 \begin{equation}
@@ -309,7 +317,8 @@ the less favorable curing behavior of the hydrophobic monomer.  The fabrication 
 necessitated slightly higher exposure times.  
 
 \figone{fig:janus-sfl-schematic}{figures/rods/janus-rod-sfl-schematic.png}{0.70\linewidth}{
-SFL fabrication of Janus rods.}
+Janus rods are fabricated via SFL with two immiscible, co-flowing photocurable streams 
+incorporating hydrophilic (PEGDA) and hydrophobic (TMPTA) monomer.}
 
 Janus rods were fabricated using the two side entrance channels to supply each type of monomer solution,
 with the central channel left unused (Figure~\ref{fig:janus-sfl-schematic}).  
@@ -534,8 +543,8 @@ steps were neglected entirely to preserve sample size, with possible negative ef
 \subsection{Surface Interactions}
 \label{sec:surface-interact}
 
-Ideally, all experiments involving SFL particles should take place in some experimental
-chamber in which all non-particle surfaces are either repulsive with respect to all
+Ideally, all experiments involving SFL particles should take place in an experimental
+chamber in which all non-particle surfaces are repulsive with respect to all
 particle chemistries, so that particles may diffuse and interact without 
 being affected by extraneous surface forces.  Unfortunately, this is a difficult demand to 
 satisfy, especially in the case of Janus rods which incorporate both hydrophilic and 
@@ -544,13 +553,13 @@ hydrophoic functionalities.
 In order to better understand this constraint and optimize future experiments, several different 
 chamber surface
 functionalities were selected: a hydrophobic PDMS surface, a hydrophilic pirahna-rinsed glass surface,
-and a both PDMS and glass surfaces which had been vapor-coated with the same fluorosilane material used
+and both PDMS and glass surfaces which had been vapor-coated with the same fluorosilane material used
 to coat photoresist masters, chosen to potentially minimize sticking with either particle functionality.
-Particle-surface interactions were measured qualitatively by fabricating single-component rods
-of length 6 \microns~and made up of both
-hydrophobic and hydrophilic functionalities which were then placed into chambers incorporating these
-surfaces, suspended in various solvents.  The diffusion of these rods was then observed via CLSM to 
-determine whether or not they were free to diffuse given the current particle/surface/solvent combination.
+Particle-surface interactions were measured qualitatively by suspending 6~\microns~single-component rods
+of either hydrophobic or hydrophilic functionality in a series of different solvents.
+The observation chamber surface functionality was also varied.
+The diffusion of these rods was then observed via CLSM to 
+determine whether or not they were free to diffuse in that particle/surface/solvent combination.
 The results of these experiments are summarized in Table~\ref{tab:surface-diff}.
 
 \begin{table}[h]
@@ -581,19 +590,20 @@ Solvent & Material & Glass & PDMS & Glass-Silane & PDMS-Silane \\ \hline
 \end{tabular}
 \end{center}
 \caption{Freedom of diffusion on different surfaces is characterized as either 
-"yes" (free to move), "no" (stuck to the surface), or "hindered" (moves only when externally agitated).}
+``yes'' (free to move), ``no'' (stuck to the surface), or ``hindered'' (moves only when externally agitated).}
 \label{tab:surface-diff}
 \end{table}
 
-Unfortunately, in the majority of combinations the particles were found to be firmly stuck to the
-internal surfaces of the observation chamber, with only a few solvent/surface combinations allowing for 
-free movement even under external agitation.  No combination allowed particles of both materials to move freely
-without agitation at the same time, with the most successful combination, suspension in toluene 
-on PDMS surfaces, allowing free motion of TMPTA particles and only motion under agitation for PEGDA
-particles.  The flurosilane coating showed no particular improvement over bare PDMS or glass.
+Unfortunately, in the majority of cases the particles were found to be firmly stuck to the
+internal surfaces of the observation chamber, with only a few particle/surface/solvent combinations allowing 
+free particle movement even under external agitation.  No combination allowed particles of both materials to move freely
+without agitation at the same time. The most successful combination, suspension in toluene 
+on PDMS surfaces, allowed free motion of TMPTA particles and motion only under agitation for PEGDA
+particles.  The flurosilane-coated surfaces showed no particular improvement over 
+either bare PDMS or glass.
 
-This lack of free motion may be at least partially caused by the presence of unreacted monomer 
-mixed into the solvent, which may stick to the particle surfaces and then enhance adhesion between the
+This lack of free motion may be at least partially caused by the presence of residual unreacted monomer 
+mixed into the solvent, which may stick to the particle surfaces and enhance adhesion between the
 particles and the chamber surfaces.  This monomer is still present due to the difficulties in 
 collecting and cleaning the particles outlined in Section~\ref{sec:rod-collection}.
 
@@ -601,25 +611,38 @@ collecting and cleaning the particles outlined in Section~\ref{sec:rod-collectio
 \subsection{Translational and Rotational Diffusion}
 \label{sec:rod-diffusion-results}
 
-\figfour{fig:rods-msd}{figures/rods/dynamics-data/msd6um.png}{figures/rods/dynamics-data/msd9um.png}{figures/rods/dynamics-data/msd12um.png}{figures/rods/dynamics-data/msd15um.png}{Mean-square displacement plots for (a) 6 \microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods. The straight lines have a slope of one, representing
+\figfour{fig:rods-msd}{figures/rods/dynamics-data/msd6um.png}{figures/rods/dynamics-data/msd9um.png}{figures/rods/dynamics-data/msd12um.png}{figures/rods/dynamics-data/msd15um.png}{MSD plots for (a) 6 \microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods, and (d) 15 \microns~rods. The straight lines have a slope of one, representing
 ideal diffusion behavior.}
 
-\figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Mean-square rotational displacement data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods and 15 \microns~rods. The straight lines have a slope of one, representing
+\figfour{fig:rods-rot}{figures/rods/dynamics-data/rot6um.png}{figures/rods/dynamics-data/rot9um.png}{figures/rods/dynamics-data/rot12um.png}{figures/rods/dynamics-data/rot15um.png}{Rotational MSD data plots for (a) 6\microns~rods, (b) 9 \microns~rods, (c) 12 \microns~rods, and (d) 15 \microns~rods. The straight lines have a slope of one, representing
 ideal diffusion behavior.}
 
 
 Dynamics experiments were carried out to study the effect of rod size and aspect ratio on the rate of
-diffusion.  To maximize rod mobility in this study, the results of Section~\ref{sec:surface-interact}
-were taken into account and single-component TMPTA 
-rods with lengths of 6, 9, 12 and 15 \microns~were suspended in toluene and transferred 
-to glass-bottom confocal observation chambers which had 
+diffusion.  To ensure that we study only the effect of changing
+rod dimensions, the results of Section~\ref{sec:surface-interact}
+were used to select a system with maximized rod mobility. Single-component TMPTA 
+rods with lengths of 6, 9, 12, and 15 \microns~were suspended in toluene and transferred 
+to glass-bottom confocal observation chambers. These chambers had 
 also been
-pre-rinsed in toluene.  These chambers were observed by CLSM under the conditions described in 
+pre-rinsed in toluene.  The rod samples were then observed by CLSM under the conditions described in 
 Section~\ref{sec:exp-diffusion} for time-series experiments.  The resulting 2D image series were 
 processed and analyzed using the algorithm described in Section~\ref{sec:rod-tracking}, and 
 the translational and rotational mean-square displacements (MSD) were calculated and plotted.
 The translational MSD are plotted with respect to time in Figure~\ref{fig:rods-msd}, and the 
 rotational MSD are plotted with respect to time in Figure~\ref{fig:rods-rot}.
+
+Translational and rotational MSD may be related to the translational and rotational diffusion 
+coefficients, $D$ and
+$\theta$, according to Equations~\ref{eq:trans-diff} and~\ref{eq:rot-diff}, respectively.  Experimental 
+values for these constants were calculated for each of the four rod lengths by performing least-squares regression linear
+fits to determine the slope of plots of MSD vs. time. The resulting diffusion coefficients are shown in 
+Table~\ref{tab:diffusion} and are compared to theoretical values calculated from Equations~\ref{eq:trans-th}
+and~\ref{eq:rot-th}.~\cite{zero-pecora}  It is interesting to note that in all cases, the experimental diffusion 
+coefficients 
+are measured to be larger than the theoretical values.  This may be attributable to the fact that we are 
+observing 2D diffusion near a surface rather than 3D diffusion, which could affect the calculation of 
+either or both of the experimental and theoretical values.
 
 
 \begin{table}[h]
@@ -634,7 +657,10 @@ Rod length [\microns] & $D_{exp} (D_{th})$ [$\mu m^2/s$] & $\theta_{exp} (\theta
 \hline
 \end{tabular}
 \end{center}
-\caption{Translational and rotational rod diffusion constants from experiment and theory.~\cite{zero-pecora}}
+\caption{Translational and rotational rod diffusion coefficients are calculated for
+the experimental data through fitting of MSD data.  The theoretical
+diffusion constants are also calculated (coefficients in 
+parentheses).~\cite{zero-pecora}}
 \label{tab:diffusion}
 \end{table}
 
@@ -667,17 +693,6 @@ D = kT/3\pi\eta_s L
 \end{equation}
 \end{center}
 
-Translational and rotational MSD may be related to the translational and rotational diffusion 
-coefficients, $D$ and
-$\theta$, according to Equations~\ref{eq:trans-diff} and~\ref{eq:rot-diff} respectively.  Experimental 
-values for these constants were calculated for each of the four rod lengths by performing least-squares regression linear
-fits to determine the slope of plots of MSD vs time. The resulting diffusion coefficients are shown in 
-Table~\ref{tab:diffusion}, and are compared to theoretical values calculated from Equations~\ref{eq:trans-th}
-and~\ref{eq:rot-th}.~\cite{zero-pecora}  It is interesting to note that in all cases, the experimental diffusion 
-coefficients 
-are measured to be larger than the theoretical values.  This might be attributable to the fact that we are 
-observing 2D diffusion near a surface, rather than 3D diffusion, which could affect the calculation of 
-either or both of the experimental and theoretical values.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Self-Assembly of Janus Rods}
@@ -686,7 +701,8 @@ either or both of the experimental and theoretical values.
 \figone{fig:big-janus-high-conc}{figures/rods/large-janus-high-conc.png}{0.9\linewidth}{
 Large Janus rods (45 x 11 x 11~\microns), randomly oriented. The narrower ends are 
 composed of hydrophobic TMPTA, while the broader ends are composed of
-hydrophilic PEGDA.}
+hydrophilic PEGDA. The narrowing of the TMPTA ends was caused by a contraction due to an error 
+in the monomer concentration for these experiments.}
 
 \begin{figure}
 \begin{center}
@@ -698,15 +714,17 @@ ends are dyed with Rhodamine B.}
 \label{fig:big-janus-assembly}
 \end{figure}
 
-Initial hydrophobic/hydrophilic Janus fabrication experiments 
-were performed using microchannels fabricated with a height of 15 \microns, 
-producing relatively large Janus particles (Figure~\ref{fig:big-janus-high-conc}). These particles had dimensions 
-of roughly 45 \by 11 \by 11 \microns, and exhibited little spontaneous self-assembly in water.  However, agitation
-of these particles to drive their rearrangement into new configurations produced substantial substantial
-self-assembly (Figure~\ref{fig:big-janus-assembly}), producing clustered structures with high contact
-areas between the hydrophobic regions of the particles.  This served as a proof-of-concept of 
-hydrophobic self-assembly and duplication of the
-results from Dendukuri \textit{et al.}~\cite{dendukuri-amph}  
+Initialy, Janus fabrication was carried out using microchannels fabricated with a height of 15 \microns, 
+producing relatively large Janus rods (Figure~\ref{fig:big-janus-high-conc}) with dimensions 
+of roughly 45 \by 11 \by 11 \microns.  In these experiments only, the hydrophobic material is 
+un-dyed while the hydrophilic material is dyed using Rhodamine B. These rods 
+exhibited little spontaneous self-assembly in water, but agitation
+of these particles drove their rearrangement into new 
+self-assembled configurations, producing clustered structures with high contact
+areas between the hydrophobic regions of the particles (Figure~\ref{fig:big-janus-assembly}).  
+This experiment serves as a proof-of-concept of 
+hydrophobic self-assembly and a duplication of the
+results from the amphiphilic particle experiments in Dendukuri \textit{et al.}~\cite{dendukuri-amph}  
 
 \begin{figure}
 \begin{center}
@@ -714,31 +732,35 @@ results from Dendukuri \textit{et al.}~\cite{dendukuri-amph}
 \includegraphics[height=1.5in]{figures/rods/janus-rods-6x2um.png}
 \includegraphics[height=1.5in]{figures/rods/janus-rod-cluster-zoom.png}
 \end{center}
-\caption{Various sizes of Janus rods.}
+\caption{Janus rods with lengths of (a) 4 \microns, (b) 7 microns, and 
+(c) 15 microns may be produced by changing the mask dimensions.}
 \label{fig:janus-sizes}
 \end{figure}
 
 Next, the fabrication microchannel was reduced in height to 7 \microns~and the mask size was varied to explore the
 size limitations in fabricating Janus rods.  Janus rods were successfully fabricated 
 using 500 \microns, 300 \microns~and 200 \microns~masks to produce Janus rods with lengths of 
-15 \microns, 7 \microns~and 4 \microns~respectively. (See Figure~\ref{fig:janus-sizes}(a,b,c).)
+4 \microns, 7 \microns~and 15 \microns~respectively. Particle width in all cases
+was $\simeq$ 3 \microns, defined by the photomask, the 
+microchannel height and the thickness of the oxygen inhibition layer. (See Figure~\ref{fig:janus-sizes}(a,b,c).)
 
 \figone{fig:assembly-v-solvent}{figures/rods/janus-rod-assembly-vs-solvent.png}{0.9\linewidth}{
 Self-assembly of Janus rods in (a) water, (b) DMSO and (c) IPA.}
 
-To explore the effect of assembly solvent on the resulting structures, identical Janus rods with dimensions 
+To explore the effect of the solvent conditions on the self-assembly
+behavior, identical Janus rod samples with rod dimensions of  
 12 \by 3 \by 3 \microns~were fabricated and placed in three different solvents: water, dimethyl sulfoxide 
-(DMSO) and isopropyl alcohol (IPA).  In water, we see a result similar to that seen for the large Janus rods,
-with strong hydrophobic self-assembly producing structured clusters, with strongly-correlated orientations
-between the rods within a cluster.  Suspension and agitation in DMSO, however, shows little or no self-assembly.
-This result is consistent with DMSO's status as a less polar solvent than water, decreasing the driving force
-for hydrophobic self-assembly.  Moving the particles to IPA, a non-polar solvent, shows a completely different
-self-assembly behavior following agitation, in which the green-dyed hydrophilic parts of the particles are 
-assembling to maximize contact area.  This series of experiments illustrates the potential for 
-control of self-assembly via varying the solvent conditions.
+(DMSO) and isopropyl alcohol (IPA).  In water, we saw a result similar to that seen for the large Janus rods,
+with strong hydrophobic self-assembly producing structured clusters with strongly-correlated orientations
+between the rods within a cluster.  Suspension and agitation in DMSO, however, showed no appreciable self-assembly.
+This result is consistent with the lower polarity of DMSO, decreasing the driving force
+for hydrophobic self-assembly.  Moving the particles to IPA, a non-polar solvent, showed a completely different
+self-assembly behavior following agitation, in which the green-dyed hydrophilic ends of the particles 
+assembled to maximize contact area.  This series of experiments illustrated the potential for 
+control of self-assembly through variation of the solvent conditions.
 
 \figone{fig:assembly-small-clusters}{figures/rods/janus-rods-large-clusters-ordered.png}{0.9\linewidth}{
-Janus rods self-assemble at low concentrations into small ``micellar'' structures.}
+Janus rods self-assemble at low concentrations into small ``micellar'' clusters.}
 
 \figone{fig:large-struct}{figures/rods/janus-rods-large-structures.png}{0.9\linewidth}{
 Janus rods self-assemble at high concentration into extended, gel-like structures in water.}
@@ -746,12 +768,12 @@ Janus rods self-assemble at high concentration into extended, gel-like structure
 Focusing on self-assembly in water, we see that a variety of different structures may be 
 achieved.  In a single sample, local variations in concentration due to uneven mixing may produce
 dramatically different results.  Where the local concentration is low, highly-ordered clusters 
-are produced which have a ``micelle-like'' geometry, with the particles grouped around a common 
+are produced which have a ``micelle-like'' geometry with the particles grouped around a common 
 center where the hydrophobic regions tend to maximize contact area 
 (Figure~\ref{fig:assembly-small-clusters}).  Where the local concentration
 is high, however, extended structures containing many more particles may be formed
 (Figure~\ref{fig:large-struct}).  These
-structures have a ``gel-like'' motif in that they are more randomly arranged, but still contain
+structures have a ``gel-like'' motif in that they are more randomly arranged but still contain
 sub-clusters which are formed by hydrophobic assembly.
 
 \begin{figure}
@@ -763,19 +785,24 @@ sub-clusters which are formed by hydrophobic assembly.
 \includegraphics[width=0.5\linewidth]{figures/rods/high-conc-large-area.png}
 \end{center}
 \caption{
-A large-area view of Janus rod self-assembly in DMSO/water at a low concentration,
-at low and high magnifications.}
+Two large-area views of Janus rod self-assembly in DMSO/water, the bottom view at
+a higher magnification. Both images were produced by tiling multiple fluorescence
+microscopy images taken at different positions in the sample (see Section~\ref{sec:tiled-microscopy}).}
 \label{fig:large-area}
 \end{figure}
 
 \figone{fig:bonds-per-particle}{figures/rods/struct-plot-2.jpg}{0.9\linewidth}{
 The average number of nearest neighbors of ``bonds'' per Janus particle is determined
-for samples of different aspect ratios and solvent compositions.}
+for samples of different aspect ratios (d/w) and solvent composition. Solvents
+are DMSO/water mixtures, with composition measured according to the water
+fraction (\% w).}
 
 \figone{fig:orientation-plot}{figures/rods/struct-plot-1.jpg}{0.9\linewidth}{
 The orientational ordering of Janus rods within a cluster, as represented by the 
 mean dot product of orientation vectors in rods within the same cluster, is
-determined for samples of different aspect ratios and solvent compositions.}
+determined for samples of different aspect ratios (d/w) and solvent composition. Solvents
+are DMSO/water mixtures, with composition measured according to the water
+fraction (\% w).}
 
 A more quantitative study of Janus rod self-assembly was attempted by fabricating large 
 numbers of Janus rods and observing their self-assembly in confocal observation chambers.
@@ -784,7 +811,7 @@ due to transfer and processing reduced this to an estimated 20,000 particles.
 Two parameters were varied: the assembly solvent, which was a mixture of DMSO and water
 with the relative fraction adjusted; and the aspect ratio of the particle, which was varied
 in the range of 1.5-4.5.  Large-area images were acquired as detailed in 
-Section~\ref{sec:tiled-microscopy}, and analyzed as detailed in Sections~\ref{sec:rod-tracking}
+Section~\ref{sec:tiled-microscopy} and analyzed as detailed in Sections~\ref{sec:rod-tracking}
 and~\ref{sec:structure-calcs}.  Sample images at low and high magnification are shown
 in Figure~\ref{fig:large-area}.
 
@@ -792,12 +819,12 @@ Two parameters were calculated for each sample: the average number of contacts o
 per particle, and the degree of orientational ordering for particles in the same cluster.
 The number of ``bonds'' was calculated as the number of particles which were found within a 
 center-to-center distance equal to one rod length.  The orientational ordering was measured
-as the average dot-product of the orientation vectors between pairs of rods which were 
+as the average dot product of the orientation vectors between pairs of rods which were 
 considered to be in the same cluster, with clusters defined according to the same bond criterion.
 The results of these calculations are plotted for all experiments in Figures~\ref{fig:bonds-per-particle}
 and~\ref{fig:orientation-plot}.  Unfortunately these results are somewhat contradictory, and it 
-is difficult to draw good conclusions about the behavior of Janus rods undergoing self-assembly;
-but it is possible to make a few general comments.
+is difficult to draw strong conclusions about the behavior of Janus rods undergoing self-assembly.
+However, it is possible to make a few general comments.
 
 The first thing that should be noted is that for all experiments, the average number of bonds per
 particle never exceeds about 0.6, and in fact most experiments have bond numbers below 0.2.  This
@@ -805,14 +832,14 @@ can be attributed to the fact that despite the high number of particles fabricat
 typical SFL experiments, the rod concentrations are still quite low: settled to the bottom of the
 container, the average areal concentration never exceeds about 5\%.  The bond numbers for 
 DMSO/water mixtures of 50--100\% water are all relatively similar, in the range of 0.1--0.2, and do
-not vary much with aspect ratio.  
+not vary dramatically with aspect ratio.  
 
 For solutions with greater than 
 50\% DMSO, however, we see a striking increase in bond number.  Without carrying out additional experiments it 
 is difficult to determine the cause of this increase. We might speculate that the higher density of DMSO
 and the consequent slower settling might allow the rods more time to ``find'' one another and assemble, but in
 this case we would expect a more continuous variation of bond number with DMSO concentration. Another cause might
-be some experimental error which increased the final particle yield in the high-DMSO samples relative to the others.
+be an experimental anomaly which increased the final particle yield in the high-DMSO samples relative to the others.
 Within these samples, however, we see a consistent variation in bond number with respect to aspect ratio, with
 much higher bond numbers observed at low and high aspect ratios.  The increase in bond number at low aspect ratio, 
 and thus low particle size, might be attributed to the higher mobility of these particles on a surface where
@@ -821,11 +848,11 @@ ratio may be due to the higher opportunity for contact available with longer rod
 
 Turning our attention to the orientational ordering, we see much more consistent results across the
 range of solvent compositions, with little in the way of consistent discernible variation between samples with
-the same aspect ratio.  A dot-product of 1.0 implies perfect parallel ordering, while a dot product of 0.0 implies
+the same aspect ratio.  A dot product of 1.0 implies perfect parallel ordering, while a dot product of 0.0 implies
 perpendicular ordering; average values close to 0.5 may be interpreted as showing relatively random orientation
 within the sample.  With that in mind, it is interesting to note that particles with low aspect ratio show 
 a relatively strong ordering, and that the dot product decreases towards randomness as the aspect ratio 
-increases.  This is somewhat counter-intuitive, and contradicts some previous imaging which would suggest
+increases.  This is somewhat counter-intuitive and contradicts previous imaging which would suggest
 better correlation between particles with a high aspect ratio.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -840,19 +867,19 @@ better correlation between particles with a high aspect ratio.
 \caption{
 (a) Ag nanoparticles are suspended in PEGDA monomer solution at 
 a concentration of 5 wt\% for Janus SFL fabrication.  The resulting
-Janus rods (b) contain embedded Ag nanoparticles, 
-as a demonstration of self-assembled functional Janus rods.}
+Janus rods (b) contain embedded Ag nanoparticles.} 
 \label{fig:silver-janus}
 \end{figure}
 
 The potential for the incorporation of functional materials into SFL Janus particles was 
 explored in a pilot experiment involving the incorporation of Ag nanoparticles (NPs) into the
 hydrophilic PEGDA monomer solution at 5 wt\%. A Janus fabrication experiment using this 
-solution was set up, and the Ag NPs were shown not to interfere with the establishment of a stable
+solution was performed, and the Ag NPs were shown not to interfere with the establishment of a stable
 pair of co-flowing streams (see Figure~\ref{fig:silver-janus}(a)). Standard Janus SFL was carried
 out using a 400 \microns~mask to produce 12 \microns~Janus rods. When placed in water, these rods
 self-assembled normally, as shown in Figure~\ref{fig:silver-janus}(b).  Note, however, the presence of
-free Ag NPs (fluorescing red) both in the free solution and aggregated around the assembled cluster.
-This illustrates a major difficulty in incorporating any functional material in SFL, i.e. the successful 
-rinsing and removal of functional materials from the suspension solvent.
+free Ag NPs (fluorescing red) both in free solution and aggregated around the assembled cluster.
+This illustrates that the successful 
+rinsing and removal of functional materials from the suspension solvent remains 
+a major difficulty in incorporating any functional material in SFL.
 

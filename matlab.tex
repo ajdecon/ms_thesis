@@ -32,7 +32,8 @@ clean = bpass(img,lnoise,lobject);
 
 % If using morphological cleaning.
 %  top-hat step: radius 50 is greater than rod size.
-%  opening step: radius 2 is a good size for eliminating small variations.
+%  opening step: radius 2 is a good 
+% size for eliminating small variations.
 thstruct = strel('disk',50);
 opstruct = strel('disk',2);
 
